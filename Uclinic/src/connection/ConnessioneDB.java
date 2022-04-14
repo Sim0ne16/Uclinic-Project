@@ -12,7 +12,7 @@ public class ConnessioneDB {
 	
 	private Connection con = null;
 	//parametri di configurazione del DB
-	private static final String NOME_DB = "uclinic";
+	private static final String NOME_DB = "uclinic_project";
 	private static final int PORT = 3306;
 	private static final String SERVER_NAME = "localhost";
 	private static final String USERNAME = "root";
