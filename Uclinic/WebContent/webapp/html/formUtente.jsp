@@ -1,3 +1,8 @@
+<%@page import="model.*"%>
+<%@page import="java.util.*"%>
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+	pageEncoding="ISO-8859-1"%>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -11,7 +16,7 @@
     <div class="container">
         
         <div class="title">Registration Utente</div>
-        <form action="#">
+        <form action="RegistraUtente" method="post"> <!--  provo method post -->
             <div class="user-details">
                 <div class="input-box">
                     <span class="details">Nome</span>

@@ -13,7 +13,7 @@ import connection.ConnessioneDB;
 import dao.ClinicaDAO;
 import model.Dottore;
 
-@WebServlet("/aggiungiDottore")
+@WebServlet("/AggiungiDottore")
 public class AggiungiDottore extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        

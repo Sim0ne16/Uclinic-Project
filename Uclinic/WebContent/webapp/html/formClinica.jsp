@@ -1,3 +1,8 @@
+<%@page import="model.*"%>
+<%@page import="java.util.*"%>
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+	pageEncoding="ISO-8859-1"%>
+	
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -11,8 +16,8 @@
     <body>
         <div class="container">
             
-            <div class="title">Registration Clinica</div>
-            <form action="#">
+            <div class="title" >Registration Clinica </div> 
+            <form action="RegistraClinica" method="post"><!-- provo metodo post -->
                 <div class="user-details">
                     <div class="input-box">
                         <span class="details">Nome</span>

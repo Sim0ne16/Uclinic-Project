@@ -13,7 +13,7 @@ import connection.ConnessioneDB;
 import dao.ClinicaDAO;
 import model.Clinica;
 
-@WebServlet("/loginClinica")
+@WebServlet("/LoginClinica")
 public class LoginClinica extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	public static int idClinica;

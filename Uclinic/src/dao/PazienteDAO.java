@@ -4,8 +4,8 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-
 import connection.ConnessioneDB;
+
 import model.Paziente;
 
 public class PazienteDAO {
@@ -59,9 +59,11 @@ public class PazienteDAO {
 				paziente = new Paziente();
 				paziente.setIdPaziente(rs.getInt("idPaziente"));
 				paziente.setNome(rs.getString("nome"));
-				paziente.setRegione(rs.getString("cognome"));
-				paziente.setCitta(rs.getString("eta"));
-				paziente.setcFisc(rs.getString("email"));
+				paziente.setCognome(rs.getString("cognome"));
+				paziente.setRegione(rs.getString("regione"));
+				paziente.setCitta(rs.getString("citta"));
+				paziente.setEta(rs.getInt("eta"));
+				paziente.setcFisc(rs.getString("cFisc"));
 				paziente.setEmail(rs.getString("email"));
 				paziente.setPassword(rs.getString("password"));
 			}
@@ -76,5 +78,38 @@ public class PazienteDAO {
 		}
 		return paziente;
 	}
+	
+	
+	//aggiunto 14/04 23:50
+	
+	   public boolean validateP(String email,String password) throws ClassNotFoundException { //metodo validazione?
+		    
+		         boolean esito = false;
+	        	ConnessioneDB con = new ConnessioneDB();
+	          try {
+					con.connect();
+				     query = "select * from login where username = ? and password = ? ";
+			            pst = this.con.prepareStatement(query);
+						pst.setString(1, email);
+						pst.setString(2, password);
+						rs = pst.executeQuery();
+						if (rs.next()) {
+							esito = true;
+						}
+				} catch (SQLException e) {
+					e.printStackTrace();
+				} 
+	          try {
+				con.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+	          return esito;
+	   }
+	    
+
+	 
+	
+	
 
 }

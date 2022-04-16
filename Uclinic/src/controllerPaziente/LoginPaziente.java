@@ -14,7 +14,7 @@ import connection.ConnessioneDB;
 import dao.PazienteDAO;
 import model.Paziente;
 
-@WebServlet("/loginPaziente")
+@WebServlet("/LoginPaziente")
 public class LoginPaziente extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
@@ -28,17 +28,18 @@ public class LoginPaziente extends HttpServlet {
 
 		response.setContentType("text/html;charset=UTF-8");
 		ConnessioneDB con = new ConnessioneDB();
-		try {
-			String email = request.getParameter("login-emailC"); // temporaneo guardare form
-			String password = request.getParameter("login-passwordC");
+		try (PrintWriter out = response.getWriter()){
+			String email = request.getParameter("login-emailP"); // temporaneo guardare form
+			String password = request.getParameter("login-passwordP");
 			PazienteDAO pDAO = new PazienteDAO(con.getCon());
 			Paziente paziente = pDAO.loginPaziente(email, password);
 
 			if (paziente != null) {
-				request.getSession().setAttribute("utenteC", paziente);
+				request.getSession().setAttribute("utenteP", paziente);
 				response.sendRedirect("home.jsp");
 			} else {
-				response.sendRedirect("LoginErrore.html");// temporaneo inserire pagina
+			//	response.sendRedirect("LoginErrore.html");// temporaneo inserire pagina
+			out.print("Dati non validi");
 			}
 
 		}finally {

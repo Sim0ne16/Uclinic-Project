@@ -14,7 +14,7 @@ import connection.ConnessioneDB;
 import dao.ClinicaDAO;
 import model.Clinica;
 
-@WebServlet("/registraClinica")
+@WebServlet("/RegistraClinica")
 public class RegistraClinica extends HttpServlet {
 
 	private static final long serialVersionUID = 1L;
