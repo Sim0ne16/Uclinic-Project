@@ -1,8 +1,7 @@
 
 <%@page import="model.*"%>
 <%@page import="java.util.*"%>
-<%@page import="controllerPaziente.*"%>
-<%@page import="controllerClinica.*"%>
+<%@page import="controller.*"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
 
@@ -12,7 +11,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <link rel="stylesheet" href="../css/pagLogin.css">
+    <link rel="stylesheet" href="css/pagLogin.css">
     <title>Paragliola 4Ever 2</title>
 </head>
 <body id="wrapper">
@@ -31,10 +30,9 @@
     </nav>
 <div class="container" id="container">
     <div class="form-container sign-up-container">
-        <form action="LoginClinica" method="get" id="logC">
+        <form action="LoginClinica" method="post" id="logC">
             <h1>Sign in as Clinic </h1>
             <span>//</span>
-         
             <input type="email" placeholder="Email" name="login-emailC"/>
             <input type="password" placeholder="Password" name="login-passwordC" />
             
@@ -45,7 +43,7 @@
         <form action="LoginPaziente" method="post" id="logP">
             <h1>Sign in as Guest </h1>
             <span>or use your account</span>
-            <input type="email" placeholder="Email" name="login-emailP" />
+            <input type="email" placeholder="Email"  name="login-emailP" />
             <input type="password" placeholder="Password" name="login-passwordP" /> 
             <a href="#">Forgot your password?</a>
             <button class="submit_class" type="submit"  >Sign In</button> <!--form="logP"-->
@@ -69,6 +67,6 @@
 <div>
    <a href="reg.html" style="text-decoration:none;"><button class="submit_class2" id="btnR" type="submit" form="registrer_form">registration</button></a>
 </div>
-<script src="../javascript/	Script1.js"></script>
+<script src="javascript/Script1.js"></script>
 </body>
 </html>

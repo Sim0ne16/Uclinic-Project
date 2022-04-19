@@ -1,4 +1,4 @@
-package controllerPaziente;
+package controller;
 
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -25,9 +25,11 @@ public class RegistraPaziente extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		ConnessioneDB con = new ConnessioneDB();
+
 		try (PrintWriter out = response.getWriter()) {
-			String email = request.getParameter("regP-email");// Momentaneo guarda jsp
+			String email = request.getParameter("regP-email");
 			String password = request.getParameter("regP-password");
+			String password2 = request.getParameter("regP-password2");
 			String nome = request.getParameter("regP-nome");
 			String cognome = request.getParameter("regP-cognome");
 			String et = request.getParameter("regP-eta");
@@ -36,16 +38,21 @@ public class RegistraPaziente extends HttpServlet {
 			String regione = request.getParameter("regP-regione");
 			String cFisc = request.getParameter("regP-cf");
 			Paziente paziente = new Paziente(nome, cognome, eta, cFisc, email, password, regione, citta);
-			request.getSession().setAttribute("utenteP", paziente);
-			PazienteDAO pDAO = new PazienteDAO(con.getCon());
+			
+			
+			if( PazienteDAO.check(email,password,password2,eta,cFisc) == false) {			
 			try {
-				pDAO.registraPaziente(paziente);
-				out.println("Registrazione avvenuta con successo");
+				request.getSession().setAttribute("utenteP", paziente);
+				PazienteDAO.registraPaziente(paziente);
 				response.sendRedirect("home.jsp");
 			} catch (ClassNotFoundException | SQLException e) {
 				e.printStackTrace();
 			}
 
+			}
+			else {
+				response.sendRedirect("regUtenteFail.jsp");
+			}
 		}
 	}
 

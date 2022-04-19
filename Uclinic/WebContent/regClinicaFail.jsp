@@ -9,14 +9,14 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../css/formClinica.css">
+    <link rel="stylesheet" href="css/formClinica.css">
     <title>Document</title>
 </head>
 <body>
     <body>
         <div class="container">
             
-            <div class="title" >Registration Clinica </div> 
+            <div class="title" ><h1>Registration Failed!</h1> </div> 
             <form action="RegistraClinica" method="post"><!-- provo metodo post -->
                 <div class="user-details">
                     <div class="input-box">
@@ -53,7 +53,7 @@
                    </div>
                    <div class="input-box">
                        <span class="details">Città</span>
-                       <input type="text" placeholder="Inserire Città" required>
+                       <input type="text" placeholder="Inserire Citta�" required>
                    </div>
                 </div>
 

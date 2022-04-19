@@ -10,51 +10,95 @@ import model.Paziente;
 
 public class PazienteDAO {
 	
-	private Connection con;
-	private String query;
-	private PreparedStatement pst;
-	private ResultSet rs;
 
-	public PazienteDAO(Connection con) {
-		super();
-		this.con = con;
-	}
-
-	public boolean registraPaziente(Paziente paziente) throws ClassNotFoundException, SQLException {
+	public static boolean registraPaziente(Paziente paziente) throws ClassNotFoundException, SQLException {
 		boolean result = false;
 		ConnessioneDB con = new ConnessioneDB();
 		try {
 			con.connect();
-			query = "INSERT INTO paziente (nome, cognome, eta, cFisc, email, password) VALUES"
-					+ "(?,?,?,?,?,?,?);";
-			pst = this.con.prepareStatement(query);
+			String query = "INSERT INTO paziente (nome, cognome, eta, cFisc, email, password,regione,citta) VALUES"
+					+ "(?,?,?,?,?,?,?,?);";
+		PreparedStatement	pst = con.getCon().prepareStatement(query);
 			pst.setString(1, paziente.getNome());
 			pst.setString(2, paziente.getCognome());
 			pst.setInt(3, paziente.getEta());
 			pst.setString(4, paziente.getcFisc());
 			pst.setString(5, paziente.getEmail());
 			pst.setString(6, paziente.getPassword());
-			pst.executeUpdate();
-			result = true;
+			pst.setString(7, paziente.getRegione());
+			pst.setString(8, paziente.getCitta());
+
+			if(pst.executeUpdate()>0) {
+				result = true;
+			}
 			System.out.println("Paziente Aggiunto");
 		} catch (Exception e) {
 			System.out.println(e.getMessage());
 		} finally {
-			con.close();
+			try {
+				con.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
 		}
 		return result;
 	}
 	
-	public Paziente loginPaziente(String email, String password) {
+public static boolean check(String email,String password1,String password2,int eta,String cf) {
+	boolean esito = false;
+	ConnessioneDB con = new ConnessioneDB();
+	try {
+		con.connect();
+		String query = "select * from paziente where email =?";
+		PreparedStatement pst = con.getCon().prepareStatement(query);
+	    pst.setString(1, email);          
+	    ResultSet rs = pst.executeQuery();
+	    //controlli per una registrazione 
+
+	    if(rs.next()) {
+	    	esito = true;
+	    }
+	    
+	    if(password1 != password2) {
+	    	esito = true;
+	    }
+	    
+	    if(password1.length()<5) {
+	    	esito = true;
+	    }
+	    
+	    if(eta>110 || eta<18) {
+	    	esito = true;
+	    }
+	    
+	    if(cf.length()<16) {
+	    	esito=true;
+	    }
+	    
+	} catch (SQLException e) {
+		e.printStackTrace();
+	} finally {
+		try {
+			con.close();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+	}
+return esito;
+}
+	
+	
+	
+	public static Paziente loginPaziente(String email, String password) {
 		Paziente paziente = null;
 		ConnessioneDB con = new ConnessioneDB();
 		try {
 			con.connect();
-			query = "select * from paziente where email=? and password=?";
-			pst = this.con.prepareStatement(query);
+		String query = "select * from paziente where email=? and password=?";
+			PreparedStatement pst = con.getCon().prepareStatement(query);
 			pst.setString(1, email);
 			pst.setString(2, password);
-			rs = pst.executeQuery();
+			ResultSet rs = pst.executeQuery();
 			if (rs.next()) {
 				paziente = new Paziente();
 				paziente.setIdPaziente(rs.getInt("idPaziente"));
@@ -80,32 +124,9 @@ public class PazienteDAO {
 	}
 	
 	
-	//aggiunto 14/04 23:50
+
 	
-	   public boolean validateP(String email,String password) throws ClassNotFoundException { //metodo validazione?
-		    
-		         boolean esito = false;
-	        	ConnessioneDB con = new ConnessioneDB();
-	          try {
-					con.connect();
-				     query = "select * from login where username = ? and password = ? ";
-			            pst = this.con.prepareStatement(query);
-						pst.setString(1, email);
-						pst.setString(2, password);
-						rs = pst.executeQuery();
-						if (rs.next()) {
-							esito = true;
-						}
-				} catch (SQLException e) {
-					e.printStackTrace();
-				} 
-	          try {
-				con.close();
-			} catch (SQLException e) {
-				e.printStackTrace();
-			}
-	          return esito;
-	   }
+	  
 	    
 
 	 

@@ -1,4 +1,4 @@
-package controllerClinica;
+package controller;
 
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -31,12 +31,9 @@ public class LoginClinica extends HttpServlet {
 		try (PrintWriter out = response.getWriter()) {
 			String email = request.getParameter("login-emailC");
 			String password = request.getParameter("login-passwordC");	
-			ClinicaDAO cdao = new ClinicaDAO(con.getCon());
-			Clinica clinica = cdao.loginClinica(email, password);
+			Clinica clinica = ClinicaDAO.loginClinica(email, password);
 			if (clinica != null) {
 				request.getSession().setAttribute("utenteC", clinica);
-				request.getSession().setAttribute("idClinica", clinica.getIdClinica());
-				idClinica = (Integer) request.getSession().getAttribute("idClinica");
 				response.sendRedirect("home.jsp");
 			} else {
 				response.sendRedirect("errore.jsp");//pagina di errore

@@ -11,25 +11,16 @@ import model.Dottore;
 
 public class ClinicaDAO {
 
-	private Connection con;
-	private String query;
-	private String query2;
-	private PreparedStatement pst;
-	private ResultSet rs;
 
-	public ClinicaDAO(Connection con) {
-		super();
-		this.con = con;
-	}
 
-	public boolean registraClinica(Clinica clinica) throws ClassNotFoundException, SQLException {
+	public static boolean registraClinica(Clinica clinica) throws ClassNotFoundException, SQLException {
 		boolean result = false;
 		ConnessioneDB con = new ConnessioneDB();
 		try {
 			con.connect();
-			query = "INSERT INTO clinica (nome, regione, citta, indirizzo, email, password, recapitoTel) VALUES"
+			String query = "INSERT INTO clinica (nome, regione, citta, indirizzo, email, password, recapitoTel) VALUES"
 					+ "(?,?,?,?,?,?,?);";
-			pst = this.con.prepareStatement(query);
+		 PreparedStatement	pst = con.getCon().prepareStatement(query);
 			pst.setString(1, clinica.getNome());
 			pst.setString(2, clinica.getRegione());
 			pst.setString(3, clinica.getCitta());
@@ -37,27 +28,32 @@ public class ClinicaDAO {
 			pst.setString(5, clinica.getEmail());
 			pst.setString(6, clinica.getPassword());
 			pst.setInt(7, clinica.getRecapitoTel());
-			pst.executeUpdate();
+			if(pst.executeUpdate()>0) {
 			result = true;
+			}
 			System.out.println("Clinica Aggiunta");
 		} catch (Exception e) {
 			System.out.println(e.getMessage());
 		} finally {
-			con.close();
+			try {
+				con.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
 		}
 		return result;
 	}
 
-	public Clinica loginClinica(String email, String password) {
+	public static Clinica loginClinica(String email, String password) {
 		Clinica clinica = null;
 		ConnessioneDB con = new ConnessioneDB();
 		try {
 			con.connect();
-			query = "select * from clinica where email=? and password=?";
-			pst = this.con.prepareStatement(query);
+			String query = "select * from clinica where email=? and password=?";
+			PreparedStatement pst = con.getCon().prepareStatement(query);
 			pst.setString(1, email);
 			pst.setString(2, password);
-			rs = pst.executeQuery();
+			ResultSet rs = pst.executeQuery();
 			clinica = new Clinica();
 			if (rs.next()) {
 				clinica.setIdClinica(rs.getInt("idClinica"));
@@ -68,9 +64,6 @@ public class ClinicaDAO {
 				clinica.setEmail(rs.getString("email"));
 				clinica.setPassword(rs.getString("password"));
 				clinica.setRecapitoTel(rs.getInt("recapitoTel"));
-			}
-			else {
-				
 			}
 		} catch (SQLException e) {
 			System.out.print(e.getMessage());
@@ -84,13 +77,49 @@ public class ClinicaDAO {
 		return clinica;
 	}
 	
-	public boolean aggiungiDottore(Dottore d, int idClinica) {
+	
+	public static boolean check(String email,String pass1,String pass2) {
+	boolean esito = false;
+	ConnessioneDB con = new ConnessioneDB();
+	try {
+		con.connect();
+		String query = "select * from clinica where email =?";
+		PreparedStatement pst = con.getCon().prepareStatement(query);
+	    pst.setString(1, email);          
+	    ResultSet rs = pst.executeQuery();
+	    
+	    if(rs.next()) {
+	    	esito = true;
+	    }
+	    
+	    if(pass1 != pass2) {
+	    	esito = true;
+	    }
+	   
+	    if(pass1.length()<5) {
+	    	esito = true;
+	    }
+	    
+		
+	} catch (SQLException e) {
+		e.printStackTrace();
+	}finally {
+		try {
+			con.close();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+	}
+	return esito;
+	}
+	
+	public static boolean aggiungiDottore(Dottore d, int idClinica) {
 		boolean esito = false;
 		ConnessioneDB con = new ConnessioneDB();
 		try {
 			con.connect();
-			query = "INSERT INTO dottore (nome, cognome, eta, email, recapitoTel, specializzazione, costoVisita) VALUES (?,?,?,?,?,?,?)";
-			pst = this.con.prepareStatement(query);
+		    String query = "INSERT INTO dottore (nome, cognome, eta, email, recapitoTel, specializzazione, costoVisita) VALUES (?,?,?,?,?,?,?)";
+		    PreparedStatement	pst = con.getCon().prepareStatement(query);
 			pst.setString(1, d.getNome());
 			pst.setString(2, d.getCognome());
 		    pst.setInt(3, d.getEta());
@@ -101,8 +130,8 @@ public class ClinicaDAO {
 		    pst.executeUpdate();
 		    System.out.println("Dottore Aggiunto");
 		     
-		    query2 = "INSERT INTO personale (idClinica, idDottore) VALUES (?,?)";
-		    pst = this.con.prepareStatement(query2);
+		   String  query2 = "INSERT INTO personale (idClinica, idDottore) VALUES (?,?)";
+	        pst = con.getCon().prepareStatement(query2);
 		    pst.setInt(1, d.getIdDottore());
 		    pst.setInt(2, idClinica);
 		    pst.executeUpdate();
@@ -118,13 +147,13 @@ public class ClinicaDAO {
 		}return esito;
 	}
 	
-	public boolean eliminaDottore(Dottore d, int idClinica) { //elimina dottore solo dal personale
+	public static boolean eliminaDottore(Dottore d, int idClinica) { //elimina dottore solo dal personale
 		boolean esito = false;
 		ConnessioneDB con = new ConnessioneDB();
 		try {
 			con.connect();
-			query = "DELETE FROM personale WHERE idDottore = ? AND idClinica = ?";
-			pst = this.con.prepareStatement(query);
+			String query = "DELETE FROM personale WHERE idDottore = ? AND idClinica = ?";
+			PreparedStatement pst = con.getCon().prepareStatement(query);
 			pst.setInt(1, d.getIdDottore());
 			pst.setInt(2, idClinica);
 			pst.executeUpdate();
@@ -141,13 +170,13 @@ public class ClinicaDAO {
 		}return esito;
 	}
 	
-	public boolean modificaDottore(Dottore d) { //modifica dottore solo in dottore nel db
+	public static boolean modificaDottore(Dottore d) { //modifica dottore solo in dottore nel db
 		boolean esito = false;
 		ConnessioneDB con = new ConnessioneDB();
 		try {
 			con.connect();
-			query = "UPDATE dottore SET nome = ? , cognome = ? , eta = ?, email = ?, recapitoTel = ?, specializzazione = ?, costoVisita = ? where idDottore = ?";
-			pst = this.con.prepareStatement(query);
+			String query = "UPDATE dottore SET nome = ? , cognome = ? , eta = ?, email = ?, recapitoTel = ?, specializzazione = ?, costoVisita = ? where idDottore = ?";
+			PreparedStatement pst = con.getCon().prepareStatement(query);
 			pst.setString(1, d.getNome());
 			pst.setString(2, d.getNome());
 			pst.setInt(3, d.getEta());

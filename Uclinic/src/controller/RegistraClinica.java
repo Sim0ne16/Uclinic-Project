@@ -1,4 +1,4 @@
-package controllerClinica;
+package controller;
 
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -12,6 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import connection.ConnessioneDB;
 import dao.ClinicaDAO;
+import dao.PazienteDAO;
 import model.Clinica;
 
 @WebServlet("/RegistraClinica")
@@ -30,6 +31,7 @@ public class RegistraClinica extends HttpServlet {
 		try (PrintWriter out = response.getWriter()) {
 			String email = request.getParameter("regC-email"); // nome campi html
 			String password = request.getParameter("regC-password");
+			String password2 = request.getParameter("regC-password2");
 			String nome = request.getParameter("regC-nome");
 			String rec = request.getParameter("regC-recapito");
 			int recapito = Integer.parseInt(rec);
@@ -37,16 +39,20 @@ public class RegistraClinica extends HttpServlet {
 			String regione = request.getParameter("regC-regione");
 			String indirizzo = request.getParameter("regC-indirizzo");
 			Clinica clinica = new Clinica(nome, regione, citta, indirizzo, email, password, recapito);
-			request.getSession().setAttribute("utenteC", clinica); // Sessione
-			ClinicaDAO cDAO = new ClinicaDAO(con.getCon());
+			
+			if( ClinicaDAO.check(email,password,password2) == false) {			
 			try {
-				cDAO.registraClinica(clinica);
+				request.getSession().setAttribute("clinicaC", clinica); // Sessione
+				ClinicaDAO.registraClinica(clinica);
 				out.println("Registrazione avvenuta con successo");
 				response.sendRedirect("home.jsp"); // temporaneo
 			} catch (ClassNotFoundException | SQLException e) {
 				e.printStackTrace();
 			}
-
+			}
+			else {
+				response.sendRedirect("regClinicaFail.jsp");
+			}
 		}
 
 	}

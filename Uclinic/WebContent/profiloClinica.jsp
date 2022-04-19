@@ -7,6 +7,6 @@
 <title>Insert title here</title>
 </head>
 <body>
-<h1> sono una home dell'utente </h1>
+
 </body>
 </html>

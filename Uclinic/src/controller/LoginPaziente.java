@@ -1,4 +1,4 @@
-package controllerPaziente;
+package controller;
 
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -11,7 +11,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import connection.ConnessioneDB;
+import dao.ClinicaDAO;
 import dao.PazienteDAO;
+import model.Clinica;
 import model.Paziente;
 
 @WebServlet("/LoginPaziente")
@@ -31,17 +33,13 @@ public class LoginPaziente extends HttpServlet {
 		try (PrintWriter out = response.getWriter()){
 			String email = request.getParameter("login-emailP"); // temporaneo guardare form
 			String password = request.getParameter("login-passwordP");
-			PazienteDAO pDAO = new PazienteDAO(con.getCon());
-			Paziente paziente = pDAO.loginPaziente(email, password);
-
-			if (paziente != null) {
+			Paziente paziente = PazienteDAO.loginPaziente(email, password);
+			if (paziente != null) {  // controllare logga sempre
 				request.getSession().setAttribute("utenteP", paziente);
 				response.sendRedirect("home.jsp");
 			} else {
-			//	response.sendRedirect("LoginErrore.html");// temporaneo inserire pagina
-			out.print("Dati non validi");
+			response.sendRedirect("LoginErrore.html");// temporaneo inserire pagina	
 			}
-
 		}finally {
 			try {
 				con.close();
