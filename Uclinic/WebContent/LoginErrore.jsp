@@ -28,6 +28,9 @@
                 </ul>
                 <i class="fa-thin fa-alien"></i>
     </nav>
+<div>
+    <h1 id="error"> Log In not successful</h1>
+</div>
 <div class="container" id="container">
     <div class="form-container sign-up-container">
         <form action="LoginClinica" method="post" id="logC">

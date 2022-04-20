@@ -1,0 +1,453 @@
+/* NAV BAR */
+
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    list-style: none;
+}
+
+.container{
+    width: 100%;
+    height: 50px;
+    background: linear-gradient(135deg, #61DCDD 52%, #4F8686 100% ) ;
+    padding:  0px 10%;
+    position: relative;
+    left: 0;
+
+}
+
+.container .logo a{
+    font-size: 27px;
+    color: bisque;
+    text-decoration: none;
+    font-weight: 600;
+    display: inline-block;
+    position: relative;
+    text-transform: capitalize;
+    left: 0;
+    top: 5px;
+    
+}
+.container ul.nav{
+    list-style-type: none;
+    padding-left: 10%;
+    display: inline-block
+
+}
+
+.container > ul > li{
+    position:relative;
+    vertical-align: middle;
+    display: inline-block;
+    transition: all 0.3s;
+
+}
+
+.container > ul > li > a{
+    color: bisque;
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 50px;
+    display: inline-block;
+    text-transform: none;
+    letter-spacing: 1px;
+    padding: 0 12px;
+
+}
+
+.container > ul > li::after{
+    content: "|";
+    display: block;
+    position: absolute;
+    margin: auto;
+    top: -20px;
+    right: -5px;
+    bottom: 0px;
+    width: 8px;
+    height: 8px;
+    text-align: center;
+    font-weight: 400;
+    font-size: 20px;
+    text-rendering: auto;
+    color: rgb(48, 46, 46);
+
+}
+
+.container > ul > li:last-child::after{
+    display: none;
+
+}
+.container  ul > li:hover{
+    background-color: blueviolet;
+}
+
+#bc2{
+    display: none;
+
+}
+.search-icon i{
+position: absolute;
+float: left;
+right: 10%;
+width: 50px;
+height: 50px;
+line-height: 50px;
+color: brown;
+font-size: 16px;
+text-align: center;
+cursor: pointer;
+white-space: nowrap;
+}
+
+.search-icon i.fa-close{
+
+    visibility: hidden;
+}
+
+.search-box{
+position: absolute;
+float: left;
+background: linear-gradient(135deg, #61DCDD 52%, #4F8686 100% );
+right: 10%;
+width: 300px;
+padding: 10px;
+border-radius: 4px;
+box-shadow: 0 2px 4px 0 rgba( 0,0,0, .05);
+transition: all 0.17s ease;
+top: -60px;
+}
+
+
+.search-box::before{
+    content:'';
+    position: absolute;
+    top: 0;
+    right: 15px;
+    width: 0;
+    height: 0;
+    border: 10px solid transparent;
+    border-bottom-color: brown;
+    margin: -20px 0 0;
+}
+
+form{
+    width: 100%;
+    height: 38px;
+    right: 0;
+    background-color: #9b9b9b08;
+    display: flex;
+    overflow: hidden;
+    padding: 2px;
+    border: 1px solid #9b9b9b33;
+    border-radius: 4px ;
+
+
+}
+
+.search{
+    width: 95%;
+    background-color: rgb(255, 255, 255);
+    color: black;
+    padding: 0 10px;
+    font-family: inherit;
+    font-size: 14px;
+    font-weight: 400;
+    border: 0;
+    outline: none;
+
+}
+
+.sub{
+    font-size: 14px;
+    padding: 0 13px;
+    border: 0;
+    background-color: #ff0000 ;
+    color: rgb(255, 255, 255);
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+
+.sub:hover{
+    background-color: red;
+}
+
+#bc2:checked ~ .search-box{
+    top: 50px;
+
+}
+
+#bc2:checked ~ .search-icon i.fa-search{
+    display: none;
+}
+
+#bc2:checked ~ .search-icon i.fa-close{
+visibility: visible;
+}
+
+
+.container >ul>li.parent>a::after{
+    content: '\f107';
+    font-family: FontAwesome;
+    float: right;
+    margin-left: 5px;
+
+}
+
+.container >ul>li>ul{
+    position: absolute;
+    background: rgb(198, 183, 214);
+    top: 100%;
+    left: 0;
+    min-width: 180px;
+    padding: 0 ;
+    z-index: 99;
+    margin-top: 0;
+    transform: translateY(10px);
+    transition: all 0.5s;
+    visibility: hidden;
+    opacity: 0;
+
+
+
+}
+
+.container >ul>li>ul>li{
+    display: block;
+    float: none;
+    text-align: left;
+    position:relative;
+    border-bottom: 1px solid;
+    border-top: none;
+    border-color: #555D7D;
+
+}
+
+.container >ul>li>ul>li>a{
+
+    font-size: 11px;
+    display: block;
+    color: white;
+    line-height: 35px;
+    text-transform: uppercase;
+    text-decoration: none;
+    margin: 0;
+    padding: 0 12px;
+    border-right: 0;
+    border:0;
+
+}
+
+.container >ul >li >ul >li >ul {
+    position:absolute;
+    top: 0;
+    left: 180px;
+    width: 180px;
+    background-color: #373e59;
+    z-index: 99;
+    margin-top: 0;
+    margin-left: 0;
+    padding: 0;
+    border-left: 1px solid #555D7D;
+    transform: translateY(10px);
+    transition: all 0.5;
+    visibility:hidden;
+    opacity: 0;
+}
+
+
+
+
+
+.container >ul>li>ul>li.parent>a::after{
+   content: '\f107' ; 
+   font-family: FontAwesome;
+   float: right;
+}
+
+.container ul li:hover>ul{
+    visibility: visible;
+    opacity: 1;
+    transform: translateY(0px);
+
+}
+
+section{
+    background: #4282d6;
+    background-position: center;
+    background-size: cover;
+    height: 100vh;
+}
+
+
+
+
+/* END OF NAV BAR     */ 
+
+
+
+
+
+/*section{
+    position:relative;
+    width: 100%;
+    height: 100vh;
+    background: #4282d6;
+    overflow: hidden;
+}*/
+
+
+section .wave{
+    position: absolute;
+    bottom: 0;
+    left: 0%;
+    width: 100%;
+    height: 100px;
+    background: url(./images/wave.png);
+    background-size: 1000px 100px;
+    
+
+}
+section .wave.wave1{
+animation: animate 30s linear infinite;
+z-index: 1000;
+opacity: 1;
+animation-delay: 0s;
+bottom: 0;
+}
+section .wave.wave2{
+    animation: animate2 15s linear infinite;
+    z-index: 999;
+    opacity: 0.5;
+    animation-delay: -5s;
+    bottom: 10px;
+    }
+
+ section .wave.wave3{
+        animation: animate 30s linear infinite;
+        z-index: 998;
+        opacity: 0.2;
+        animation-delay: -2s;
+        bottom: 15px;
+    }
+
+ section .wave.wave4{
+        animation: animate2 15s linear infinite;
+        z-index: 997;
+        opacity: 0.7;
+        animation-delay: -2s;
+        bottom: 20px;
+}
+
+/*.fa-user{
+    padding-top: 111px;
+    padding-left: 5%;
+    
+}*/
+.left{
+
+    padding-left: 50px;
+    margin-top: 100px;
+     background-color: #4282d6 ;
+     float:left;
+      width: 50%;
+}
+
+
+.right{
+    padding-right: 50px;
+    display: flex;
+    justify-content: center;
+    margin-top: 100px;
+     background-color: #4282d6 ;
+     float:right;
+     width: 50%;
+}
+
+h1{
+    padding-left: 200px;
+    margin-bottom: 120px;
+}
+
+.asd li {
+    padding-top: 15px;
+    padding-left: 150px;
+    margin-top: 30px;
+}
+
+
+
+
+
+
+@keyframes animate{
+    0%
+    {
+        background-position-x: 0;
+    }
+    100%
+    {
+        background-position-x: 1000px;
+    }
+      
+}
+@keyframes animate2{
+    0%
+    {
+        background-position-x: 0;
+    }
+    100%
+    {
+        background-position-x: -1000px;
+    }
+      
+}
+
+
+
+
+/* ACCORDEON  */
+
+
+
+
+
+.accordion_button{
+    display: flex;
+    flex-direction: row;
+    justify-content: top;
+    display:inline;
+    margin-left: 50%;
+    width: 50%;
+    padding: 15px;
+    border:none;
+    outline: none;
+    cursor: pointer;
+    text-align: center;
+    background: black;
+    color: white;
+    transition: background 0.2s;
+
+}
+
+.accordion_button::after{
+    content: '\25be';
+    float: right;
+    transform: scale(1.5);
+}
+.accordion_button--active{background: grey;}
+.accordion_button--active::after{content: '\25b4'}
+
+.accordion__content{
+    overflow: hidden;
+    max-height: 0;
+    transition: max-height 0.2s;
+
+    padding-inline-end: 0 15px;
+    font-family: sans-serif;
+    background: rgb(255, 255, 255);
+}
+

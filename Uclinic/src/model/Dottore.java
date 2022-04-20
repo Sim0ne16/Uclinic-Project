@@ -10,7 +10,7 @@ public class Dottore {
 	private int recapitoTel;
 	private String specializzazione;
 	private double costoVisita;
-	//patologia//
+
 	
 	
 	public Dottore(String nome, String cognome, int eta, String email, int recapitoTel, String specializzazione,
@@ -23,6 +23,19 @@ public class Dottore {
 		this.recapitoTel = recapitoTel;
 		this.specializzazione = specializzazione;
 		this.costoVisita = costoVisita;
+	}
+	
+	// Per la visualizazzione staff
+	public Dottore(int id,String nome,String cognome,String specializazzione,	double costoVisita) {
+		this.idDottore = id;
+		this.nome=nome;
+		this.cognome=cognome;
+		this.specializzazione=specializazzione;
+		this.costoVisita = costoVisita;
+	}
+	
+	
+	public Dottore() {
 	}
 	
 	

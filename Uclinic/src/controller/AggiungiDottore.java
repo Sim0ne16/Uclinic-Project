@@ -2,6 +2,7 @@ package controller;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.sql.SQLException;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -40,10 +41,18 @@ public class AggiungiDottore extends HttpServlet {
 		String costoVisit = request.getParameter("regP-regione");
 		double costoVisita = Double.parseDouble(costoVisit);
 		Dottore dottore = new Dottore(nome, cognome, eta,  email, recapitoTel, specializzazione, costoVisita);
-		ClinicaDAO cDAO = new ClinicaDAO(con.getCon());
-		cDAO.aggiungiDottore(dottore, LoginClinica.idClinica);
+		ClinicaDAO.aggiungiDottore(dottore, LoginClinica.clinique);
 		response.sendRedirect("dottoreaggiunto.html"); // Redirect verso pagina Dottore Aggiunto
+		try 
+		{
+			con.close();
+		}
+		catch (SQLException e) 
+		{
+			e.printStackTrace();
+		}
+	}
 		
 	}
 
-}
+

@@ -16,8 +16,8 @@ import model.Clinica;
 @WebServlet("/LoginClinica")
 public class LoginClinica extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-	public static int idClinica;
-
+	public static Clinica clinique;
+    
 	public LoginClinica() {
 		super();
 
@@ -34,9 +34,10 @@ public class LoginClinica extends HttpServlet {
 			Clinica clinica = ClinicaDAO.loginClinica(email, password);
 			if (clinica != null) {
 				request.getSession().setAttribute("utenteC", clinica);
-				response.sendRedirect("home.jsp");
+				clinique = (Clinica) request.getSession().getAttribute("utenteC");
+				response.sendRedirect("profiloClinica.jsp?id="+clinica.getIdClinica());
 			} else {
-				response.sendRedirect("errore.jsp");//pagina di errore
+				response.sendRedirect("LoginErrore.jsp");//pagina di errore
 			}
 
 		}

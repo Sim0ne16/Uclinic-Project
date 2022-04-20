@@ -4,10 +4,14 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 
 import connection.ConnessioneDB;
+import model.Appuntamento;
 import model.Clinica;
 import model.Dottore;
+import model.Paziente;
 
 public class ClinicaDAO {
 
@@ -53,9 +57,9 @@ public class ClinicaDAO {
 			PreparedStatement pst = con.getCon().prepareStatement(query);
 			pst.setString(1, email);
 			pst.setString(2, password);
-			ResultSet rs = pst.executeQuery();
-			clinica = new Clinica();
+			ResultSet rs = pst.executeQuery();	
 			if (rs.next()) {
+				clinica = new Clinica();
 				clinica.setIdClinica(rs.getInt("idClinica"));
 				clinica.setNome(rs.getString("nome"));
 				clinica.setRegione(rs.getString("regione"));
@@ -75,6 +79,38 @@ public class ClinicaDAO {
 			}
 		}
 		return clinica;
+	}
+	
+	public static List<Dottore> visualizzaDottori(int idClinica){
+		List<Dottore> staff = new ArrayList<Dottore>();
+		Dottore d = null;
+		ConnessioneDB con = new ConnessioneDB();
+		try {
+			con.connect();
+			String sql= "select * from personale as P join dottore as D on P.idDottore = D.idDottore where P.idClinica = ? ";
+			PreparedStatement stm = con.getCon().prepareStatement(sql);
+			stm.setInt(1, idClinica);
+			ResultSet rs = stm.executeQuery();
+			while(rs.next()) {
+				int id = rs.getInt("idDottore");
+				String nome = rs.getString("nome");
+				String cognome = rs.getString("cognome");
+				String specializazzione = rs.getString("specializzazione");
+				Double costo = rs.getDouble("costoVisita");
+				d = new Dottore(id,nome,cognome,specializazzione,costo);
+				
+				staff.add(d);
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally{
+			try {
+				con.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+		return staff;
 	}
 	
 	
@@ -113,7 +149,7 @@ public class ClinicaDAO {
 	return esito;
 	}
 	
-	public static boolean aggiungiDottore(Dottore d, int idClinica) {
+	public static boolean aggiungiDottore(Dottore d, Clinica clinica) {
 		boolean esito = false;
 		ConnessioneDB con = new ConnessioneDB();
 		try {
@@ -132,8 +168,8 @@ public class ClinicaDAO {
 		     
 		   String  query2 = "INSERT INTO personale (idClinica, idDottore) VALUES (?,?)";
 	        pst = con.getCon().prepareStatement(query2);
-		    pst.setInt(1, d.getIdDottore());
-		    pst.setInt(2, idClinica);
+	        pst.setInt(1, clinica.getIdClinica());
+	        pst.setInt(2, d.getIdDottore());   
 		    pst.executeUpdate();
 		    esito = true;
 		}catch (SQLException e) {
@@ -198,4 +234,101 @@ public class ClinicaDAO {
 			}
 		}return esito;
 	}
+
+
+public static Paziente cercaPazXCodFisc(Clinica c,String cFisc) {
+	ConnessioneDB con = new ConnessioneDB();
+	Paziente p = null;
+	Appuntamento app = null;
+	try 
+	{
+		con.connect();
+		p= new Paziente();
+		app= new Appuntamento();
+		String sql = "select *"
+				+ "from paziente as P"
+				+ "join appuntamento as a"
+				+ "where P.idPaziente = a.codPaziente and a.codClinica = ? and P.cFisc = ?";
+		PreparedStatement pst = con.getCon().prepareStatement(sql);
+		pst.setInt(1, c.getIdClinica());
+		pst.setString(2, cFisc);
+		ResultSet rs = pst.executeQuery();
+		
+		p.setIdPaziente(rs.getInt("idPaziente"));
+		p.setNome(rs.getString("nome"));
+		p.setCognome(rs.getString("cognome"));
+		p.setEta(rs.getInt("eta"));
+		p.setcFisc(rs.getString("cFisc"));
+		p.setEmail(rs.getString("email"));
+		p.setPassword(rs.getString("password"));
+		p.setRegione(rs.getString("regione"));
+		p.setCitta(rs.getString("citta"));
+		
+		app.setIdAppuntamento(rs.getInt("idAppuntamento"));
+		app.setCodClinica(rs.getInt("codClinica"));
+		app.setCodDottore(rs.getInt("codDottore"));
+		app.setCodPaziente(rs.getInt("codPaziente"));
+		app.setData(rs.getString("data"));
+		app.setOrario(rs.getInt("orario"));
+		app.setDurata(rs.getInt("durata"));
+	} 
+	catch (SQLException e) 
+	{
+		e.printStackTrace();
+	}
+	finally
+	{
+		try 
+		{
+			con.close();
+		} 
+		catch (SQLException e)
+		{
+			e.printStackTrace();
+		}
+	}
+	return p;
+	
 }
+
+public static boolean creaAppuntamento(Appuntamento app) {
+	boolean esito = false;
+    ConnessioneDB con = new ConnessioneDB();
+	    try 
+	    {
+		     con.connect();
+		     String sql = 
+			   "insert into appuntamento (codClinica, codDottore, data, orario) "
+			   + "values (?,?,?,?);";
+		     PreparedStatement pst = con.getCon().prepareStatement(sql);
+		     pst.setInt(1, app.getCodClinica());
+		     pst.setInt(2, app.getCodDottore());
+		     pst.setString(3, app.getData());
+		     pst.setInt(4, app.getOrario());
+		     if(pst.executeUpdate()>0) {
+		    	 esito = true;
+		     }
+		 } 
+		 catch (SQLException e)
+         {
+		 e.printStackTrace();
+		 }
+	     finally 
+	     {
+	    	try 
+	    	{
+				con.close();
+			} 
+	    	catch (SQLException e) 
+	    	{
+				e.printStackTrace();
+			}
+	    }
+		return esito;
+}	
+
+
+}
+
+
+

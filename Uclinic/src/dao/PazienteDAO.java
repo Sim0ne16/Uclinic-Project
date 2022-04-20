@@ -4,8 +4,12 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import connection.ConnessioneDB;
+import java.util.ArrayList;
+import java.util.List;
 
+import connection.ConnessioneDB;
+import model.Appuntamento;
+import model.Dottore;
 import model.Paziente;
 
 public class PazienteDAO {
@@ -44,7 +48,7 @@ public class PazienteDAO {
 		return result;
 	}
 	
-public static boolean check(String email,String password1,String password2,int eta,String cf) {
+     public static boolean check(String email,String password1,String password2,int eta,String cf) {
 	boolean esito = false;
 	ConnessioneDB con = new ConnessioneDB();
 	try {
@@ -124,6 +128,78 @@ return esito;
 	}
 	
 	
+	public static List<Dottore> cercaDottXSpec(String specializzazione) {
+		ConnessioneDB con = new ConnessioneDB();
+		List<Dottore> listaD = null;
+		try 
+		{
+			con.connect();
+			String sql = "SELECT nome, cognome, email, recapitoTel FROM dottore WHERE specializazione=?";
+			PreparedStatement pst = con.getCon().prepareStatement(sql);
+			pst.setString(1, specializzazione);
+			ResultSet rs = pst.executeQuery();
+			listaD = new ArrayList<Dottore>();
+			while(rs.next()) {
+				Dottore d = new Dottore();
+				d.setIdDottore(rs.getInt("idDottore"));  //sempre meglio portarsi dietro l'id!
+				d.setNome(rs.getString("nome"));
+				d.setCognome(rs.getString("cognome"));
+				d.setEmail(rs.getString("email"));
+				d.setRecapitoTel(rs.getInt("recapitoTel"));
+				listaD.add(d);
+			}
+		} 
+		catch (SQLException e) 
+		{
+			e.printStackTrace();
+		}
+		finally
+		{
+			try 
+			{
+				con.close();
+			} catch (SQLException e) 
+			{
+				e.printStackTrace();
+			}
+		}
+		return listaD;
+	}
+
+	public static boolean prenotaAppuntamento(Appuntamento app, Paziente p) {
+		ConnessioneDB con = new ConnessioneDB();
+		boolean esito = false;
+		try 
+		{
+			con.connect();
+			String sql = "update appuntamento set codPaziente=?, disponibilita=1 where idAppuntamento=?";
+			PreparedStatement pst = con.getCon().prepareStatement(sql);
+			pst.setInt(1, p.getIdPaziente());
+			pst.setInt(2, app.getIdAppuntamento());
+			if(pst.executeUpdate()>0) 
+			{
+				esito=true;
+			}
+		} 
+		catch (SQLException e) 
+		{
+			e.printStackTrace();
+		}
+		finally
+		{
+			try 
+			{
+				con.close();
+			} 
+			catch (SQLException e)
+			{
+				e.printStackTrace();
+			}
+		}
+		return esito;
+	}
+}
+	
 
 	
 	  
@@ -133,4 +209,3 @@ return esito;
 	
 	
 
-}

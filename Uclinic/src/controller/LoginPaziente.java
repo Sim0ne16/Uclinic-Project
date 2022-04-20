@@ -19,6 +19,7 @@ import model.Paziente;
 @WebServlet("/LoginPaziente")
 public class LoginPaziente extends HttpServlet {
 	private static final long serialVersionUID = 1L;
+	public static Paziente pazienteLog;
 
 	public LoginPaziente() {
 		super();
@@ -31,14 +32,15 @@ public class LoginPaziente extends HttpServlet {
 		response.setContentType("text/html;charset=UTF-8");
 		ConnessioneDB con = new ConnessioneDB();
 		try (PrintWriter out = response.getWriter()){
-			String email = request.getParameter("login-emailP"); // temporaneo guardare form
+			String email = request.getParameter("login-emailP"); 
 			String password = request.getParameter("login-passwordP");
 			Paziente paziente = PazienteDAO.loginPaziente(email, password);
 			if (paziente != null) {  // controllare logga sempre
+				pazienteLog = (Paziente) request.getSession().getAttribute("utenteP");
 				request.getSession().setAttribute("utenteP", paziente);
-				response.sendRedirect("home.jsp");
+				response.sendRedirect("profiloUtente.jsp?id=" + paziente.getIdPaziente() );
 			} else {
-			response.sendRedirect("LoginErrore.html");// temporaneo inserire pagina	
+			response.sendRedirect("LoginErrore.jsp");// temporaneo inserire pagina	
 			}
 		}finally {
 			try {
