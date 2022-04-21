@@ -1,5 +1,7 @@
 package model;
 
+import java.math.BigDecimal;
+
 public class Dottore {
 	
 	private int idDottore;
@@ -7,15 +9,28 @@ public class Dottore {
 	private String cognome;
 	private int eta;
 	private String email;
-	private int recapitoTel;
+	private String recapitoTel;
 	private String specializzazione;
 	private double costoVisita;
 
 	
-	
-	public Dottore(String nome, String cognome, int eta, String email, int recapitoTel, String specializzazione,
+	//id viene assegnato dal db
+	public Dottore(String nome, String cognome, int eta, String email, String recapitoTel, String specializzazione,
 			double costoVisita) {
 		super();
+		this.nome = nome;
+		this.cognome = cognome;
+		this.eta = eta;
+		this.email = email;
+		this.recapitoTel = recapitoTel;
+		this.specializzazione = specializzazione;
+		this.costoVisita = costoVisita;
+	}
+	//id preso dal db
+	public Dottore(int id,String nome, String cognome, int eta, String email,String recapitoTel, String specializzazione,
+			double costoVisita) {
+		super();
+		this.idDottore= id;
 		this.nome = nome;
 		this.cognome = cognome;
 		this.eta = eta;
@@ -70,10 +85,10 @@ public class Dottore {
 	public void setEmail(String email) {
 		this.email = email;
 	}
-	public int getRecapitoTel() {
+	public String getRecapitoTel() {
 		return recapitoTel;
 	}
-	public void setRecapitoTel(int recapitoTel) {
+	public void setRecapitoTel(String recapitoTel) {
 		this.recapitoTel = recapitoTel;
 	}
 	public String getSpecializzazione() {

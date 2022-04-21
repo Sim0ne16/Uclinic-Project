@@ -12,11 +12,13 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="css/profiloUtente.css">
-   
+    <link rel="stylesheet" href="css/staff.css">
     <script src="https://kit.fontawesome.com/367813bf67.js" crossorigin="anonymous"></script>
     <title>Document</title>
 </head>
+
+
+
 <body>
 
     <!--   NAV BAR   -->
@@ -80,18 +82,19 @@
 
         <ul class="asd">  
              
+        
          <%
-                Paziente p =(Paziente) session.getAttribute("utenteP");
+                		 
+        		int idDoc = Integer.parseInt(request.getParameter("id"));
+        		Dottore d =  ClinicaDAO.visualizzaDottore(idDoc);
                 %>
         
-        
-            <i class="fa-solid fa-user fa-4x"> <%= p.getNome() %>  <%= p.getCognome() %></i> 
-
-            <li><i class="fa-solid fa-mars-and-venus fa-2x"></i> Eta: <%= p.getEta() %></li></i> 
-            <li><i class="fa-solid fa-city fa-2x"></i> Citta : <%= p.getCitta() %></li>
-            <li> <i class="fa-solid fa-location-crosshairs fa-2x"></i> Regione: <%= p.getRegione() %></li>
-            <li> <i class="fa-solid fa-id-card fa-2x"></i>  Codice Fiscale : <%= p.getcFisc() %></li>
-            <li> <i class="fa-solid fa-envelope fa-2x"></i>  Email : <%= p.getEmail() %></li>
+            <i class="fa-solid fa-user fa-4x">Dr. <%=d.getNome() %> <%=d.getCognome() %></i>          
+            <li><i class="fa-solid fa-mars-and-venus"></i>Eta : <%=d.getEta() %></li>       
+            <li> <i class="fa-solid fa-id-card"></i> Specializzazione : <%=d.getSpecializzazione() %> </li>
+            <li> <i class="fa-solid fa-dna"></i>  Costo Visita: <%=d.getCostoVisita() %> $</li>
+            <li>  <i class="fa-solid fa-phone"></i> Recapito : <%=d.getRecapitoTel() %></li>
+            <li> <i class="fa-solid fa-envelope"></i>  EMAIL : <%=d.getEmail() %> </li>
         
           </ul>
 

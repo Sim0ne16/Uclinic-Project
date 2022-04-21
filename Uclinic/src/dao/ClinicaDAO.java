@@ -1,5 +1,7 @@
 package dao;
 
+import java.math.BigDecimal;
+import java.math.BigInteger;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -31,7 +33,7 @@ public class ClinicaDAO {
 			pst.setString(4, clinica.getIndirizzo());
 			pst.setString(5, clinica.getEmail());
 			pst.setString(6, clinica.getPassword());
-			pst.setInt(7, clinica.getRecapitoTel());
+			pst.setString(7, clinica.getRecapitoTel());
 			if(pst.executeUpdate()>0) {
 			result = true;
 			}
@@ -67,7 +69,7 @@ public class ClinicaDAO {
 				clinica.setIndirizzo(rs.getString("indirizzo"));
 				clinica.setEmail(rs.getString("email"));
 				clinica.setPassword(rs.getString("password"));
-				clinica.setRecapitoTel(rs.getInt("recapitoTel"));
+				clinica.setRecapitoTel(rs.getString("recapitoTel"));
 			}
 		} catch (SQLException e) {
 			System.out.print(e.getMessage());
@@ -97,8 +99,7 @@ public class ClinicaDAO {
 				String cognome = rs.getString("cognome");
 				String specializazzione = rs.getString("specializzazione");
 				Double costo = rs.getDouble("costoVisita");
-				d = new Dottore(id,nome,cognome,specializazzione,costo);
-				
+				d = new Dottore(id,nome,cognome,specializazzione,costo);		
 				staff.add(d);
 			}
 		} catch (SQLException e) {
@@ -111,6 +112,45 @@ public class ClinicaDAO {
 			}
 		}
 		return staff;
+	}
+	
+	
+	public static Dottore visualizzaDottore(int id) {
+		Dottore d = new Dottore();
+		ConnessioneDB con = new ConnessioneDB();
+		try {
+			con.connect();
+			String sql= "select * from dottore where idDottore = ?" ;
+			PreparedStatement stm = con.getCon().prepareStatement(sql);
+			stm.setInt(1, id);
+			ResultSet rs = stm.executeQuery();
+			if(rs.next()) {
+	         	String nome = rs.getString("nome");
+				String cognome = rs.getString("cognome");
+				String specializzazzione = rs.getString("specializzazione");
+				int eta = rs.getInt("eta");
+				String email = rs.getString("email");
+				String recapito = rs.getString("recapitoTel");
+				Double costo = rs.getDouble("costoVisita");
+				
+				d.setNome(nome);
+				d.setCognome(cognome);
+				d.setEmail(email);
+				d.setEta(eta);
+				d.setRecapitoTel(recapito);
+				d.setSpecializzazione(specializzazzione);
+				d.setCostoVisita(costo);
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				con.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+			}
+		return d;
 	}
 	
 	
@@ -160,17 +200,11 @@ public class ClinicaDAO {
 			pst.setString(2, d.getCognome());
 		    pst.setInt(3, d.getEta());
 		    pst.setString(4, d.getEmail());
-		    pst.setInt(5, d.getRecapitoTel());
+		    pst.setString(5, d.getRecapitoTel());
 		    pst.setString(6, d.getSpecializzazione());
 		    pst.setDouble(7, d.getCostoVisita());
 		    pst.executeUpdate();
 		    System.out.println("Dottore Aggiunto");
-		     
-		   String  query2 = "INSERT INTO personale (idClinica, idDottore) VALUES (?,?)";
-	        pst = con.getCon().prepareStatement(query2);
-	        pst.setInt(1, clinica.getIdClinica());
-	        pst.setInt(2, d.getIdDottore());   
-		    pst.executeUpdate();
 		    esito = true;
 		}catch (SQLException e) {
 			e.printStackTrace();
@@ -182,6 +216,34 @@ public class ClinicaDAO {
 			}
 		}return esito;
 	}
+	
+	//problema con le foreign keys porcodio
+	
+	public static boolean aggiungiDottorePersonale(Dottore d, Clinica clinica) {
+		boolean esito = false;
+		ConnessioneDB con = new ConnessioneDB();
+		try {
+			con.connect();
+			  String  query = " INSERT INTO personale (idClinica, idDottore) VALUES (?,?)";
+			   PreparedStatement pst = con.getCon().prepareStatement(query);
+		       pst = con.getCon().prepareStatement(query);
+		       pst.setInt(1, clinica.getIdClinica());
+		       pst.setInt(2, d.getIdDottore());   
+			   pst.executeUpdate();
+			   esito = true; 
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				con.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+		return esito;
+	}
+	
+	
 	
 	public static boolean eliminaDottore(Dottore d, int idClinica) { //elimina dottore solo dal personale
 		boolean esito = false;
@@ -217,7 +279,7 @@ public class ClinicaDAO {
 			pst.setString(2, d.getNome());
 			pst.setInt(3, d.getEta());
 			pst.setString(4, d.getEmail());
-			pst.setInt(5, d.getRecapitoTel());
+			pst.setString(5, d.getRecapitoTel());
 			pst.setString(6, d.getSpecializzazione());
 			pst.setDouble(7, d.getCostoVisita());
 			pst.setInt(8, d.getIdDottore());

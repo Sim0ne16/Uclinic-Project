@@ -17,7 +17,7 @@
 		<div class="card w-50 mx-auto my-5">
 			<div class="card-header text-center">Registrazione Dottore</div>
 			<div class="card-body">
-				<form action="registrati" method="post">
+				<form action="AggiungiDottore" method="post">
 					<div class="form-group">
 						<label>Nome</label> 
 						<input type="text" name="dNome" class="form-control" >

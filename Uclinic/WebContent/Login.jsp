@@ -20,11 +20,9 @@
         <label class="logo">Uclinic</label>
 
                 <ul>
-                    <li><a class="active" href="#">Home</a></li>
-                    <li><a class="active" href="#">Portfolio</a></li>
-                    <li><a class="active" href="#">About</a></li>
-                    <li><a class="active" href="#">Team</a></li>
-                    <li><a class="active" href="#">Contact</a></li>
+                    <li><a class="active" href="#">Home</a></li>                 
+                    <li><a class="active" href="#">About</a></li>                  
+                    <li><a class="active" href="#">Contatti</a></li>
                 </ul>
                 <i class="fa-thin fa-alien"></i>
     </nav>

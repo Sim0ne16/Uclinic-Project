@@ -12,6 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import connection.ConnessioneDB;
 import dao.ClinicaDAO;
+import model.Clinica;
 import model.Dottore;
 
 @WebServlet("/AggiungiDottore")
@@ -30,18 +31,22 @@ public class AggiungiDottore extends HttpServlet {
 		
 		response.setContentType("text/html;charset=UTF-8");
 		ConnessioneDB con = new ConnessioneDB();
-		String nome = request.getParameter("nomeDottoreFormHTML");// Momentaneo guarda jsp!!!!!
-		String cognome = request.getParameter("regP-password");
-		String eta1 = request.getParameter("regP-nome");
+		String nome = request.getParameter("dNome");// Momentaneo guarda jsp!!!!!
+		String cognome = request.getParameter("dCognome");
+		String eta1 = request.getParameter("dEta");
 		int eta = Integer.parseInt(eta1);
-		String email = request.getParameter("regP-cognome");
-		String recapito = request.getParameter("regP-eta");
-		int recapitoTel = Integer.parseInt(recapito);
-		String specializzazione = request.getParameter("regP-citta");
-		String costoVisit = request.getParameter("regP-regione");
+		String email = request.getParameter("dEmail");
+		String recapitoTel = request.getParameter("dRecapito");
+		String specializzazione = request.getParameter("dSpecializzazione");
+		String costoVisit = request.getParameter("dCosto");
 		double costoVisita = Double.parseDouble(costoVisit);
 		Dottore dottore = new Dottore(nome, cognome, eta,  email, recapitoTel, specializzazione, costoVisita);
-		ClinicaDAO.aggiungiDottore(dottore, LoginClinica.clinique);
+		Clinica c = (Clinica) request.getSession().getAttribute("utenteC");
+		// ClinicaDAO.aggiungiDottore(dottore, LoginClinica.clinique); 
+		
+		//NON AGGIUNGE IN PERSONALE
+		ClinicaDAO.aggiungiDottore(dottore, c); 
+		ClinicaDAO.aggiungiDottorePersonale(dottore, c);
 		response.sendRedirect("dottoreaggiunto.html"); // Redirect verso pagina Dottore Aggiunto
 		try 
 		{

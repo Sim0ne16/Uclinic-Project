@@ -15,10 +15,10 @@ public class Clinica {
 	private List<Paziente> pazienti;
 	private String email;
 	private String password;
-	private int recapitoTel;
+	private String recapitoTel;
 
 	public Clinica(String nome, String regione, String citta, String indirizzo, String email, String password,
-			int recapitoTel) {
+			String recapitoTel) {
 		super();
 		this.nome = nome;
 		this.regione = regione;
@@ -118,11 +118,11 @@ public class Clinica {
 		this.password = password;
 	}
 
-	public int getRecapitoTel() {
+	public String getRecapitoTel() {
 		return recapitoTel;
 	}
 
-	public void setRecapitoTel(int recapitoTel) {
+	public void setRecapitoTel(String recapitoTel) {
 		this.recapitoTel = recapitoTel;
 	}
 
