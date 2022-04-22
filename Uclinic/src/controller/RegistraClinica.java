@@ -27,18 +27,17 @@ public class RegistraClinica extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 
-		ConnessioneDB con = new ConnessioneDB();
+
 		try (PrintWriter out = response.getWriter()) {
 			String email = request.getParameter("regC-email"); // nome campi html
 			String password = request.getParameter("regC-password");
 			String password2 = request.getParameter("regC-password2");
 			String nome = request.getParameter("regC-nome");
 			String rec = request.getParameter("regC-recapito");
-			int recapito = Integer.parseInt(rec);
 			String citta = request.getParameter("regC-citta");
 			String regione = request.getParameter("regC-regione");
 			String indirizzo = request.getParameter("regC-indirizzo");
-			Clinica clinica = new Clinica(nome, regione, citta, indirizzo, email, password, recapito);
+			Clinica clinica = new Clinica(nome, regione, citta, indirizzo, email, password, rec);
 			
 			if( ClinicaDAO.check(email,password,password2) == false) {			
 			try {

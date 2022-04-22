@@ -1,15 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
-    
+<%@page import="dao.PazienteDAO"%>
 <%@page import="model.*"%>
 <%@page import="java.util.*"%>
 <%@page import="dao.*"%>
-      	
-
-    
 <!DOCTYPE html>
 <html>
-
 <head>
 <meta charset="ISO-8859-1">
    <meta charset="UTF-8">
@@ -17,20 +13,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="css/StaffClinica.css">
     <script src="https://kit.fontawesome.com/367813bf67.js" crossorigin="anonymous"></script>
-    <title>Staff</title>
+    <title>Dottori</title>
 </head>
-
-<% 
- int id = Integer.parseInt(request.getParameter("id"));
-List<Dottore> dottori = ClinicaDAO.visualizzaDottori(id);
-%>
-
-
-
+<%List<Dottore> listaD = PazienteDAO.cercaDottore(request.getParameter("ricerca"));%>
 <body>
-
- 
- 
  <div class="container">
         
         <label class="logo"> <a>Uclinic</a></label>
@@ -67,10 +53,15 @@ List<Dottore> dottori = ClinicaDAO.visualizzaDottori(id);
 
         <div class="search-box">
 
-            <form class="QI">
+            <form action="CercaDottore" method="post">
 
-                <input type="search" placeholder="Search..." class="search">
-                <input type="submit" value="Ok" class="sub">
+
+
+                <input name="cerca" type="search"  placeholder="Search..." class="search">
+
+                <input type="submit"  value="Ok"  class="sub">
+
+
 
             </form>
 
@@ -90,14 +81,10 @@ List<Dottore> dottori = ClinicaDAO.visualizzaDottori(id);
 <div class="tuttecarte">
 
 
-     <form action="formAggiungiDottore.jsp" class="aggD">
-      
-       <button  class="btn1"><i style="color:#2eab97" class="fa-solid fa-user-plus fa-8x"></i></button>        
-    </form>
   
 
 
-    <% for(Dottore d : dottori) {  %>
+    <% for(Dottore d : listaD) {  %>
   <div class="carte">
 
 
@@ -112,9 +99,9 @@ List<Dottore> dottori = ClinicaDAO.visualizzaDottori(id);
 
  						<div class="tooltip" >
                             
-                            <a class="btn btn-dark" href="visualizzaDottore.jsp?id=<%=d.getIdDottore()%>" value="press me" title="Ispeziona"><i style="color:#2eab97" class="fa-solid fa-eye fa-2x"></i></a>
+                            <a class="btn btn-dark" href="visualizzaPropriDottori.jsp" value="press me" title="Ispeziona"><i style="color:#2eab97" class="fa-solid fa-eye fa-2x"></i></a>
 						</div>
-					                  
+					
 				</div>
 			
         </span>     

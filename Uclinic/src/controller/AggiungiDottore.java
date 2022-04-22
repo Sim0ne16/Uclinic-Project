@@ -30,8 +30,7 @@ public class AggiungiDottore extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 		response.setContentType("text/html;charset=UTF-8");
-		ConnessioneDB con = new ConnessioneDB();
-		String nome = request.getParameter("dNome");// Momentaneo guarda jsp!!!!!
+		String nome = request.getParameter("dNome");
 		String cognome = request.getParameter("dCognome");
 		String eta1 = request.getParameter("dEta");
 		int eta = Integer.parseInt(eta1);
@@ -42,20 +41,14 @@ public class AggiungiDottore extends HttpServlet {
 		double costoVisita = Double.parseDouble(costoVisit);
 		Dottore dottore = new Dottore(nome, cognome, eta,  email, recapitoTel, specializzazione, costoVisita);
 		Clinica c = (Clinica) request.getSession().getAttribute("utenteC");
-		// ClinicaDAO.aggiungiDottore(dottore, LoginClinica.clinique); 
 		
-		//NON AGGIUNGE IN PERSONALE
+	
 		ClinicaDAO.aggiungiDottore(dottore, c); 
+		int id= ClinicaDAO.recuperaIdDottore(dottore);
+		dottore.setIdDottore(id);
 		ClinicaDAO.aggiungiDottorePersonale(dottore, c);
-		response.sendRedirect("dottoreaggiunto.html"); // Redirect verso pagina Dottore Aggiunto
-		try 
-		{
-			con.close();
-		}
-		catch (SQLException e) 
-		{
-			e.printStackTrace();
-		}
+		response.sendRedirect("formAggiungiDottoreSuccess.jsp"); // Redirect verso pagina Dottore Aggiunto
+		
 	}
 		
 	}

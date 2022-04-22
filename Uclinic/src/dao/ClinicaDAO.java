@@ -1,7 +1,6 @@
 package dao;
 
-import java.math.BigDecimal;
-import java.math.BigInteger;
+
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -217,7 +216,33 @@ public class ClinicaDAO {
 		}return esito;
 	}
 	
-	//problema con le foreign keys porcodio
+	
+	public static int recuperaIdDottore(Dottore d) {
+		int id = 0;
+		ConnessioneDB con = new ConnessioneDB();
+		try {
+			con.connect();
+			String sql = "Select idDottore from dottore where nome like ? and cognome like ? and eta like ?";
+			PreparedStatement stm = con.getCon().prepareStatement(sql);
+			stm.setString(1, d.getNome());
+			stm.setString(2, d.getCognome());
+			stm.setInt(3,d.getEta());
+			ResultSet rs = stm.executeQuery();
+			if ( rs.next()) {
+				id = rs.getInt("idDottore");
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}finally {
+			try {
+				con.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+		return id;
+	}
+	
 	
 	public static boolean aggiungiDottorePersonale(Dottore d, Clinica clinica) {
 		boolean esito = false;
@@ -244,7 +269,7 @@ public class ClinicaDAO {
 	}
 	
 	
-	
+	/*
 	public static boolean eliminaDottore(Dottore d, int idClinica) { //elimina dottore solo dal personale
 		boolean esito = false;
 		ConnessioneDB con = new ConnessioneDB();
@@ -267,6 +292,30 @@ public class ClinicaDAO {
 			}
 		}return esito;
 	}
+	*/
+	
+	public static boolean eliminaDottore(int id) { 
+		boolean esito = false;
+		ConnessioneDB con = new ConnessioneDB();
+		try {
+			con.connect();
+			String query = "DELETE FROM dottore WHERE idDottore = ? ";
+			PreparedStatement pst = con.getCon().prepareStatement(query);
+			pst.setInt(1, id);	
+			pst.executeUpdate();
+			esito = true;
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}finally {
+			try {
+				con.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}return esito;
+	}
+
+	
 	
 	public static boolean modificaDottore(Dottore d) { //modifica dottore solo in dottore nel db
 		boolean esito = false;
@@ -283,9 +332,9 @@ public class ClinicaDAO {
 			pst.setString(6, d.getSpecializzazione());
 			pst.setDouble(7, d.getCostoVisita());
 			pst.setInt(8, d.getIdDottore());
-			pst.executeUpdate();
-			System.out.println("Il dottore si è trasformato");
+		if(	pst.executeUpdate()>0) {
 			esito = true;
+		}
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}finally {
@@ -294,10 +343,11 @@ public class ClinicaDAO {
 			} catch (SQLException e) {
 				e.printStackTrace();
 			}
-		}return esito;
+		}
+		return esito;
 	}
 
-
+// da modificare 
 public static Paziente cercaPazXCodFisc(Clinica c,String cFisc) {
 	ConnessioneDB con = new ConnessioneDB();
 	Paziente p = null;

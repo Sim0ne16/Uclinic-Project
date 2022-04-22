@@ -1,8 +1,5 @@
-@charset "ISO-8859-1";
-
-
 #staffReg{
-    margin-left:48%;
+    margin-left:48.5%;
     transform: translateY(-30px);
     
 
@@ -21,3 +18,11 @@ a{
 a:hover{
     color:white;
 }
+
+
+.form-group1{
+    margin-bottom: 20px;
+}
+
+
+

@@ -12,7 +12,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="css/staff.css">
+    <link rel="stylesheet" href="css/pagDottore.css">
     <script src="https://kit.fontawesome.com/367813bf67.js" crossorigin="anonymous"></script>
     <title>Document</title>
 </head>
@@ -84,38 +84,47 @@
              
         
          <%
-                		 
+                Clinica c = (Clinica)request.getSession().getAttribute("utenteC");
+                int idClinica = c.getIdClinica();		 
         		int idDoc = Integer.parseInt(request.getParameter("id"));
         		Dottore d =  ClinicaDAO.visualizzaDottore(idDoc);
                 %>
         
             <i class="fa-solid fa-user fa-4x">Dr. <%=d.getNome() %> <%=d.getCognome() %></i>          
-            <li><i class="fa-solid fa-mars-and-venus"></i>Eta : <%=d.getEta() %></li>       
-            <li> <i class="fa-solid fa-id-card"></i> Specializzazione : <%=d.getSpecializzazione() %> </li>
-            <li> <i class="fa-solid fa-dna"></i>  Costo Visita: <%=d.getCostoVisita() %> $</li>
-            <li>  <i class="fa-solid fa-phone"></i> Recapito : <%=d.getRecapitoTel() %></li>
-            <li> <i class="fa-solid fa-envelope"></i>  EMAIL : <%=d.getEmail() %> </li>
+            <li><i class="fa-solid fa-mars-and-venus fa-2x"></i>Eta : <%=d.getEta() %></li>       
+            <li><i class="fa-solid fa-id-card fa-2x"></i> Specializzazione : <%=d.getSpecializzazione() %> </li>
+            <li><i class="fa-solid fa-dna fa-2x"></i>  Costo Visita: <%=d.getCostoVisita() %> $</li>
+            <li><i class="fa-solid fa-phone fa-2x"></i> Recapito : <%=d.getRecapitoTel() %></li>
+            <li><i class="fa-solid fa-envelope fa-2x"></i>  Email : <%=d.getEmail() %> </li>
+            <li>     </li>
         
           </ul>
 
+
+                       <div class="tooltip" >
+                            
+                            <a class="btn btn-dark" href="modificaProfiloDottore.jsp?id=<%=idDoc%>" value="press me" title="Modifica"><i  style="color: rgb(55, 238, 177)" class="fa-solid fa-user-pen fa-2x"></i></a>
+                            
+                          
+                            <a class="btn btn-dark" href="EliminaDottore?id=<%=idDoc%>" value="press me" title="Elimina" input type="reset"  onClick="return confirm('Sicuro di voler cancellare il dottore?')" ><i  style="color: rgb(55, 238, 177)" class="fa-solid fa-user-xmark fa-2x"></i> </a>
+                          
+                                                                                                                                                                                        
+                            <a class="btn btn-dark" href="StaffClinica.jsp?id=<%=idClinica%>" value="press me" title="Staff"><i  style="color: rgb(55, 238, 177)" class="fa-solid fa-staff-aesculapius fa-2x"></i></a>
+						</div>
+
         </div>
 
 
 
 
-<div class="right"  >
-
-          <div class="accordion" >
-            <button type="button" class="accordion_button">Medical History</button>
-            <div class="accordion__content">
-                <p>
-                <p>ciaociaociaociaco</p > <br>ciacoiacoaciaocia<br>
-
-                </p>
-            </div>
-        </div>
-
-    </div>
+<div class="right">
+   <div class="calendario">
+   
+   
+   
+   
+   </div>
+</div>
 
 
 

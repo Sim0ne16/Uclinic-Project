@@ -150,7 +150,7 @@ top: -60px;
 }
 
 form{
-    width: 100%;
+	width: 100%;
     height: 38px;
     right: 0;
     background-color: #9b9b9b08;
@@ -159,9 +159,9 @@ form{
     padding: 2px;
     border: 1px solid #9b9b9b33;
     border-radius: 4px ;
-
-
 }
+
+
 
 .search{
     width: 95%;
@@ -304,20 +304,19 @@ visibility: visible;
 
 }
 
-section{
-    background: linear-gradient(#ffffe0,#b0e0e6 );
-    
-    background-position: center;
-    background-size: cover;
-    height: 100vh;
-}
+
 
 
 
 
 /* END OF NAV BAR     */ 
 
-
+section{
+    background: linear-gradient(#ffffe0,#b0e0e6 );
+    background-position: center;
+    background-size: cover;
+    height: 90vh;
+}
 
 
 
@@ -442,59 +441,4 @@ h1{
 
 
 
-/* ACCORDEON  */
-
-
-
-
-
-.accordion_button{
-    
-    display: block;
-
-    margin-left: 50%;
-    width: 100%;
-    padding: 15px;
-    margin-left: 0;
-    border:none;
-    outline: none;
-    cursor: pointer;
-    text-align: center;
-    background: black;
-    color: white;
-    transition: background 0.2s;
-
-}
-
-.accordion_button::after{
-    content: '\25be';
-    float: right;
-    transform: scale(1.5);
-    
-}
-
-.accordion_button--active + .accordion__content{ display: inline-block}
-.accordion_button--active{background: grey;}
-.accordion_button--active::after{content: '\25b4'}
-
-.accordion__content{/*
-    overflow: hidden;
-    max-height:0;
-    transition: max-height 0.2s;
-
-    padding-inline-end: 0 15px;
-    font-family: sans-serif;
-    background: rgb(255, 255, 255);*/
-
-    padding: 0 15px;
-    font-family: sans-serif;
-    background: #eeeeee;
-
-    
-
-    display: none;
-    overflow: auto;
-
-    
-}
 

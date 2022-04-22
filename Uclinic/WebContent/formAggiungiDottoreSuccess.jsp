@@ -68,7 +68,7 @@
 			</div>
 		</div>
 	</div>
-
+      <h1 id="agg"> Dottore aggiunto con Successo!!</h1>
      <button id="staffReg" type="submit" class="btn btn-primary" style=color:white><a href="StaffClinica.jsp?id=<%=x%>"> Staff</a></button>
 </body>
 </html>

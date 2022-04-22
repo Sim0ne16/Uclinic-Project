@@ -24,7 +24,6 @@ public class RegistraPaziente extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		ConnessioneDB con = new ConnessioneDB();
 
 		try (PrintWriter out = response.getWriter()) {
 			String email = request.getParameter("regP-email");

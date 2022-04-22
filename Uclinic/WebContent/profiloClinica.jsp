@@ -12,7 +12,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="css/profiloUtente.css">
+    <link rel="stylesheet" href="css/profiloClinica.css">
     <script src="https://kit.fontawesome.com/367813bf67.js" crossorigin="anonymous"></script>
     <title>Document</title>
 </head>
@@ -85,10 +85,9 @@
                 %>
                     
         
-                <div>
-                    <ul class="asd">  
+               
                     <i class="fa-solid fa-house-chimney-medical fa-4x"><%= C.getNome() %></i>
-                        <li><i class="fa-solid fa-clipboard-user fa-2x" ></i> <a href="StaffClinica.jsp?id=<%=x%>"> Staff</a> </li>
+                        <li><i class="fa-solid fa-clipboard-user fa-2x" ></i> <a href="StaffClinica.jsp?id=<%=x%>"> Staff</a></li>
                         <li><i class="fa-solid fa-city fa-2x"></i> Citta: <%= C.getCitta() %></li>
                         <li><i class="fa-solid fa-location-dot fa-2x"></i> Indirizzo: <%= C.getIndirizzo() %></li>                        
                          <li>  <i class="fa-solid fa-phone fa-2x"></i> Recapito :<%= C.getRecapitoTel() %> </li>         
@@ -101,12 +100,12 @@
 
 
 
-<div class="right"  >
+
 
           
-        </div>
+        
 
-    </div>
+  
 
 
 

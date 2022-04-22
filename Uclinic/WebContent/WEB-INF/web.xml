@@ -8,6 +8,15 @@
     <welcome-file>default.html</welcome-file>
     <welcome-file>default.jsp</welcome-file>
     <welcome-file>default.htm</welcome-file>
-
   </welcome-file-list>
+  <servlet>
+    <description></description>
+    <display-name>ModificaDottore</display-name>
+    <servlet-name>ModificaDottore</servlet-name>
+    <servlet-class>controller.CercaDottXSpec</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ModificaDottore</servlet-name>
+    <url-pattern>/ModificaDottore</url-pattern>
+  </servlet-mapping>
 </web-app>

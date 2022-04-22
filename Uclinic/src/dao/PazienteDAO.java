@@ -92,7 +92,6 @@ return esito;
 }
 	
 	
-	
 	public static Paziente loginPaziente(String email, String password) {
 		Paziente paziente = null;
 		ConnessioneDB con = new ConnessioneDB();
@@ -128,44 +127,6 @@ return esito;
 	}
 	
 	
-	public static List<Dottore> cercaDottXSpec(String specializzazione) {
-		ConnessioneDB con = new ConnessioneDB();
-		List<Dottore> listaD = null;
-		try 
-		{
-			con.connect();
-			String sql = "SELECT nome, cognome, email, recapitoTel FROM dottore WHERE specializazione=?";
-			PreparedStatement pst = con.getCon().prepareStatement(sql);
-			pst.setString(1, specializzazione);
-			ResultSet rs = pst.executeQuery();
-			listaD = new ArrayList<Dottore>();
-			while(rs.next()) {
-				Dottore d = new Dottore();
-				d.setIdDottore(rs.getInt("idDottore"));  //sempre meglio portarsi dietro l'id!
-				d.setNome(rs.getString("nome"));
-				d.setCognome(rs.getString("cognome"));
-				d.setEmail(rs.getString("email"));
-				d.setRecapitoTel(rs.getInt("recapitoTel"));
-				listaD.add(d);
-			}
-		} 
-		catch (SQLException e) 
-		{
-			e.printStackTrace();
-		}
-		finally
-		{
-			try 
-			{
-				con.close();
-			} catch (SQLException e) 
-			{
-				e.printStackTrace();
-			}
-		}
-		return listaD;
-	}
-
 	public static boolean prenotaAppuntamento(Appuntamento app, Paziente p) {
 		ConnessioneDB con = new ConnessioneDB();
 		boolean esito = false;
@@ -198,9 +159,40 @@ return esito;
 		}
 		return esito;
 	}
-}
-	
 
+	
+public static List<Dottore> cercaDottore(String ricerca) {
+	ConnessioneDB con = new ConnessioneDB();
+	List<Dottore> listaD = null;
+	try {
+		con.connect();
+		String sql = "SELECT * FROM dottore where nome like '%" + ricerca + "%' or cognome like '%" + ricerca + "%' or specializzazione like '%" + ricerca +"%'";
+		PreparedStatement pst = con.getCon().prepareStatement(sql);
+		ResultSet rs = pst.executeQuery();
+		listaD = new ArrayList<Dottore>();
+		while (rs.next()) {
+			Dottore d = new Dottore();
+			d.setIdDottore(rs.getInt("idDottore")); // sempre meglio portarsi dietro l'id!
+			d.setNome(rs.getString("nome"));
+			d.setCognome(rs.getString("cognome"));
+			d.setEmail(rs.getString("email"));
+			d.setRecapitoTel(rs.getString("recapitoTel"));
+			d.setSpecializzazione(rs.getString("specializzazione"));
+			listaD.add(d);
+		}
+	} catch (SQLException e) {
+		e.printStackTrace();
+	} finally {
+		try {
+			con.close();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+	}
+	return listaD;
+}
+
+}
 	
 	  
 	    

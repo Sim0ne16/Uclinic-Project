@@ -13,7 +13,6 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="css/profiloUtente.css">
-   
     <script src="https://kit.fontawesome.com/367813bf67.js" crossorigin="anonymous"></script>
     <title>Document</title>
 </head>
@@ -36,7 +35,7 @@
                 <a href="">Profile</a>
                 <ul>
                     <li><a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ">Modifica Profilo</a></li>
-                    <li><a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ">Modifica Medical History</a></li>
+                    <li><a href="MedicalHistory.html">Modifica Medical History</a></li>
                     <li class="parent">
                         <a href="#">Impostazioni</a>
                         <ul>
@@ -59,14 +58,22 @@
 
         <div class="search-box">
 
-            <form>
+            <form action="CercaDottore" method="post">
 
-                <input type="search" placeholder="Search..." class="search">
-                <input type="submit" value="Ok" class="sub">
+
+
+                <input name="cerca" type="search"  placeholder="Search..." class="search">
+
+                <input type="submit"  value="Ok"  class="sub">
+
+
 
             </form>
 
         </div>
+        
+        
+        
     </div>
 
 

@@ -9,32 +9,26 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import connection.ConnessioneDB;
 import dao.PazienteDAO;
 import model.Dottore;
 
-@WebServlet("/CercaDottXSpec")
-public class CercaDottXSpec extends HttpServlet {
+@WebServlet("/CercaDottore")
+public class CercaDottore extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
-   
-    public CercaDottXSpec() {
+    public CercaDottore() {
         super();
     }
 
-	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		response.getWriter().append("Served at: ").append(request.getContextPath());
 	}
 
-	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		response.setContentType("text/html;charset=UTF-8");
+		String ricerca = request.getParameter("cerca");
+		response.sendRedirect("pagRicerca.jsp?ricerca="+ricerca);
 		
-		String spec = request.getParameter("specDott");//nome del campo html
-		
-		List<Dottore> listaD = PazienteDAO.cercaDottXSpec(spec);
-		//decidete poi voi cosa farci con sta lista, come stamparla ecc...
 	}
 
 }
