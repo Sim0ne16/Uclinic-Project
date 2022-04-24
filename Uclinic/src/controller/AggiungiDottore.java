@@ -42,13 +42,14 @@ public class AggiungiDottore extends HttpServlet {
 		Dottore dottore = new Dottore(nome, cognome, eta,  email, recapitoTel, specializzazione, costoVisita);
 		Clinica c = (Clinica) request.getSession().getAttribute("utenteC");
 		
-	
+
 		ClinicaDAO.aggiungiDottore(dottore, c); 
 		int id= ClinicaDAO.recuperaIdDottore(dottore);
 		dottore.setIdDottore(id);
 		ClinicaDAO.aggiungiDottorePersonale(dottore, c);
 		response.sendRedirect("formAggiungiDottoreSuccess.jsp"); // Redirect verso pagina Dottore Aggiunto
-		
+	
+
 	}
 		
 	}

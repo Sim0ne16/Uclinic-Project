@@ -11,11 +11,13 @@
    <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="css/StaffClinica.css">
+    <link rel="stylesheet" href="css/PazientiClinica.css">
     <script src="https://kit.fontawesome.com/367813bf67.js" crossorigin="anonymous"></script>
-    <title>Dottori</title>
+      
+    <title>Ricerca</title>
 </head>
 <%List<Dottore> listaD = PazienteDAO.cercaDottore(request.getParameter("ricerca"));%>
+<%List<Clinica> listaC = PazienteDAO.cercaClinica(request.getParameter("ricerca"));%>
 <body>
  <div class="container">
         
@@ -81,36 +83,71 @@
 <div class="tuttecarte">
 
 
-  
-
-
-    <% for(Dottore d : listaD) {  %>
-  <div class="carte">
+   <div class="titoloR">
+<h3>Dottori</h3>
+</div>
+<div class="carteDott">
+   
+  <% for(Dottore d : listaD) {  %>
 
 
 	
-			<span class="card">
+			<div class="card" id="cardDottore">
 		
-					<img class="card-img-top" src="https://www.ciaodottore.it/file-asset/Ciao_Dottore_Medico1?v=1" alt="Card image cap">
+					<img class="card-img-top" src="https://cdn.pixabay.com/photo/2017/05/15/23/47/stethoscope-icon-2316460_960_720.png" alt="Card image cap">
 					
-					<h3 class="category"><%=d.getSpecializzazione() %></h5>
-						<h3 class="card-title"><%=d.getNome()%> <%=d.getCognome()%></h5>
+					<h5 class="card-title"><%=d.getSpecializzazione() %> <br>
+						<%=d.getNome()%> <%=d.getCognome()%></h5>
 						
 
  						<div class="tooltip" >
                             
-                            <a class="btn btn-dark" href="visualizzaPropriDottori.jsp" value="press me" title="Ispeziona"><i style="color:#2eab97" class="fa-solid fa-eye fa-2x"></i></a>
+                            <a class="btn btn-dark"  href="visualizzaDottoreEst.jsp?id=<%=d.getIdDottore() %>" title="Ispeziona"><i style="color:#2eab97" class="fa-solid fa-eye fa-2x"></i></a>
 						</div>
 					
 				</div>
+				<% }
+				
 			
-        </span>     
+ %>
+				</div>  
+				<br>
+				
 	
+		<div class="titoloR">
+		<h3>Cliniche</h3>	
+		</div>
+ <div class="carteClinic">
+ 
+				<% for(Clinica c : listaC) {  %>
+  
+
+
+	
+			<div class="card" id="cardClinica">
 		
+					<img class="card-img-top" src="https://cdn.pixabay.com/photo/2014/04/03/11/50/medical-312324_960_720.png" alt="Card image cap">
+					
+					<h5 class="card-title"><%=c.getNome() %><br>
+						<%=c.getRegione()%>, <%=c.getCitta()%> <br>
+						<%=c.getIndirizzo() %></h5>
+						
+						
+
+ 						<div class="tooltip" >
+                            
+                            <a class="btn btn-dark" href="profiloClinicaEst.jsp?id=<%=c.getIdClinica() %>" title="Ispeziona"><i style="color:#2eab97" class="fa-solid fa-eye fa-2x"></i></a>
+						</div>
+					
+				</div>
 			<% }
 				
 			
  %>
+        </div>     
+	
+		
+			
  
        </div>    
  

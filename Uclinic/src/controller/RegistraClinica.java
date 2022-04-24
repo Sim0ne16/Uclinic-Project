@@ -29,32 +29,34 @@ public class RegistraClinica extends HttpServlet {
 
 
 		try (PrintWriter out = response.getWriter()) {
-			String email = request.getParameter("regC-email"); // nome campi html
-			String password = request.getParameter("regC-password");
-			String password2 = request.getParameter("regC-password2");
-			String nome = request.getParameter("regC-nome");
-			String rec = request.getParameter("regC-recapito");
-			String citta = request.getParameter("regC-citta");
-			String regione = request.getParameter("regC-regione");
-			String indirizzo = request.getParameter("regC-indirizzo");
+			String email = request.getParameter("regCemail"); // nome campi html
+			String password = request.getParameter("regCpassword");
+			String nome = request.getParameter("regCnome");
+			String rec = request.getParameter("regCrecapito");
+			String citta = request.getParameter("regCcitta");
+			String regione = request.getParameter("regCregione");
+			String indirizzo = request.getParameter("regCindirizzo");
 			Clinica clinica = new Clinica(nome, regione, citta, indirizzo, email, password, rec);
 			
-			if( ClinicaDAO.check(email,password,password2) == false) {			
-			try {
-				request.getSession().setAttribute("clinicaC", clinica); // Sessione
+		
+	       if(ClinicaDAO.checkEmail(clinica.getEmail())==false) {
+	    	   try {
 				ClinicaDAO.registraClinica(clinica);
-				out.println("Registrazione avvenuta con successo");
-				response.sendRedirect("home.jsp"); // temporaneo
-			} catch (ClassNotFoundException | SQLException e) {
+				request.getSession().setAttribute("utenteC", clinica); 
+				int x = ClinicaDAO.recuperaIdClinica(clinica);
+				response.sendRedirect("profiloClinica.jsp?id="+x);
+			} catch (ClassNotFoundException e) {
+				e.printStackTrace();
+			} catch (SQLException e) {
 				e.printStackTrace();
 			}
-			}
-			else {
-				response.sendRedirect("regClinicaFail.jsp");
-			}
+	       }else {
+	    	   response.sendRedirect("formClinica.jsp");
+	       }
 		}
-
 	}
+			
+		
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {

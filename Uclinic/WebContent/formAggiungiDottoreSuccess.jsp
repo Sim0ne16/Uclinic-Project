@@ -13,6 +13,7 @@
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
 	<link rel="stylesheet" href="css/formAggDottore.css">
+	<script src="javascript/controlli.js"></script>
 <title>Aggiungi Dottore</title>
 </head>
 
@@ -32,43 +33,43 @@
 		<div class="card w-50 mx-auto my-5">
 			<div class="card-header text-center">Registrazione Dottore</div>
 			<div class="card-body">
-				<form action="AggiungiDottore" method="post">
+				<form action="" id="aggiungiDoc" name="formino" method="post">
 					<div class="form-group">
 						<label>Nome</label> 
-						<input type="text" name="dNome" class="form-control" >
+						<input type="text" id="dNome" name="dNome" class="form-control" >
 					</div>
 					<div class="form-group">
 						<label>Cognome</label> 
-						<input type="text" name="dCognome" class="form-control" >
+						<input type="text" id="dCognome" name="dCognome"  class="form-control" >
 					</div>
 					<div class="form-group">
 						<label>Eta</label> 
-						<input type="text" name="dEta" class="form-control" >
+						<input type="text" id="dEta" name="dEta" class="form-control" >
 					</div>
 					<div class="form-group">
 						<label>Email </label> 
-						<input type="email" name="dEmail" class="form-control" >
+						<input type="email" id="dEmail" name="dEmail" class="form-control" >
 					</div>
 					<div class="form-group">
 						<label>Recapito</label> 
-						<input type="text" name="dRecapito" class="form-control" >
+						<input type="text" id="dRecapito" name="dRecapito" class="form-control" >
 					</div>
 					<div class="form-group">
 						<label>Specializzazione</label> 
-						<input type="text" name="dSpecializzazione" class="form-control" >
+						<input type="text" id="dSpecializzazione" name="dSpecializzazione" class="form-control" >
 					</div>
 					<div class="form-group">
 						<label>Costo Visita</label> 
-						<input type="text" name="dCosto" class="form-control" >
+						<input type="text" id="dCosto" name="dCosto" class="form-control" >
 					</div>
 					<div class="text-center">
-						<button type="submit" class="btn btn-primary">Registrazione</button>
+						<button type="submit" onclick="controlloD()" class="btn btn-primary">Registrazione</button>
 					</div>
 				</form>
 			</div>
 		</div>
 	</div>
-      <h1 id="agg"> Dottore aggiunto con Successo!!</h1>
-     <button id="staffReg" type="submit" class="btn btn-primary" style=color:white><a href="StaffClinica.jsp?id=<%=x%>"> Staff</a></button>
+       <h1 id="agg"> Dottore aggiunto con Successo!!</h1>
+     <button id="staffReg"  type="submit" class="btn btn-primary" style=color:white><a href="StaffClinica.jsp?id=<%=x%>"> Staff</a></button>
 </body>
 </html>

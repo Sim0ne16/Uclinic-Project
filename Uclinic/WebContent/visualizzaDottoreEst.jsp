@@ -12,10 +12,13 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="css/profiloUtente2.css">
+    <link rel="stylesheet" href="css/pagDottore.css">
     <script src="https://kit.fontawesome.com/367813bf67.js" crossorigin="anonymous"></script>
     <title>Document</title>
 </head>
+
+
+
 <body>
 
     <!--   NAV BAR   -->
@@ -35,7 +38,7 @@
                 <a href="">Profile</a>
                 <ul>
                     <li><a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ">Modifica Profilo</a></li>
-                    <li><a href="MedicalHistory.jsp">Modifica Medical History</a></li>
+                    <li><a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ">Modifica Medical History</a></li>
                     <li class="parent">
                         <a href="#">Impostazioni</a>
                         <ul>
@@ -58,22 +61,14 @@
 
         <div class="search-box">
 
-            <form action="CercaDottore" method="post">
+            <form>
 
-
-
-                <input name="cerca" type="search"  placeholder="Search..." class="search">
-
-                <input type="submit"  value="Ok"  class="sub">
-
-
+                <input type="search" placeholder="Search..." class="search">
+                <input type="submit" value="Ok" class="sub">
 
             </form>
 
         </div>
-        
-        
-        
     </div>
 
 
@@ -87,38 +82,43 @@
 
         <ul class="asd">  
              
+        
          <%
-                Paziente p =(Paziente) session.getAttribute("utenteP");
+                Clinica c = (Clinica)request.getSession().getAttribute("utenteC");
+                int idClinica = c.getIdClinica();		 
+        		int idDoc = Integer.parseInt(request.getParameter("id"));
+        		Dottore d =  ClinicaDAO.visualizzaDottore(idDoc);
                 %>
         
-        
-            <i class="fa-solid fa-user fa-4x"> <%= p.getNome() %>  <%= p.getCognome() %></i> 
-
-            <li><i class="fa-solid fa-mars-and-venus fa-2x"></i> Eta: <%= p.getEta() %></li></i> 
-            <li><i class="fa-solid fa-city fa-2x"></i> Citta : <%= p.getCitta() %></li>
-            <li> <i class="fa-solid fa-location-crosshairs fa-2x"></i> Regione: <%= p.getRegione() %></li>
-            <li> <i class="fa-solid fa-id-card fa-2x"></i>  Codice Fiscale : <%= p.getcFisc() %></li>
-            <li> <i class="fa-solid fa-envelope fa-2x"></i>  Email : <%= p.getEmail() %></li>
+            <i class="fa-solid fa-user fa-4x">Dr. <%=d.getNome() %> <%=d.getCognome() %></i>          
+            <li><i class="fa-solid fa-mars-and-venus fa-2x"></i>Eta : <%=d.getEta() %></li>       
+            <li><i class="fa-solid fa-id-card fa-2x"></i> Specializzazione : <%=d.getSpecializzazione() %> </li>
+            <li><i class="fa-solid fa-dna fa-2x"></i>  Costo Visita: <%=d.getCostoVisita() %> $</li>
+            <li><i class="fa-solid fa-phone fa-2x"></i> Recapito : <%=d.getRecapitoTel() %></li>
+            <li><i class="fa-solid fa-envelope fa-2x"></i>  Email : <%=d.getEmail() %> </li>
+            <li>     </li>
         
           </ul>
 
+
+                       <div class="tooltip" >
+                                                                                                                                                                                           
+                            <a class="btn btn-dark" href="profiloClinicaEst.jsp?id=<%=idClinica%>" value="press me" title="Clinica"><i  style="color: rgb(55, 238, 177)" class="fa-solid fa-staff-aesculapius fa-2x"></i></a>
+						</div>
+
         </div>
 
 
 
 
-<div class="right"  >
-
-          <div class="accordion" >
-            <button type="button" class="accordion_button">Medical History</button>
-            <div class="accordion__content">
-               <li><p>Peso : 80kg....</p></li>
-                <li> <p>Altezza : 1.80 metri </p></li>
-                <li> <p>Sangue : non lo so</p></li>
-            </div>
-        </div>
-
-    </div>
+<div class="right">
+   <div class="calendario">
+   
+   
+   
+   
+   </div>
+</div>
 
 
 
@@ -138,16 +138,10 @@
     <script>
         document.querySelectorAll('.accordion_button').forEach(button => {
             button.addEventListener('click', () => {
-               // const accordionContent= button.nextElementSibling;
+            
     
                 button.classList.toggle('accordion_button--active');
-    
-              //  if (button.classList.contains('accordion_button--active')) {
-               //     accordionContent.style.maxHeight = accordionContent.scrollHeight + 'px';
-    //
-              //  }else{
-               //    accordionContent.style.maxHeight = 0; 
-              //  }
+   
             });
         });
     </script>

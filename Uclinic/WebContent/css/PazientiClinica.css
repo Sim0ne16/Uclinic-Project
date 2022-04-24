@@ -395,14 +395,14 @@ h1 {
 }
 
 .card {
-	width: 100%;
+	width: 20%;
 	display: flex;
 	flex-direction: column;
 }
 
 .tuttecarte {
 	display: flex;
-	flex-direction: row;
+	flex-direction: column;
 	width: 100%;
 	margin: 0px 25px 0px 25px;
 }

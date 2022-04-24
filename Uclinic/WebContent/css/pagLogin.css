@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css?family=Montserrat:400,800');
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300&family=Source+Code+Pro:ital,wght@1,300&display=swap ');
 
 
 
@@ -11,35 +11,37 @@
     text-decoration: none;
     list-style: none;
     box-sizing: border-box;
+    text-rendering: optimizeSpeed;
+    font-family:  'Poppins', sans-serif;
+    
+    
 
 }
-
-<!-- porcoddio da sistema -->
-#error{
-	margin-top:10%;
-	transform:translateY(15%);
-}
-
-
 nav {
-    transform: translateY(-14px);
+    transform: translateY(-190px);
     background-color: #f6f5f7;
-    height: 80px;
     width: 100%;
     overflow: hidden;
     margin-top: 0;
     margin-bottom: -33px;
-    
+    border-bottom-color: #3eccf0;
+    border-bottom-style: solid;
+    border-bottom-width: 2px;
+    border-radius: 10px;
+    box-shadow: 0 14px 28px rgba(255, 255, 255, 0.25), 0 10px 10px rgba(0,0,0,0.22);
 
 }
 label.logo {
-    color: #52e465;
+    color: rgb(55, 238, 177);
     font-size: 35px;
     line-height: 6px;
     padding: 0 100px;
     font-weight: bold;
     float: left;
     transform: translateY(35px);
+    text-shadow: 0 0 2px #3eccf0;
+    
+   
 }
 nav ul {
     
@@ -57,16 +59,28 @@ nav ul li {
     
 }
 nav ul li a {
-    color: #ffffff;
+    color: #3eccf0;
     font-size: 17px;
     text-transform: uppercase;
     padding: 7px 13px;
     border-radius: 3px;
 }
-a.active,add:hover {
-    background: #00f7ff;
-    transition: .5s;
+.active {
+    background: #f6f5f7;
+    border-color: #3eccf0;
+    border-style: solid;
+    border-width: 1px;
+    
+    border-radius: 20px;
+    
+    
 }
+
+.active:hover{
+    box-shadow: 0 3px 3px rgb(55, 238, 177, 0.22), 0 3px 3px rgb(55, 238, 177, 0.22);
+}
+
+
 .checkbtn{
 
     font-size: 30px;
@@ -91,10 +105,11 @@ a.active,add:hover {
 
 
 
+
 body {
     
-    background-image: url(/images/medical-5459650.svg);
-    background: #02c6f7 transparent;
+    
+    background-image:  linear-gradient(#ffffe0,#b0e0e6 );
     display: flex;
     justify-content: center;
     align-items: center;
@@ -143,8 +158,8 @@ a {
 
 button {
     border-radius: 20px;
-    border: 1px solid #15a9ff;
-    background-color: #15a9ff;
+    border: 1px solid  #ffffff;
+    background-color: #3eccf0;
     color: #FFFFFF;
     font-size: 12px;
     font-weight: bold;
@@ -153,6 +168,9 @@ button {
     text-transform: uppercase;
     transition: transform 80ms ease-in;
 }
+
+
+
 
 button:active {
     transform: scale(0.95);
@@ -167,12 +185,31 @@ button.ghost {
     border-color: #FFFFFF;
 }
 #btnR {
+    color: #3eccf0 ;
+    border:1px solid #3eccf0;
+    background-color: white;
     position: relative;
     bottom: -40px;
     letter-spacing: 3px;
     border-radius: 20px;
-    box-shadow: 0 14px 28px rgba(255, 255, 255, 0.25), 0 10px 10px rgba(0,0,0,0.22);
+    box-shadow: 0 7px 14px rgba(255, 255, 255, 0.25), 0 5px 5px rgba(0,0,0,0.22);
+
     
+}
+
+
+#btnR:active{
+    border:1px solid white;
+    background-color: rgb(55, 238, 177);
+    color: white ;
+
+}
+
+#btnR:focus{
+    border:1px solid rgb();
+    background-color: white;
+    color: #3eccf0 ;
+
 }
 
 form {
@@ -203,7 +240,7 @@ input {
     width: 768px;
     max-width: 100%;
     min-height: 480px;
-    margin-top: 350px;
+    /*margin-top: 350px;*/
     
 }
 
@@ -267,8 +304,8 @@ input {
 
 .overlay {
     background: #199ef7;
-    background: -webkit-linear-gradient(to right, #088af5, #01c4ff);
-    background: linear-gradient(to right, #0eb1da, #26a9b3);
+    background: -webkit-linear-gradient(to right, #26a9b3, rgb(55, 238, 177));
+    background: linear-gradient(to right, rgb(55, 238, 177), #26a9b3);
     background-repeat: no-repeat;
     background-size: cover;
     background-position: 0 0;
@@ -356,3 +393,24 @@ footer a {
     color: #3c97bf;
     text-decoration: none;
 }
+
+
+.submit_class{
+    color:#3eccf0;
+    background-color: white;
+    border:1px solid #3eccf0;
+    
+}
+.submit_class:active{
+    color: white;
+    background-color: rgb(55, 238, 177);
+    border: 1px solid white;
+}
+
+.sub_reg{
+    border-radius: 20px ;
+    
+}
+
+
+

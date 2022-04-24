@@ -90,10 +90,7 @@ List<Dottore> dottori = ClinicaDAO.visualizzaDottori(id);
 <div class="tuttecarte">
 
 
-     <form action="formAggiungiDottore.jsp" class="aggD">
-      
-       <button  class="btn1"><i style="color:#2eab97" class="fa-solid fa-user-plus fa-8x"></i></button>        
-    </form>
+     
   
 
 
@@ -112,7 +109,7 @@ List<Dottore> dottori = ClinicaDAO.visualizzaDottori(id);
 
  						<div class="tooltip" >
                             
-                            <a class="btn btn-dark" href="visualizzaDottoreProvaCalendario.jsp?id=<%=d.getIdDottore()%>" value="press me" title="Ispeziona"><i style="color:#2eab97" class="fa-solid fa-eye fa-2x"></i></a>
+                            <a class="btn btn-dark" href="visualizzaDottoreEst.jsp?id=<%=d.getIdDottore()%>" value="press me" title="Ispeziona"><i style="color:#2eab97" class="fa-solid fa-eye fa-2x"></i></a>
 						</div>
 					                  
 				</div>

@@ -26,34 +26,38 @@ public class RegistraPaziente extends HttpServlet {
 			throws ServletException, IOException {
 
 		try (PrintWriter out = response.getWriter()) {
-			String email = request.getParameter("regP-email");
-			String password = request.getParameter("regP-password");
-			String password2 = request.getParameter("regP-password2");
-			String nome = request.getParameter("regP-nome");
-			String cognome = request.getParameter("regP-cognome");
-			String et = request.getParameter("regP-eta");
+			String email = request.getParameter("regPemail");
+			String password = request.getParameter("regPpassword");
+			String nome = request.getParameter("regPnome");
+			String cognome = request.getParameter("regPcognome");
+			String et = request.getParameter("regPeta");
 			int eta = Integer.parseInt(et);
-			String citta = request.getParameter("regP-citta");
-			String regione = request.getParameter("regP-regione");
-			String cFisc = request.getParameter("regP-cf");
+			String citta = request.getParameter("regPcitta");
+			String regione = request.getParameter("regPregione");
+			String cFisc = request.getParameter("regPcf");
 			Paziente paziente = new Paziente(nome, cognome, eta, cFisc, email, password, regione, citta);
 			
 			
-			if( PazienteDAO.check(email,password,password2,eta,cFisc) == false) {			
-			try {
-				request.getSession().setAttribute("utenteP", paziente);
-				PazienteDAO.registraPaziente(paziente);
-				response.sendRedirect("home.jsp");
-			} catch (ClassNotFoundException | SQLException e) {
-				e.printStackTrace();
+			if(PazienteDAO.checkEmail(paziente.getEmail())==false) {
+				try {
+					PazienteDAO.registraPaziente(paziente);
+					request.getSession().setAttribute("utenteP", paziente);
+					int x  =PazienteDAO.recuperaIdPaziente(paziente);
+					response.sendRedirect("profiloUtente.jsp?id="+x);
+				} catch (ClassNotFoundException e) {			
+					e.printStackTrace();
+				} catch (SQLException e) {
+					e.printStackTrace();
+				}
+				
+			}else {
+				response.sendRedirect("formUtente.jsp");
 			}
 
-			}
-			else {
-				response.sendRedirect("regUtenteFail.jsp");
-			}
+
 		}
 	}
+		
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {

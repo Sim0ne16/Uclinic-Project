@@ -10,14 +10,15 @@ body {
     content: '';
     height: 100vh;
     width: 100%;
-    background-image: url(https://image.ibb.co/gzOBup/showcase.jpg);
+    background-image: url(/images/owen-beard-DK8jXx1B-1c-unsplash.jpg);
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center;
     display: block;
     filter: blur(10px);
     -webkit-filter: blur(10px);
-    transition: all 1000ms;
+    transition: all 4000ms;
+    
   }
   
   .showcase:hover::after {

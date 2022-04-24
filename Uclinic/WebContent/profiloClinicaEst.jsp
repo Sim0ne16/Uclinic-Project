@@ -72,7 +72,7 @@
 
 				<i class="fa-solid fa-house-chimney-medical fa-4x"><%=C.getNome()%></i>
 				<li><i class="fa-solid fa-clipboard-user fa-2x"></i> <a
-					href="StaffClinica.jsp?id=<%=x%>"> Staff</a></li>
+					href="StaffClinicaEst.jsp?id=<%=x%>"> Staff</a></li>
 				<li><i class="fa-solid fa-city fa-2x"></i> Citta: <%=C.getCitta()%></li>
 				<li><i class="fa-solid fa-location-dot fa-2x"></i> Indirizzo: <%=C.getIndirizzo()%></li>
 				<li><i class="fa-solid fa-phone fa-2x"></i> Recapito :<%=C.getRecapitoTel()%>
@@ -85,16 +85,7 @@
 		</div>
 
 		<div class="right">
-		<div class="dati-search">
-		<p>Se hai bisogno di trovare un paziente inserisci il suo nome, cognome o codice fiscale!</p>
-		</div>
-		
-		
-			<form class="cercaPazienti" action="CercaPaziente" method="post">
-				<input type="search"  name="cercaP" id="btn-cercaP" placeholder="Inserisci parametro ricerca...">
-				<input type="submit" value="Invia" id="sub-cercaP">
-
-			</form>
+	
 		</div>
 </div>
 

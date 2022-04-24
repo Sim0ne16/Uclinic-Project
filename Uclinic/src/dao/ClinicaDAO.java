@@ -16,8 +16,55 @@ import model.Paziente;
 
 public class ClinicaDAO {
 
+	 public static boolean checkEmail(String email ) {
+    	 boolean esito = false;
+    	 ConnessioneDB con = new ConnessioneDB();
+    	 try {
+			con.connect();
+			String sql="Select * from clinica where email like ?";
+			PreparedStatement stm = con.getCon().prepareStatement(sql);
+			stm.setString(1, email);
+			ResultSet rs = stm.executeQuery();
+			if(rs.next()) {
+				esito = true;
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}finally {
+			try {
+				con.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+    	 return esito;
+     }
 
-
+	  public static int recuperaIdClinica(Clinica clinica) {
+	    	 int id =0 ;
+	    	 ConnessioneDB con = new ConnessioneDB();
+	    	 try {
+				con.connect();
+				String sql = "Select idClinica from clinica where email like ?";
+				PreparedStatement stm = con.getCon().prepareStatement(sql);
+				stm.setString(1,clinica.getEmail());
+				ResultSet rs = stm.executeQuery();
+				if(rs.next()) {
+					id= rs.getInt("idClinica");
+				}
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}finally {
+				try {
+					con.close();
+				} catch (SQLException e) {		
+					e.printStackTrace();
+				}
+			}
+	    	 return id; 
+	     }
+	     
+	 
 	public static boolean registraClinica(Clinica clinica) throws ClassNotFoundException, SQLException {
 		boolean result = false;
 		ConnessioneDB con = new ConnessioneDB();
@@ -153,40 +200,6 @@ public class ClinicaDAO {
 	}
 	
 	
-	public static boolean check(String email,String pass1,String pass2) {
-	boolean esito = false;
-	ConnessioneDB con = new ConnessioneDB();
-	try {
-		con.connect();
-		String query = "select * from clinica where email =?";
-		PreparedStatement pst = con.getCon().prepareStatement(query);
-	    pst.setString(1, email);          
-	    ResultSet rs = pst.executeQuery();
-	    
-	    if(rs.next()) {
-	    	esito = true;
-	    }
-	    
-	    if(pass1 != pass2) {
-	    	esito = true;
-	    }
-	   
-	    if(pass1.length()<5) {
-	    	esito = true;
-	    }
-	    
-		
-	} catch (SQLException e) {
-		e.printStackTrace();
-	}finally {
-		try {
-			con.close();
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}
-	}
-	return esito;
-	}
 	
 	public static boolean aggiungiDottore(Dottore d, Clinica clinica) {
 		boolean esito = false;
@@ -269,30 +282,7 @@ public class ClinicaDAO {
 	}
 	
 	
-	/*
-	public static boolean eliminaDottore(Dottore d, int idClinica) { //elimina dottore solo dal personale
-		boolean esito = false;
-		ConnessioneDB con = new ConnessioneDB();
-		try {
-			con.connect();
-			String query = "DELETE FROM personale WHERE idDottore = ? AND idClinica = ?";
-			PreparedStatement pst = con.getCon().prepareStatement(query);
-			pst.setInt(1, d.getIdDottore());
-			pst.setInt(2, idClinica);
-			pst.executeUpdate();
-			System.out.println("Il dottore ha perso il lavoro");
-			esito = true;
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}finally {
-			try {
-				con.close();
-			} catch (SQLException e) {
-				e.printStackTrace();
-			}
-		}return esito;
-	}
-	*/
+
 	
 	public static boolean eliminaDottore(int id) { 
 		boolean esito = false;
@@ -347,61 +337,62 @@ public class ClinicaDAO {
 		return esito;
 	}
 
-// da modificare 
-public static Paziente cercaPazXCodFisc(Clinica c,String cFisc) {
-	ConnessioneDB con = new ConnessioneDB();
-	Paziente p = null;
-	Appuntamento app = null;
-	try 
-	{
-		con.connect();
-		p= new Paziente();
-		app= new Appuntamento();
-		String sql = "select *"
-				+ "from paziente as P"
-				+ "join appuntamento as a"
-				+ "where P.idPaziente = a.codPaziente and a.codClinica = ? and P.cFisc = ?";
-		PreparedStatement pst = con.getCon().prepareStatement(sql);
-		pst.setInt(1, c.getIdClinica());
-		pst.setString(2, cFisc);
-		ResultSet rs = pst.executeQuery();
-		
-		p.setIdPaziente(rs.getInt("idPaziente"));
-		p.setNome(rs.getString("nome"));
-		p.setCognome(rs.getString("cognome"));
-		p.setEta(rs.getInt("eta"));
-		p.setcFisc(rs.getString("cFisc"));
-		p.setEmail(rs.getString("email"));
-		p.setPassword(rs.getString("password"));
-		p.setRegione(rs.getString("regione"));
-		p.setCitta(rs.getString("citta"));
-		
-		app.setIdAppuntamento(rs.getInt("idAppuntamento"));
-		app.setCodClinica(rs.getInt("codClinica"));
-		app.setCodDottore(rs.getInt("codDottore"));
-		app.setCodPaziente(rs.getInt("codPaziente"));
-		app.setData(rs.getString("data"));
-		app.setOrario(rs.getInt("orario"));
-		app.setDurata(rs.getInt("durata"));
-	} 
-	catch (SQLException e) 
-	{
-		e.printStackTrace();
-	}
-	finally
-	{
+
+	public static List<Paziente> cercaPaziente(Clinica c, String ricerca) {
+		ConnessioneDB con = new ConnessioneDB();
+		List<Paziente> listaP = new ArrayList<Paziente>();
+		Paziente p = null;
 		try 
 		{
-			con.close();
+			con.connect();
+			
+			String sql = "SELECT DISTINCT idPaziente,nome,cognome,eta,cFisc,email,regione,citta "
+					+ "FROM paziente "
+					+ "join appuntamento where paziente.idPaziente = appuntamento.codPaziente "
+					+ "and appuntamento.codClinica=" + c.getIdClinica() + " and "
+					+ "(paziente.cFisc like '%" + ricerca + "%' "
+							+ "or paziente.nome like '%" + ricerca + "%' "
+									+ "or paziente.cognome like '%" + ricerca + "%');";
+			PreparedStatement pst = con.getCon().prepareStatement(sql);
+			ResultSet rs = pst.executeQuery();
+			while(rs.next()) {	
+			p= new Paziente();
+			p.setIdPaziente(rs.getInt("idPaziente"));
+			p.setNome(rs.getString("nome"));
+			p.setCognome(rs.getString("cognome"));
+			p.setEta(rs.getInt("eta"));
+			p.setcFisc(rs.getString("cFisc"));
+			p.setEmail(rs.getString("email"));
+			p.setRegione(rs.getString("regione"));
+			p.setCitta(rs.getString("citta"));
+	        if(!p.getNome().equals("paziente")) {
+				listaP.add(p);
+			}
+			}
 		} 
-		catch (SQLException e)
+		catch (SQLException e) 
 		{
 			e.printStackTrace();
 		}
+		finally
+		{
+			try 
+			{
+				con.close();
+			} 
+			catch (SQLException e)
+			{
+				e.printStackTrace();
+			}
+		}
+		return listaP;
+		
 	}
-	return p;
+
 	
-}
+	
+	
+	
 
 public static boolean creaAppuntamento(Appuntamento app) {
 	boolean esito = false;

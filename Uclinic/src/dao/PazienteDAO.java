@@ -9,6 +9,7 @@ import java.util.List;
 
 import connection.ConnessioneDB;
 import model.Appuntamento;
+import model.Clinica;
 import model.Dottore;
 import model.Paziente;
 
@@ -48,50 +49,55 @@ public class PazienteDAO {
 		return result;
 	}
 	
-     public static boolean check(String email,String password1,String password2,int eta,String cf) {
-	boolean esito = false;
-	ConnessioneDB con = new ConnessioneDB();
-	try {
-		con.connect();
-		String query = "select * from paziente where email =?";
-		PreparedStatement pst = con.getCon().prepareStatement(query);
-	    pst.setString(1, email);          
-	    ResultSet rs = pst.executeQuery();
-	    //controlli per una registrazione 
 
-	    if(rs.next()) {
-	    	esito = true;
-	    }
-	    
-	    if(password1 != password2) {
-	    	esito = true;
-	    }
-	    
-	    if(password1.length()<5) {
-	    	esito = true;
-	    }
-	    
-	    if(eta>110 || eta<18) {
-	    	esito = true;
-	    }
-	    
-	    if(cf.length()<16) {
-	    	esito=true;
-	    }
-	    
-	} catch (SQLException e) {
-		e.printStackTrace();
-	} finally {
-		try {
-			con.close();
+     public static boolean checkEmail(String email ) {
+    	 boolean esito = false;
+    	 ConnessioneDB con = new ConnessioneDB();
+    	 try {
+			con.connect();
+			String sql="Select * from paziente where email like ?";
+			PreparedStatement stm = con.getCon().prepareStatement(sql);
+			stm.setString(1, email);
+			ResultSet rs = stm.executeQuery();
+			if(rs.next()) {
+				esito = true;
+			}
 		} catch (SQLException e) {
 			e.printStackTrace();
+		}finally {
+			try {
+				con.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
 		}
-	}
-return esito;
-}
+    	 return esito;
+     }
 	
-	
+     public static int recuperaIdPaziente(Paziente paziente) {
+    	 int id =0 ;
+    	 ConnessioneDB con = new ConnessioneDB();
+    	 try {
+			con.connect();
+			String sql = "Select idPaziente from paziente where email like ?";
+			PreparedStatement stm = con.getCon().prepareStatement(sql);
+			stm.setString(1,paziente.getEmail());
+			ResultSet rs = stm.executeQuery();
+			if(rs.next()) {
+				id= rs.getInt("idPaziente");
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}finally {
+			try {
+				con.close();
+			} catch (SQLException e) {		
+				e.printStackTrace();
+			}
+		}
+    	 return id; 
+     }
+     
 	public static Paziente loginPaziente(String email, String password) {
 		Paziente paziente = null;
 		ConnessioneDB con = new ConnessioneDB();
@@ -192,9 +198,50 @@ public static List<Dottore> cercaDottore(String ricerca) {
 	return listaD;
 }
 
-}
+
 	
-	  
+public static List<Clinica> cercaClinica(String ricerca) {
+	ConnessioneDB con = new ConnessioneDB();
+	List<Clinica> listaC = null;
+	try 
+	{
+		con.connect();
+		String sql = "SELECT * FROM clinica where nome like '%" + ricerca + "%'";
+		PreparedStatement pst = con.getCon().prepareStatement(sql);
+		ResultSet rs = pst.executeQuery();
+		listaC = new ArrayList<Clinica>();
+		while (rs.next()) 
+		{
+			Clinica c = new Clinica();
+			c.setIdClinica(rs.getInt("idClinica")); // sempre meglio portarsi dietro l'id!
+			c.setNome(rs.getString("nome"));
+			c.setRegione(rs.getString("regione"));
+			c.setCitta(rs.getString("citta"));
+			c.setIndirizzo(rs.getString("indirizzo"));
+			c.setEmail(rs.getString("email"));
+			c.setRecapitoTel(rs.getString("recapitoTel"));
+			listaC.add(c);
+		}
+	} catch (SQLException e) 
+	{
+		e.printStackTrace();
+	}
+	finally 
+	{
+		try 
+		{
+			con.close();
+		} 
+		catch (SQLException e) 
+		{
+			e.printStackTrace();
+		}
+	}
+	return listaC;
+}
+}
+
+  
 	    
 
 	 

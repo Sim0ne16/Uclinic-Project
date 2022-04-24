@@ -1,36 +1,23 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
-    
+<%@page import="dao.PazienteDAO"%>
 <%@page import="model.*"%>
 <%@page import="java.util.*"%>
 <%@page import="dao.*"%>
-      	
-
-    
 <!DOCTYPE html>
 <html>
-
 <head>
 <meta charset="ISO-8859-1">
    <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="css/StaffClinica.css">
+    <link rel="stylesheet" href="css/PazientiClinica.css">
     <script src="https://kit.fontawesome.com/367813bf67.js" crossorigin="anonymous"></script>
-    <title>Staff</title>
+    <title>Ricerca</title>
 </head>
-
-<% 
- int id = Integer.parseInt(request.getParameter("id"));
-List<Dottore> dottori = ClinicaDAO.visualizzaDottori(id);
-%>
-
-
-
+<% Clinica c= (Clinica)session.getAttribute("utenteC"); %>
+<% List<Paziente> listaP = ClinicaDAO.cercaPaziente(c, request.getParameter("ricerca")); %>
 <body>
-
- 
- 
  <div class="container">
         
         <label class="logo"> <a>Uclinic</a></label>
@@ -57,24 +44,8 @@ List<Dottore> dottori = ClinicaDAO.visualizzaDottori(id);
                     
                 </ul>
             </li>
-
-        </ul>
-        <input type="checkbox"  id="bc2">
-        <label for="bc2" class="search-icon">
-            <i class="fa fa-search"></i>
-            <i class="fa fa-close"></i>
-        </label>
-
-        <div class="search-box">
-
-            <form class="QI">
-
-                <input type="search" placeholder="Search..." class="search">
-                <input type="submit" value="Ok" class="sub">
-
-            </form>
-
-        </div>
+</ul>
+      
     </div>
  
  
@@ -90,40 +61,42 @@ List<Dottore> dottori = ClinicaDAO.visualizzaDottori(id);
 <div class="tuttecarte">
 
 
-     <form action="formAggiungiDottore.jsp" class="aggD">
-      
-       <button  class="btn1"><i style="color:#2eab97" class="fa-solid fa-user-plus fa-8x"></i></button>        
-    </form>
-  
-
-
-    <% for(Dottore d : dottori) {  %>
-  <div class="carte">
+   <div class="titoloR">
+<h3>Pazienti</h3>
+</div>
+<div class="carteDott">
+   
+  <% for(Paziente p : listaP) {  %>
 
 
 	
-			<span class="card">
+			<div class="card">
 		
-					<img class="card-img-top" src="https://www.ciaodottore.it/file-asset/Ciao_Dottore_Medico1?v=1" alt="Card image cap">
+					<img class="card-img-top" src="https://cdn.pixabay.com/photo/2017/09/30/18/53/prognosis-icon-2803190_960_720.png" alt="Card image cap">
 					
-					<h3 class="category"><%=d.getSpecializzazione() %></h5>
-						<h3 class="card-title"><%=d.getNome()%> <%=d.getCognome()%></h5>
+					<h5 class="card-title">
+						<%=p.getNome()%> <%=p.getCognome()%></h5>
 						
 
  						<div class="tooltip" >
                             
-                            <a class="btn btn-dark" href="visualizzaDottoreProvaCalendario.jsp?id=<%=d.getIdDottore()%>" value="press me" title="Ispeziona"><i style="color:#2eab97" class="fa-solid fa-eye fa-2x"></i></a>
+                            <a class="btn btn-dark" href="profiloUtenteEst.jsp?id=<%=p.getIdPaziente() %>" title="Ispeziona"><i style="color:#2eab97" class="fa-solid fa-eye fa-2x"></i></a>
 						</div>
-					                  
+					
 				</div>
-			
-        </span>     
-	
-		
-			<% }
+				<% }
 				
 			
  %>
+				</div>  
+				<br>
+				
+	
+		
+   
+	
+		
+			
  
        </div>    
  
