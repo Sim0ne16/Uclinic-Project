@@ -390,6 +390,45 @@ public class ClinicaDAO {
 	}
 
 	
+	public static Paziente recuperaPaziente(int id) {
+		Paziente paz = new Paziente();
+		ConnessioneDB con = new ConnessioneDB();
+		try {
+			con.connect();
+			String sql = "Select * from paziente where idPaziente like ?";
+			PreparedStatement stm = con.getCon().prepareStatement(sql);
+			stm.setInt(1, id);
+			ResultSet rs = stm.executeQuery();
+			if(rs.next()) {
+				String nome = rs.getString("nome");
+				String cognome = rs.getString("cognome");
+				int eta = rs.getInt("eta");
+				String cf = rs.getString("cFisc");
+				String email = rs.getString("email");
+				String regione = rs.getString("regione");
+				String citta = rs.getString("citta");
+				
+				paz.setNome(nome);
+				paz.setCognome(cognome);
+			    paz.setEta(eta);
+			    paz.setIdPaziente(id);
+			    paz.setEmail(email);
+			    paz.setCitta(citta);
+			    paz.setRegione(regione);
+			    paz.setcFisc(cf);
+				
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				con.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+		return paz;
+	}
 	
 	
 	

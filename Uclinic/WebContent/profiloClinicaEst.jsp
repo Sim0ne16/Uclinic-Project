@@ -19,6 +19,13 @@
 </head>
 <body>
 
+  <%
+                Paziente p =(Paziente) session.getAttribute("utenteP");
+             int x = Integer.parseInt(request.getParameter("id"));
+	         Clinica C = (Clinica)PazienteDAO.recuperaClinica(x);
+                %>
+
+
 	<!--   NAV BAR   -->
 
 	<div class="container">
@@ -29,20 +36,10 @@
 		<ul class="nav">
 
 
-			<li><a href="">Home</a></li>
-			<li><a href="">About</a></li>
+			<li><a href="profiloUtente.jsp?id=<%=p.getIdPaziente() %>">Home</a></li>
+		
 
-			<li class="parent"><a href="">Profile</a>
-				<ul>
-					<li><a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ">Modifica
-							Profilo</a></li>
-					
-					<li class="parent"><a href="#">Impostazioni</a>
-						<ul>
-							<li><a href="#" class="ciao">Ciao</a></li>
-						</ul></li>
-
-				</ul></li>
+		
 
 		</ul>
 
@@ -57,10 +54,7 @@
 
 	<section id="wrapper">
 
-		<%
-		Clinica C = (Clinica) session.getAttribute("utenteC");
-		int x = C.getIdClinica();
-		%>
+	
 <div class="dxandsx">
 		<div class="left">
 

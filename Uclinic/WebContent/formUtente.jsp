@@ -63,7 +63,9 @@
             </div>
             <div class="button">
              <input type="submit" onclick="registrazioneP()" class="btn btn-primary" value="Registrazione" >
+             <button type="button">Ritorna </button>       
         </div>
+        
         </form>
        </div>
       

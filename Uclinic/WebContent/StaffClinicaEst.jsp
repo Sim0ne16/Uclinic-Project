@@ -22,7 +22,9 @@
 
 <% 
  int id = Integer.parseInt(request.getParameter("id"));
-List<Dottore> dottori = ClinicaDAO.visualizzaDottori(id);
+ Clinica C = (Clinica)PazienteDAO.recuperaClinica(id);
+ List<Dottore> dottori = ClinicaDAO.visualizzaDottori(id);
+Paziente p =(Paziente) session.getAttribute("utenteP");
 %>
 
 
@@ -37,26 +39,8 @@ List<Dottore> dottori = ClinicaDAO.visualizzaDottori(id);
         <ul class="nav">
             
             
-            <li><a href="">Home</a></li>
-            <li><a href="">About</a></li>
-
-            <li class="parent">
-                <a href="">Profile</a>
-                <ul>
-                    <li><a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ">Modifica Profilo</a></li>
-                    <li><a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ">Modifica Medical History</a></li>
-                    <li class="parent">
-                        <a href="#">Impostazioni</a>
-                        <ul>
-                            <li>
-                                <a href="#" class="ciao">Ciao</a>
-                                
-                            </li>
-                        </ul>
-                    </li>
-                    
-                </ul>
-            </li>
+            <li><a href="profiloUtente.jsp?id=<%=p.getIdPaziente() %>">Home</a></li>
+            
 
         </ul>
         <input type="checkbox"  id="bc2">
@@ -73,7 +57,7 @@ List<Dottore> dottori = ClinicaDAO.visualizzaDottori(id);
                 <input type="submit" value="Ok" class="sub">
 
             </form>
-
+      
         </div>
     </div>
  
@@ -101,7 +85,7 @@ List<Dottore> dottori = ClinicaDAO.visualizzaDottori(id);
 	
 			<span class="card">
 		
-					<img class="card-img-top" src="https://www.ciaodottore.it/file-asset/Ciao_Dottore_Medico1?v=1" alt="Card image cap">
+					<img class="card-img-top" src="https://cdn.pixabay.com/photo/2017/05/15/23/47/stethoscope-icon-2316460_960_720.png" alt="Card image cap">
 					
 					<h3 class="category"><%=d.getSpecializzazione() %></h5>
 						<h3 class="card-title"><%=d.getNome()%> <%=d.getCognome()%></h5>
@@ -109,7 +93,7 @@ List<Dottore> dottori = ClinicaDAO.visualizzaDottori(id);
 
  						<div class="tooltip" >
                             
-                            <a class="btn btn-dark" href="visualizzaDottoreEst.jsp?id=<%=d.getIdDottore()%>" value="press me" title="Ispeziona"><i style="color:#2eab97" class="fa-solid fa-eye fa-2x"></i></a>
+                            <a class="btn btn-dark" href="visualizzaDottoreEst.jsp?id=<%=id%>" value="press me" title="Ispeziona"><i style="color:#2eab97" class="fa-solid fa-eye fa-2x"></i></a>
 						</div>
 					                  
 				</div>

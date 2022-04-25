@@ -29,12 +29,12 @@
             
             
             <li><a href="">Home</a></li>
-            <li><a href="">About</a></li>
+           
 
             <li class="parent">
                 <a href="">Profile</a>
                 <ul>
-                    <li><a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ">Modifica Profilo</a></li>
+                    <li><a href="">Modifica Profilo</a></li>
                     <li><a href="MedicalHistory.jsp">Modifica Medical History</a></li>
                     <li class="parent">
                         <a href="#">Impostazioni</a>
@@ -46,9 +46,11 @@
                         </ul>
                     </li>
                     
+                  
                 </ul>
             </li>
-
+            
+             <li><a href="Login.jsp">Esci </a></li>
         </ul>
         <input type="checkbox"  id="bc2">
         <label for="bc2" class="search-icon">
@@ -69,10 +71,11 @@
 
 
             </form>
+ 
 
         </div>
         
-        
+       
         
     </div>
 
@@ -112,9 +115,9 @@
           <div class="accordion" >
             <button type="button" class="accordion_button">Medical History</button>
             <div class="accordion__content">
-               <li><p>Peso : 80kg....</p></li>
-                <li> <p>Altezza : 1.80 metri </p></li>
-                <li> <p>Sangue : non lo so</p></li>
+               <li><p>Peso :</p></li>
+                <li> <p>Altezza :  </p></li>
+                <li> <p>Sangue : </p></li>
             </div>
         </div>
 

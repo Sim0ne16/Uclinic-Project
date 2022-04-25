@@ -30,11 +30,11 @@
 
 
 			<li><a href="">Home</a></li>
-			<li><a href="">About</a></li>
+			
 
 			<li class="parent"><a href="">Profile</a>
 				<ul>
-					<li><a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ">Modifica
+					<li><a href="modificaProfiloClinica.jsp">Modifica
 							Profilo</a></li>
 					
 					<li class="parent"><a href="#">Impostazioni</a>
@@ -44,6 +44,7 @@
 
 				</ul></li>
 
+            <li><a href="Login.jsp">Logout</a></li>
 		</ul>
 
 

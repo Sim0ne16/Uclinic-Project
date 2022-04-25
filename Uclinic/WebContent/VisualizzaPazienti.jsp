@@ -25,25 +25,7 @@
             
             
             <li><a href="">Home</a></li>
-            <li><a href="">About</a></li>
-
-            <li class="parent">
-                <a href="">Profile</a>
-                <ul>
-                    <li><a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ">Modifica Profilo</a></li>
-                    <li><a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ">Modifica Medical History</a></li>
-                    <li class="parent">
-                        <a href="#">Impostazioni</a>
-                        <ul>
-                            <li>
-                                <a href="#" class="ciao">Ciao</a>
-                                
-                            </li>
-                        </ul>
-                    </li>
-                    
-                </ul>
-            </li>
+           
 </ul>
       
     </div>
@@ -62,7 +44,7 @@
 
 
    <div class="titoloR">
-<h3>Pazienti</h3>
+<h3>Pazienti</h3>	
 </div>
 <div class="carteDott">
    
@@ -76,6 +58,7 @@
 					
 					<h5 class="card-title">
 						<%=p.getNome()%> <%=p.getCognome()%></h5>
+						
 						
 
  						<div class="tooltip" >

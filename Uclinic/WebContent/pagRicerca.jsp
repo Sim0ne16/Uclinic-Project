@@ -11,13 +11,14 @@
    <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="css/PazientiClinica.css">
+    <link rel="stylesheet" href="css/PagRicerca.css">
     <script src="https://kit.fontawesome.com/367813bf67.js" crossorigin="anonymous"></script>
       
     <title>Ricerca</title>
 </head>
 <%List<Dottore> listaD = PazienteDAO.cercaDottore(request.getParameter("ricerca"));%>
 <%List<Clinica> listaC = PazienteDAO.cercaClinica(request.getParameter("ricerca"));%>
+<% Paziente p =(Paziente) session.getAttribute("utenteP"); %>
 <body>
  <div class="container">
         
@@ -25,26 +26,9 @@
         <ul class="nav">
             
             
-            <li><a href="">Home</a></li>
-            <li><a href="">About</a></li>
+            <li><a href="profiloUtente.jsp?id=<%=p.getIdPaziente()%>">Home</a></li>
+          
 
-            <li class="parent">
-                <a href="">Profile</a>
-                <ul>
-                    <li><a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ">Modifica Profilo</a></li>
-                    <li><a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ">Modifica Medical History</a></li>
-                    <li class="parent">
-                        <a href="#">Impostazioni</a>
-                        <ul>
-                            <li>
-                                <a href="#" class="ciao">Ciao</a>
-                                
-                            </li>
-                        </ul>
-                    </li>
-                    
-                </ul>
-            </li>
 
         </ul>
         <input type="checkbox"  id="bc2">

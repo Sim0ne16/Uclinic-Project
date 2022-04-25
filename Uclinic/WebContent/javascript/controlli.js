@@ -38,31 +38,23 @@ function validaCodiceFiscale(cf) {
 function valida() {
 	var peso = document.getElementById("peso");
 	var altezza = document.getElementById("altezza");
-	var sangue = document.getElementById("sangue");
 
-	if ((isNaN(peso)) || (peso == "") || (peso == "undefined")) {
-		alert("Devi inserire il peso, deve essere numerico!");
-		peso.value = "";
-		peso.focus();
-		return false;
-	}
+  if ((peso <= 0) || (peso >= 561)) {
+        alert("Il valore inserito non è valido, riprova!");
+        peso.value = "";
+        peso.focus();
+        return false;
+    }
 
-	if ((isNaN(altezza)) || (altezza == "") || (altezza == "undefined")) {
-		alert("Devi inserire l'altezza, deve essere numerico!");
-		altezza.value = "";
-		altezza.focus();
-		return false;
-	}
+    if ((altezza <= 19 ) ||  (altezza >= 216))
+        alert("Il valore inserito non è valido, riprova!");
+        altezza.value = "";
+        altezza.focus();
+         return false;
+    }
 
 
-	if ((sangue == "") || (sangue == "undefined")) {
-		alert("Devi sceglire un tipo di sangue!");
-		document.getElementById("sangue").value = "";
-		document.getElementById("sangue").focus();
-		return false;
-	}
 
-}
 
 //funzione registrazione utente!
 

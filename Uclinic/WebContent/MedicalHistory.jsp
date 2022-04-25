@@ -16,6 +16,7 @@
 	<link rel="stylesheet" href="css/form.css">  
 	<script src="javascript/controlli.js"></script>
     <script src="https://kit.fontawesome.com/367813bf67.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="css/form">
 <title>Modifica Medical History</title>
 </head>
 
@@ -33,16 +34,16 @@
 
 <div class="container">
 		<div class="card w-50 mx-auto my-5">
-			<div class="card-header text-center">Modifica Medidcal History</div>
+			<div class="card-header text-center">Modifica Medical History</div>
 			<div class="card-body">
 				<form action="AggiungiDottore" method="post" name="form">
 					<div class="form-group">
 						<label>Peso</label> 
-						<input type="text" id="peso" name="peso" class="form-control" >
+						<input type="text" id="peso"  name="peso" class="form-control" >
 					</div>
 					<div class="form-group">
 						<label>Altezza</label> 
-						<input type="text" id="altezza" name="altezza" class="form-control" >
+						<input type="text" id="altezza"  name="altezza" class="form-control" >
 					</div>
 					<div class="form-group1">
 					

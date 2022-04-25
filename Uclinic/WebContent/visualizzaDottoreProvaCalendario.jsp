@@ -19,7 +19,7 @@
     <title>Document</title>
 </head>
 
-
+<%  Clinica c = (Clinica)request.getSession().getAttribute("utenteC"); %>
 
 <body>
 
@@ -33,26 +33,10 @@
         <ul class="nav">
             
             
-            <li><a href="">Home</a></li>
-            <li><a href="">About</a></li>
+            <li><a href="profiloClinica.jsp?id=<%=c.getIdClinica()%>">Home</a></li>
+            
 
-            <li class="parent">
-                <a href="">Profile</a>
-                <ul>
-                    <li><a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ">Modifica Profilo</a></li>
-                    <li><a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ">Modifica Medical History</a></li>
-                    <li class="parent">
-                        <a href="#">Impostazioni</a>
-                        <ul>
-                            <li>
-                                <a href="#" class="ciao">Ciao</a>
-                                
-                            </li>
-                        </ul>
-                    </li>
-                    
-                </ul>
-            </li>
+           
 
         </ul>
         <input type="checkbox"  id="bc2">
@@ -85,8 +69,7 @@
         <ul class="asd">  
              
         
-         <%
-                Clinica c = (Clinica)request.getSession().getAttribute("utenteC");
+         <%               
                 int idClinica = c.getIdClinica();		 
         		int idDoc = Integer.parseInt(request.getParameter("id"));
         		Dottore d =  ClinicaDAO.visualizzaDottore(idDoc);

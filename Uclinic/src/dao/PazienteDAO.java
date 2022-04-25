@@ -239,9 +239,48 @@ public static List<Clinica> cercaClinica(String ricerca) {
 	}
 	return listaC;
 }
+
+
+public static Clinica recuperaClinica(int id) {
+	Clinica C = new Clinica();
+	ConnessioneDB con = new ConnessioneDB();
+	try {
+		con.connect();
+		String sql = "Select * from clinica where idClinica like ?";
+		PreparedStatement stm = con.getCon().prepareStatement(sql);
+		stm.setInt(1, id);
+		ResultSet rs = stm.executeQuery();
+		if(rs.next()) {
+			String nome = rs.getString("nome");
+			String indirizzo = rs.getString("indirizzo");	
+			String recapito = rs.getString("recapitoTel");
+			String email = rs.getString("email");
+			String regione = rs.getString("regione");
+			String citta = rs.getString("citta");
+			
+			C.setNome(nome);
+			C.setIndirizzo(indirizzo);	    
+		    C.setIdClinica(id);
+		    C.setEmail(email);
+		    C.setCitta(citta);
+		    C.setRegione(regione);
+		    C.setRecapitoTel(recapito);
+		 
+			
+		}
+	} catch (SQLException e) {
+		e.printStackTrace();
+	} finally {
+		try {
+			con.close();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+	}
+	return C;
 }
 
-  
+}
 	    
 
 	 

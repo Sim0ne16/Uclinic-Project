@@ -14,6 +14,7 @@
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
 	<link rel="stylesheet" href="css/ModificaClinica.css">
+    <link rel="stylesheet" href="css/formAggDottore.css">
     
     <script src="https://kit.fontawesome.com/367813bf67.js" crossorigin="anonymous"></script>
 <title>Modifica Dottore</title>
@@ -72,7 +73,6 @@
 			</div>
 		</div>
 	</div>
-
-     <button id="staffReg" type="submit" class="btn btn-primary" style=color:white><a href="visualizzaDottore.jsp?id=<%=idDoc%>">Dottore</a></button>
+     <button id="staffReg" type="submit" class="btn btn-primary"  style=color:white><a href="visualizzaDottore.jsp?id=<%=idDoc%>">Dottore</a></button>
 </body>
 </html>
