@@ -25,6 +25,20 @@ public class Paziente {
 		this.regione = regione;
 	}
 	
+	public Paziente(int id,String nome, String cognome, int eta, String cFisc, String email, String citta,
+			String regione) {
+		super();
+		this.idPaziente = id;
+		this.nome = nome;
+		this.cognome = cognome;
+		this.eta = eta;
+		this.cFisc = cFisc;
+		this.email = email;
+		this.password = password;
+		this.citta = citta;
+		this.regione = regione;
+	}
+	
 	public Paziente(String email, String password) {
 		super();
 		this.email = email;

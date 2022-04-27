@@ -24,7 +24,7 @@
  int id = Integer.parseInt(request.getParameter("id"));
  Clinica C = (Clinica)PazienteDAO.recuperaClinica(id);
  List<Dottore> dottori = ClinicaDAO.visualizzaDottori(id);
-Paziente p =(Paziente) session.getAttribute("utenteP");
+ Paziente p =(Paziente) session.getAttribute("utenteP");
 %>
 
 
@@ -90,10 +90,11 @@ Paziente p =(Paziente) session.getAttribute("utenteP");
 					<h3 class="category"><%=d.getSpecializzazione() %></h5>
 						<h3 class="card-title"><%=d.getNome()%> <%=d.getCognome()%></h5>
 						
+						<% int idDottore = d.getIdDottore(); %>
 
  						<div class="tooltip" >
                             
-                            <a class="btn btn-dark" href="visualizzaDottoreEst.jsp?id=<%=id%>" value="press me" title="Ispeziona"><i style="color:#2eab97" class="fa-solid fa-eye fa-2x"></i></a>
+                            <a class="btn btn-dark" href="visualizzaDottoreEst.jsp?idDottore=<%=idDottore%>" value="press me" title="Ispeziona"><i style="color:#2eab97" class="fa-solid fa-eye fa-2x"></i></a>
 						</div>
 					                  
 				</div>

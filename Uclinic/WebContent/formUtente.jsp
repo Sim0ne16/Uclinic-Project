@@ -14,7 +14,7 @@
     <script src="https://kit.fontawesome.com/367813bf67.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="css/form.css">
     <script src="javascript/controlli.js"></script>
-    <script src="javascript/porta.js"></script>
+
       
     <title>Document</title>
 </head>
@@ -63,22 +63,18 @@
             </div>
             <div class="button">
              <input type="submit" onclick="registrazioneP()" class="btn btn-primary" value="Registrazione" >
-             <button type="button">Ritorna </button>       
+                    
+        <button class="bb1" type="button">Ritorna</button>
+        
         </div>
+        
         
         </form>
        </div>
-      
-      
-    
-   
-  
-    
-      <div id="container" style="width: 0px; height: 0px;">
-        <i id="hidden-div1" class="fa-solid fa-door-closed  fa-2x"style="color:#3eccf0" ></i>
-        <div id="hidden-div"><i class="fa-solid fa-door-open fa-2x " style="color:#3eccf0"  ></i></div>
-      </div>
-  
-      
+
+
+	
+
+
 </body>
 </html>

@@ -24,7 +24,8 @@
         <ul class="nav">
             
             
-            <li><a href="">Home</a></li>
+           
+            <li><a href="profiloClinica.jsp?id=<%=c.getIdClinica()%>">Home</a></li>
            
 </ul>
       
@@ -74,11 +75,6 @@
 				</div>  
 				<br>
 				
-	
-		
-   
-	
-		
 			
  
        </div>    

@@ -58,10 +58,6 @@
    <section id="wrapper">
 
  
-			
-     
-    
- 
 <!-- da aggiungere id  -->
 
 <div class="tuttecarte">
@@ -86,7 +82,7 @@
 
  						<div class="tooltip" >
                             
-                            <a class="btn btn-dark"  href="visualizzaDottoreEst.jsp?id=<%=d.getIdDottore() %>" title="Ispeziona"><i style="color:#2eab97" class="fa-solid fa-eye fa-2x"></i></a>
+                            <a class="btn btn-dark"  href="visualizzaDottoreEst.jsp?idDottore=<%=d.getIdDottore() %>" title="Ispeziona"><i style="color:#2eab97" class="fa-solid fa-eye fa-2x"></i></a>
 						</div>
 					
 				</div>
@@ -130,9 +126,6 @@
  %>
         </div>     
 	
-		
-			
- 
        </div>    
  
  

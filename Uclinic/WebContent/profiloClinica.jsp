@@ -15,10 +15,13 @@
 <link rel="stylesheet" href="css/profiloClinica.css">
 <script src="https://kit.fontawesome.com/367813bf67.js"
 	crossorigin="anonymous"></script>
-<title>Document</title>
+<title>Clinica Home</title>
 </head>
 <body>
-
+<%
+		Clinica C = (Clinica) session.getAttribute("utenteC");
+		int x = C.getIdClinica();
+		%>
 	<!--   NAV BAR   -->
 
 	<div class="container">
@@ -34,12 +37,12 @@
 
 			<li class="parent"><a href="">Profile</a>
 				<ul>
-					<li><a href="modificaProfiloClinica.jsp">Modifica
+					<li><a href="modificaProfiloClinica.jsp?id=<%=x%>">Modifica
 							Profilo</a></li>
 					
 					<li class="parent"><a href="#">Impostazioni</a>
 						<ul>
-							<li><a href="#" class="ciao">Ciao</a></li>
+							<li><a href="#" class="ciao">Impostazioni</a></li>
 						</ul></li>
 
 				</ul></li>
@@ -58,10 +61,7 @@
 
 	<section id="wrapper">
 
-		<%
-		Clinica C = (Clinica) session.getAttribute("utenteC");
-		int x = C.getIdClinica();
-		%>
+		
 <div class="dxandsx">
 		<div class="left">
 
@@ -74,7 +74,9 @@
 				<i class="fa-solid fa-house-chimney-medical fa-4x"><%=C.getNome()%></i>
 				<li><i class="fa-solid fa-clipboard-user fa-2x"></i> <a
 					href="StaffClinica.jsp?id=<%=x%>"> Staff</a></li>
+				<li><i class="fa-solid fa-city fa-2x"></i> Regione: <%=C.getRegione()%></li>
 				<li><i class="fa-solid fa-city fa-2x"></i> Citta: <%=C.getCitta()%></li>
+				
 				<li><i class="fa-solid fa-location-dot fa-2x"></i> Indirizzo: <%=C.getIndirizzo()%></li>
 				<li><i class="fa-solid fa-phone fa-2x"></i> Recapito :<%=C.getRecapitoTel()%>
 				</li>
@@ -98,16 +100,6 @@
 			</form>
 		</div>
 </div>
-
-
-
-
-
-
-
-
-
-
 
 
 		<div class="wave wave1"></div>

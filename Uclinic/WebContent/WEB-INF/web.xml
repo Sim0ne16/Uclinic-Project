@@ -19,4 +19,14 @@
     <servlet-name>ModificaDottore</servlet-name>
     <url-pattern>/ModificaDottore</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>modificaMedicalHistory</display-name>
+    <servlet-name>modificaMedicalHistory</servlet-name>
+    <servlet-class>controller.AggiungiDottore</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>modificaMedicalHistory</servlet-name>
+    <url-pattern>/modificaMedicalHistory</url-pattern>
+  </servlet-mapping>
 </web-app>

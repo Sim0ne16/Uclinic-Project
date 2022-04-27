@@ -1,10 +1,353 @@
 @charset "ISO-8859-1";
 
-
-#staffReg{
-	margin-left:48%;
-	
+*{
+    margin : 0;
+    padding:0;
+    box-sizing: border-box;
+     font-family: 'Poppins' sans-serif;
+    
 }
+body{
+    display: flex;
+    height: 110vh;
+    justify-content: center;
+    align-items: center;
+    background-image:  linear-gradient(#ffffe0,#b0e0e6 );
+
+}
+
+
+.bb1{
+    margin-top: 12px;
+    height: 45px;
+    margin: 20px 0;
+    border-radius: 10px;
+    border-style:ridge;
+    border-width: 2px;
+    border-color:#3eccf0;
+    background:  rgb(55, 238, 177);
+    color: white;
+
+}
+
+ .bb1:hover{
+    background:  #78d7e4 ;
+}
+
+
+
+
+
+
+
+.container{
+    max-width: 700px;
+    width: 100%;
+    background:white ;
+    border-radius: 10px;
+    border-style:ridge;
+    border-color: #3eccf0;
+    border-width: 2px;
+    box-shadow: 0 14px 28px rgba(255, 255, 255, 0.25), 0 10px 10px rgba(0,0,0,0.22);
+    margin-bottom: 7%;
+    
+
+}
+.container .title{
+    font-size: 25px;
+    font-weight: 500;
+    position:relative;
+    
+}
+
+.container .title::before{
+    content: '' ;
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    height: 3px;
+    width: 30px;
+    background: linear-gradient(#ffffe0,#b0e0e6 );
+
+}
+
+.container form .user-details{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    margin: 20px 0 12px;
+}
+
+form .user-details .input-box{
+    margin-bottom: 15px;
+    width: calc(100%/ 2 - 20px);
+}
+
+.user-details .input-box .details{
+    display: block;
+    font-weight: 500;
+    margin-bottom: 5px;
+
+
+}
+
+
+.user-details .input-box input{
+    height: 45px;
+    width: 100%;
+    outline: none;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding-left: 15px;
+    font-size: 16px;
+    border-bottom-width: 2px;
+    transition: all 0.3s ease;
+
+
+}
+
+.user-details .input-box input:focus,
+.user-details .input-box input:valid{
+    border-color: #3eccf0;
+
+}
+
+
+
+
+
+
+
+form .button{
+    height: 45px;
+    margin: 45px 0;
+    border-radius: 10px;
+    border-style:ridge;
+    border-width: 2px;
+    border-color:#3eccf0;
+
+}
+
+form .button input{
+    height: 100%;
+    width: 100%;
+    outline: none;
+    color: #fff;
+    border: none;
+    font-size: 18px;
+    font-weight: 500;
+    letter-spacing: 1px;
+    background:  rgb(55, 238, 177);
+    border-radius: 10px;
+
+}
+
+form .button input:hover{
+    background:  #78d7e4 ;
+}
+
+
+
+@media (max-width:584px){
+    .container{
+        max-width: 100%;
+    }
+    form .user-details .input-box{
+        margin-bottom: 15px;
+        width: 100%;
+    }
+    form .gender-details .category{
+        width: 100%;
+    }
+
+    .container form .user-details{
+       max-height: 300px ; 
+       overflow-y : scroll;
+    }
+
+    .user-details::-webkit-scrollbar{
+        width: 0;
+
+    }
+}
+
+
+
+
+section .wave{
+    position: absolute;
+    bottom: 0;
+    left: 0%;
+    transform: translateY(48px);
+    width: 100%;
+    height: 100px;
+    background: url(../images/wave.png);
+    background-size: 1000px 100px;
+    
+ 
+    
+
+}
+
+
+	
+
+
+
+section .wave.wave{
+
+    animation: animate 30s linear infinite;
+z-index: 1000;
+opacity: 1;
+animation-delay: 0s;
+bottom: 0;
+
+}
+
+
+
+
+
+section .wave.wave1{
+animation: animate 30s linear infinite;
+z-index: 1000;
+opacity: 1;
+animation-delay: 0s;
+bottom: 0;
+}
+section .wave.wave2{
+    animation: animate2 15s linear infinite;
+    z-index: 999;
+    opacity: 0.5;
+    animation-delay: -5s;
+    bottom: 10px;
+    }
+
+ section .wave.wave3{
+        animation: animate 30s linear infinite;
+        z-index: 998;
+        opacity: 0.2;
+        animation-delay: -2s;
+        bottom: 15px;
+    }
+
+ section .wave.wave4{
+        animation: animate2 15s linear infinite;
+        z-index: 997;
+        opacity: 0.7;
+        animation-delay: -2s;
+        bottom: 20px;
+}
+
+@keyframes animate{
+    0%
+    {
+        background-position-x: 0;
+    }
+    100%
+    {
+        background-position-x: 1000px;
+    }
+      
+}
+@keyframes animate2{
+    0%
+    {
+        background-position-x: 0;
+    }
+    100%
+    {
+        background-position-x: -1000px;
+    }
+      
+}
+
+
+section .wave{
+
+    position: absolute;
+    bottom: 0;
+    left: 0%;
+    transform: translateY(48px);
+    width: 100%;
+    height: 100px;
+    background: url(../images/wave.png);
+    background-size: 1000px 100px;
+ 
+
+
+}
+
+
+section .wave.wave{
+ animation: animate 30s linear infinite;
+z-index: 1000;
+opacity: 1;
+animation-delay: 0s;
+bottom: 0;
+transform: translateY(100px);
+
+}
+
+
+
+
+
+section .wave.wave1{
+animation: animate 30s linear infinite;
+z-index: 1000;
+opacity: 1;
+animation-delay: 0s;
+bottom: 0;
+}
+section .wave.wave2{
+    animation: animate2 15s linear infinite;
+    z-index: 999;
+    opacity: 0.5;
+    animation-delay: -5s;
+    bottom: 10px;
+    }
+
+ section .wave.wave3{
+        animation: animate 30s linear infinite;
+        z-index: 998;
+        opacity: 0.2;
+        animation-delay: -2s;
+        bottom: 15px;
+    }
+
+ section .wave.wave4{
+        animation: animate2 15s linear infinite;
+        z-index: 997;
+        opacity: 0.7;
+        animation-delay: -2s;
+        bottom: 20px;
+}
+
+@keyframes animate{
+    0%
+    {
+        background-position-x: 0;
+    }
+    100%
+    {
+        background-position-x: 1000px;
+    }
+
+}
+@keyframes animate2{
+    0%
+    {
+        background-position-x: 0;
+    }
+    100%
+    {
+        background-position-x: -1000px;
+    }
+
+}
+
 
 #agg{
 	margin-left:32%

@@ -1,0 +1,221 @@
+@import 'https://fonts.googleapis.com/css?family=Libre+Franklin:400,700';
+html,
+body {
+   height:100vh;
+  font-family: "Libre Franklin", sans-serif;
+  background: linear-gradient(#ffffe0,#b0e0e6 );
+}
+
+
+
+
+
+.container{
+    width: 900px;
+    height: 650px;
+    margin: /* 5% */auto;
+    transform: translateY(100px);
+    background:white ;
+    padding:25px 30px;
+    border-radius: 10px;
+    border-style:ridge;
+    border-color: #3eccf0;
+    border-width: 2px;
+    box-shadow: 0 14px 28px rgba(255, 255, 255, 0.25), 0 10px 10px rgba(0,0,0,0.22);
+}
+
+
+
+
+
+
+
+
+
+
+.container .map {
+  width: 45%;
+  float: left;
+}
+
+
+
+
+
+
+.container .contact-form {
+  width: 53%;
+  margin-left: 2%;
+  float: left;
+}
+
+
+
+
+
+
+.container .contact-form .title {
+  font-size: 2.5em;
+  font-family: "Libre Franklin", sans-serif;
+  font-weight: 700;
+  color: #242424;
+  margin: 5% 8%;
+}
+
+
+
+
+
+
+
+
+.container .contact-form .subtitle {
+  font-size: 1.2em;
+  font-weight: 400;
+  margin: 0 4% 5% 8%;
+}
+
+
+
+
+
+.container .contact-form input,
+.container .contact-form textarea {
+  width: 330px;
+  padding: 3%;
+  margin: 2% 8%;
+  color: #242424;
+  border: 1px solid #B7B7B7;
+}
+
+
+
+
+.container .contact-form input::placeholder,
+.container .contact-form textarea::placeholder {
+  color: #242424;
+}
+
+
+
+
+.container .contact-form .btn-send {
+  border-radius: 10px;
+  border-style:ridge;
+  border-width: 2px;
+  border-color:#3eccf0;
+  background:  rgb(55, 238, 177);
+  width: 180px;
+  height: 60px;
+  color: #F8F8F8;
+  font-weight: 700;
+  margin: 2% 8%;
+ 
+}
+
+.container .contact-form .btn-send:hover{
+    background:  #78d7e4 ;
+    transform: rotate(-4deg);
+}
+
+section .wave{
+    position: absolute;
+    bottom: 0;
+    left: 0%;
+    transform: translateY(48px);
+    width: 100%;
+    height: 100px;
+    background: url(/images/wave.png);
+    background-size: 1000px 100px;
+ 
+    
+
+}
+
+section .wave.wave{
+
+    animation: animate 30s linear infinite;
+z-index: 1000;
+opacity: 1;
+animation-delay: 0s;
+bottom: 0;
+
+}
+
+
+
+
+
+section .wave.wave1{
+animation: animate 30s linear infinite;
+z-index: 1000;
+opacity: 1;
+animation-delay: 0s;
+bottom: 0;
+}
+section .wave.wave2{
+    animation: animate2 15s linear infinite;
+    z-index: 999;
+    opacity: 0.5;
+    animation-delay: -5s;
+    bottom: 10px;
+    }
+
+ section .wave.wave3{
+        animation: animate 30s linear infinite;
+        z-index: 998;
+        opacity: 0.2;
+        animation-delay: -2s;
+        bottom: 15px;
+    }
+
+ section .wave.wave4{
+        animation: animate2 15s linear infinite;
+        z-index: 997;
+        opacity: 0.7;
+        animation-delay: -2s;
+        bottom: 20px;
+}
+
+@keyframes animate{
+    0%
+    {
+        background-position-x: 0;
+    }
+    100%
+    {
+        background-position-x: 1000px;
+    }
+      
+}
+@keyframes animate2{
+    0%
+    {
+        background-position-x: 0;
+    }
+    100%
+    {
+        background-position-x: -1000px;
+    }
+      
+}
+
+.bb1{
+    margin-top: 12px;
+    height: 45px;
+    margin: 20px 0;
+    border-radius: 10px;
+    border-style:ridge;
+    border-width: 2px;
+    border-color:#3eccf0;
+    background:  rgb(55, 238, 177);
+    color: white;
+    
+    
+}
+
+ .bb1:hover{
+    background:  #78d7e4 ;
+    transform: rotate(4deg) ;
+    
+ }

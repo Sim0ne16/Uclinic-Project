@@ -16,7 +16,20 @@ public class Clinica {
 	private String email;
 	private String password;
 	private String recapitoTel;
-
+	
+	public Clinica(int idClinica,String nome, String regione, String citta, String indirizzo, String email, String password,
+			String recapitoTel) {
+		super();
+		this.idClinica=idClinica;
+		this.nome = nome;
+		this.regione = regione;
+		this.citta = citta;
+		this.indirizzo = indirizzo;
+		this.email = email;
+		this.password = password;
+		this.recapitoTel = recapitoTel;
+	}
+	
 	public Clinica(String nome, String regione, String citta, String indirizzo, String email, String password,
 			String recapitoTel) {
 		super();

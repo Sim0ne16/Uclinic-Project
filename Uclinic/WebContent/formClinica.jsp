@@ -9,7 +9,8 @@
 <meta charset="UTF-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<script src="https://kit.fontawesome.com/367813bf67.js" crossorigin="anonymous"></script>
+<script src="https://kit.fontawesome.com/367813bf67.js"
+	crossorigin="anonymous"></script>
 <link rel="stylesheet" href="css/form.css">
 <script src="javascript/controlli.js"></script>
 <title>Document</title>
@@ -59,10 +60,14 @@
 						id="regCrecapito">
 				</div>
 
-			</div>		
-           <div class="button">
-             <input type="submit" onclick="registrazioneC()" class="btn btn-primary" value="Registrazione" >
-        </div>
+			</div>
+			<div class="button">
+				<input type="submit" onclick="registrazioneC()"
+					class="btn btn-primary" value="Registrazione">
+					
+			<button class="bb1" type="button">Ritorna</button>
+			</div>
+
 
 
 		</form>

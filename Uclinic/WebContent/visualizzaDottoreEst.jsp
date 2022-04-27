@@ -70,11 +70,7 @@
         
          <%
         
-                int x = Integer.parseInt(request.getParameter("id"));
-                Clinica c = (Clinica)PazienteDAO.recuperaClinica(x);
-               
-                int idClinica = c.getIdClinica();		 
-        		int idDoc = Integer.parseInt(request.getParameter("id"));
+        		int idDoc = Integer.parseInt(request.getParameter("idDottore"));
         		Dottore d =  ClinicaDAO.visualizzaDottore(idDoc);
                 %>
         
@@ -89,9 +85,10 @@
           </ul>
 
 
+                   
                        <div class="tooltip" >
                                                                                                                                                                                            
-                            <a class="btn btn-dark" href="profiloClinicaEst.jsp?id=<%=idClinica%>" value="press me" title="Clinica"><i  style="color: rgb(55, 238, 177)" class="fa-solid fa-staff-aesculapius fa-2x"></i></a>
+                            <a class="btn btn-dark" href="" value="press me" title="Clinica"><i  style="color: rgb(55, 238, 177)" class="fa-solid fa-staff-aesculapius fa-2x"></i></a>
 						</div>
 
         </div>
@@ -100,11 +97,8 @@
 
 
 <div class="right">
-   <div class="calendario">
-   
-   
-   
-   
+   <div class="prenotaApp">
+   <a href="formAppuntamento.jsp?<%=request.getQueryString() %>"> <button type="submit">Prenota Appuntamento</button></a>
    </div>
 </div>
 

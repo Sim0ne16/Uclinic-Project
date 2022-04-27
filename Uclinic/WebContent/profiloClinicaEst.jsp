@@ -67,6 +67,7 @@
 				<i class="fa-solid fa-house-chimney-medical fa-4x"><%=C.getNome()%></i>
 				<li><i class="fa-solid fa-clipboard-user fa-2x"></i> <a
 					href="StaffClinicaEst.jsp?id=<%=x%>"> Staff</a></li>
+				<li><i class="fa-solid fa-city fa-2x"></i> Regione: <%=C.getRegione()%></li>
 				<li><i class="fa-solid fa-city fa-2x"></i> Citta: <%=C.getCitta()%></li>
 				<li><i class="fa-solid fa-location-dot fa-2x"></i> Indirizzo: <%=C.getIndirizzo()%></li>
 				<li><i class="fa-solid fa-phone fa-2x"></i> Recapito :<%=C.getRecapitoTel()%>

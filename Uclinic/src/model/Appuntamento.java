@@ -6,12 +6,22 @@ public class Appuntamento {
 	private int codClinica;
 	private int codDottore;
 	private int codPaziente;
-	private String data;
-	private int orario;
-	private int durata;
-	private boolean disponibilita;
+	private int giorno;
+	private int mese;
+	private int anno;
+	private int ora;
 	
 	
+	public Appuntamento(int codClinica, int codDottore, int codPaziente, int giorno, int mese, int anno, int ora) {
+		super();
+		this.codClinica = codClinica;
+		this.codDottore = codDottore;
+		this.codPaziente = codPaziente;
+		this.giorno = giorno;
+		this.mese = mese;
+		this.anno = anno;
+		this.ora = ora;
+	}
 	public int getIdAppuntamento() {
 		return idAppuntamento;
 	}
@@ -36,30 +46,31 @@ public class Appuntamento {
 	public void setCodPaziente(int codPaziente) {
 		this.codPaziente = codPaziente;
 	}
-	public String getData() {
-		return data;
+	public int getGiorno() {
+		return giorno;
 	}
-	public void setData(String data) {
-		this.data = data;
+	public void setGiorno(int giorno) {
+		this.giorno = giorno;
 	}
-	public int getOrario() {
-		return orario;
+	public int getMese() {
+		return mese;
 	}
-	public void setOrario(int orario) {
-		this.orario = orario;
+	public void setMese(int mese) {
+		this.mese = mese;
 	}
-	public int getDurata() {
-		return durata;
+	public int getAnno() {
+		return anno;
 	}
-	public void setDurata(int durata) {
-		this.durata = durata;
+	public void setAnno(int anno) {
+		this.anno = anno;
 	}
-	public boolean isDisponibilita() {
-		return disponibilita;
+	public int getOra() {
+		return ora;
 	}
-	public void setDisponibilita(boolean disponibilita) {
-		this.disponibilita = disponibilita;
+	public void setOra(int ora) {
+		this.ora = ora;
 	}
+	
 
 }
 

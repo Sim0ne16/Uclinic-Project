@@ -63,6 +63,9 @@ public class ClinicaDAO {
 			}
 	    	 return id; 
 	     }
+	  
+	  
+	
 	     
 	 
 	public static boolean registraClinica(Clinica clinica) throws ClassNotFoundException, SQLException {
@@ -128,6 +131,99 @@ public class ClinicaDAO {
 		}
 		return clinica;
 	}
+	
+	
+	public static boolean modificaClinica(Clinica c) {
+		boolean esito = false; 
+		ConnessioneDB con = new ConnessioneDB();
+		try 
+		{
+			con.connect();
+			String sql = "UPDATE clinica SET nome = ? , regione = ? , citta = ? , indirizzo = ? , email = ? , password = ? , recapitoTel = ? where idClinica = ?";
+			PreparedStatement pst = con.getCon().prepareStatement(sql);
+			pst.setString(1, c.getNome());
+			pst.setString(2, c.getRegione());
+			pst.setString(3, c.getCitta());
+			pst.setString(4, c.getIndirizzo());
+			pst.setString(5, c.getEmail());
+			pst.setString(6 ,c.getPassword());
+			pst.setString(7, c.getRecapitoTel());
+			pst.setInt(8, c.getIdClinica());
+			if(pst.executeUpdate()>0) 
+			{
+				esito = true;
+			}
+		} 
+		catch (SQLException e)
+	    {
+			e.printStackTrace();
+		}
+		finally
+		{
+			try 
+			{
+				con.close();
+			} 
+			catch (SQLException e) 
+			{
+				e.printStackTrace();
+			}
+		}
+		return esito;
+	}
+
+	
+	
+	 public static Clinica visualizzaClinica(int id) {
+			Clinica c = new Clinica();
+			ConnessioneDB con = new ConnessioneDB();
+			try {
+				con.connect();
+				String sql= "select * from clinica where idClinica = ?" ;
+				PreparedStatement stm = con.getCon().prepareStatement(sql);
+				stm.setInt(1, id);
+				ResultSet rs = stm.executeQuery();
+				if(rs.next()) 
+				{
+		         	String nome = rs.getString("nome");
+					String regione = rs.getString("regione");
+					String citta = rs.getString("citta");
+					String indirizzo = rs.getString("indirizzo");
+					String email = rs.getString("email");
+					String password = rs.getString("password");
+					String recapito = rs.getString("recapitoTel");
+					
+					c.setIdClinica(id);
+					c.setNome(nome);
+					c.setRegione(regione);
+					c.setCitta(citta);
+					c.setIndirizzo(indirizzo);
+					c.setEmail(email);
+					c.setPassword(password);
+					c.setRecapitoTel(recapito);
+				}
+			} 
+			catch (SQLException e) 
+			{
+				e.printStackTrace();
+			} 
+			finally 
+			{
+				try 
+				{
+					con.close();
+				} catch (SQLException e) 
+				{
+					e.printStackTrace();
+				}
+				}
+			return c;
+		}
+	
+	
+	
+	
+	
 	
 	public static List<Dottore> visualizzaDottori(int idClinica){
 		List<Dottore> staff = new ArrayList<Dottore>();
@@ -315,7 +411,7 @@ public class ClinicaDAO {
 			String query = "UPDATE dottore SET nome = ? , cognome = ? , eta = ?, email = ?, recapitoTel = ?, specializzazione = ?, costoVisita = ? where idDottore = ?";
 			PreparedStatement pst = con.getCon().prepareStatement(query);
 			pst.setString(1, d.getNome());
-			pst.setString(2, d.getNome());
+			pst.setString(2, d.getCognome());
 			pst.setInt(3, d.getEta());
 			pst.setString(4, d.getEmail());
 			pst.setString(5, d.getRecapitoTel());
@@ -433,41 +529,7 @@ public class ClinicaDAO {
 	
 	
 
-public static boolean creaAppuntamento(Appuntamento app) {
-	boolean esito = false;
-    ConnessioneDB con = new ConnessioneDB();
-	    try 
-	    {
-		     con.connect();
-		     String sql = 
-			   "insert into appuntamento (codClinica, codDottore, data, orario) "
-			   + "values (?,?,?,?);";
-		     PreparedStatement pst = con.getCon().prepareStatement(sql);
-		     pst.setInt(1, app.getCodClinica());
-		     pst.setInt(2, app.getCodDottore());
-		     pst.setString(3, app.getData());
-		     pst.setInt(4, app.getOrario());
-		     if(pst.executeUpdate()>0) {
-		    	 esito = true;
-		     }
-		 } 
-		 catch (SQLException e)
-         {
-		 e.printStackTrace();
-		 }
-	     finally 
-	     {
-	    	try 
-	    	{
-				con.close();
-			} 
-	    	catch (SQLException e) 
-	    	{
-				e.printStackTrace();
-			}
-	    }
-		return esito;
-}	
+
 
 
 }

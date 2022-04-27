@@ -98,7 +98,7 @@ Clinica C = (Clinica) session.getAttribute("utenteC");
 
  						<div class="tooltip" >
                             
-                            <a class="btn btn-dark" href="visualizzaDottoreProvaCalendario.jsp?id=<%=d.getIdDottore()%>" value="press me" title="Ispeziona"><i style="color:#2eab97" class="fa-solid fa-eye fa-2x"></i></a>
+                            <a class="btn btn-dark" href="visualizzaDottore.jsp?id=<%=d.getIdDottore()%>" value="press me" title="Ispeziona"><i style="color:#2eab97" class="fa-solid fa-eye fa-2x"></i></a>
 						</div>
 					                  
 				</div>

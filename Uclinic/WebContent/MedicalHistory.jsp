@@ -27,7 +27,8 @@
 
    <%
                 Paziente p =(Paziente) session.getAttribute("utenteP");
-  int x= p.getIdPaziente();
+                int x= p.getIdPaziente();
+                 MedicalHistory m = (MedicalHistory) PazienteDAO.recuperaMh(x);
                 %>
         
 
@@ -36,21 +37,24 @@
 		<div class="card w-50 mx-auto my-5">
 			<div class="card-header text-center">Modifica Medical History</div>
 			<div class="card-body">
-				<form action="AggiungiDottore" method="post" name="form">
-					<div class="form-group">
-						<label>Peso</label> 
-						<input type="text" id="peso"  name="peso" class="form-control" >
+				<form action="validaMH()" method="post" id="formMH" name="form">
+				    <div class="form-group">	               
+						<input type="hidden"   value="<%=p.getIdPaziente()%>" id="id" name="id" class="form-control" required >
 					</div>
 					<div class="form-group">
-						<label>Altezza</label> 
-						<input type="text" id="altezza"  name="altezza" class="form-control" >
+						<label>Peso(kg)</label> 
+						<input type="text" id="peso" value="<%=m.getPeso() %>" name="peso" class="form-control"  >
+					</div>
+					<div class="form-group">
+						<label>Altezza(cm)</label> 
+						<input type="text" id="altezza"  value="<%=m.getAltezza() %>" name="altezza" class="form-control" >
 					</div>
 					<div class="form-group1">
 					
 
-                        <form action="" >
+                        <form>
                             <label for="lang">Blood Type</label>
-                            <select name="sangue" id="sangue">
+                            <select name="sangue" id="sangue" value="<%=m.getGsangue()%>">
                               <option value="A+">A RhD positive (A+)</option>
                               <option value="A-">A RhD negative (A-)</option>
                               <option value="B+">B RhD positive (B+)</option>
@@ -66,8 +70,9 @@
 					</div>
 
 					<div class="text-center">
-						<button type="submit" onclick="valida()" class="btn btn-primary">Modifica</button>
+						<button type="submit" onclick="validaMH()" class="btn btn-primary">Modifica</button>
 					</div>
+					<button id="staffReg" type="submit" class="btn btn-primary" style=color:white><a href="profiloUtente.jsp?id=<%=x%>">Torna</a></button>
 				</form>
 			</div>
 		</div>
@@ -78,7 +83,7 @@
 			<div class="wave wave5"></div></section>
 	</div>
 
-     <button id="staffReg" type="submit" class="btn btn-primary" style=color:white><a href="profiloUtente.jsp?id=<%=x%>">Torna</a></button>
+     
 
 
 

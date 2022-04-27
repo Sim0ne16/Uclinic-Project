@@ -14,10 +14,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="css/profiloUtente2.css">
     <script src="https://kit.fontawesome.com/367813bf67.js" crossorigin="anonymous"></script>
-    <title>Document</title>
+    <title>Profilo Utente</title>
 </head>
 <body>
-
+ <%
+                Paziente p =(Paziente) session.getAttribute("utenteP");
+                %>
+        
     <!--   NAV BAR   -->
     
     <div class="container" >
@@ -34,7 +37,7 @@
             <li class="parent">
                 <a href="">Profile</a>
                 <ul>
-                    <li><a href="">Modifica Profilo</a></li>
+                    <li><a href="modificaProfiloUtente.jsp?id=<%=p.getIdPaziente()%>">Modifica Profilo</a></li>
                     <li><a href="MedicalHistory.jsp">Modifica Medical History</a></li>
                     <li class="parent">
                         <a href="#">Impostazioni</a>
@@ -90,9 +93,6 @@
 
         <ul class="asd">  
              
-         <%
-                Paziente p =(Paziente) session.getAttribute("utenteP");
-                %>
         
         
             <i class="fa-solid fa-user fa-4x"> <%= p.getNome() %>  <%= p.getCognome() %></i> 
@@ -111,6 +111,11 @@
 
 
 <div class="right"  >
+
+<div class="info-research">
+<p>Per prenotare un appuntamento con una delle nostre cliniche partner, usa il tasto cerca qui sopra.<br>
+Questo tasto ti permette di cercare sia le cliniche sia i dottori. </p>
+</div>
 
           <div class="accordion" >
             <button type="button" class="accordion_button">Medical History</button>
@@ -141,16 +146,11 @@
     <script>
         document.querySelectorAll('.accordion_button').forEach(button => {
             button.addEventListener('click', () => {
-               // const accordionContent= button.nextElementSibling;
+              
     
                 button.classList.toggle('accordion_button--active');
     
-              //  if (button.classList.contains('accordion_button--active')) {
-               //     accordionContent.style.maxHeight = accordionContent.scrollHeight + 'px';
-    //
-              //  }else{
-               //    accordionContent.style.maxHeight = 0; 
-              //  }
+         
             });
         });
     </script>

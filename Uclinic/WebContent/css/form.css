@@ -15,6 +15,28 @@ body{
 
 }
 
+
+.bb1{
+    margin-top: 12px;
+    height: 45px;
+    margin: 20px 0;
+    border-radius: 10px;
+    border-style:ridge;
+    border-width: 2px;
+    border-color:#3eccf0;
+    background:  rgb(55, 238, 177);
+    color: white;
+
+}
+
+ .bb1:hover{
+    background:  #78d7e4 ;
+}
+
+
+
+
+
  #container {
           background-color: lime;
           width: 150px;

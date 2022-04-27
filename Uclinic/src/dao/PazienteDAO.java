@@ -11,11 +11,38 @@ import connection.ConnessioneDB;
 import model.Appuntamento;
 import model.Clinica;
 import model.Dottore;
+import model.MedicalHistory;
 import model.Paziente;
 
 public class PazienteDAO {
 	
 
+	  public static int recuperaIdClinicaDiPersonale(int id) {
+	    	int clinica = 0;
+	    	 ConnessioneDB con = new ConnessioneDB();
+	    	 try {
+				con.connect();
+				String sql = "Select idClinica from personale where idDottore like ?";
+				PreparedStatement stm = con.getCon().prepareStatement(sql);
+				stm.setInt(1,id);
+				ResultSet rs = stm.executeQuery();
+				if(rs.next()) {
+					clinica = rs.getInt("idClinica");
+				}
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}finally {
+				try {
+					con.close();
+				} catch (SQLException e) {		
+					e.printStackTrace();
+				}
+			}
+	    	 return clinica; 
+	     }
+	
+	
+	
 	public static boolean registraPaziente(Paziente paziente) throws ClassNotFoundException, SQLException {
 		boolean result = false;
 		ConnessioneDB con = new ConnessioneDB();
@@ -133,38 +160,6 @@ public class PazienteDAO {
 	}
 	
 	
-	public static boolean prenotaAppuntamento(Appuntamento app, Paziente p) {
-		ConnessioneDB con = new ConnessioneDB();
-		boolean esito = false;
-		try 
-		{
-			con.connect();
-			String sql = "update appuntamento set codPaziente=?, disponibilita=1 where idAppuntamento=?";
-			PreparedStatement pst = con.getCon().prepareStatement(sql);
-			pst.setInt(1, p.getIdPaziente());
-			pst.setInt(2, app.getIdAppuntamento());
-			if(pst.executeUpdate()>0) 
-			{
-				esito=true;
-			}
-		} 
-		catch (SQLException e) 
-		{
-			e.printStackTrace();
-		}
-		finally
-		{
-			try 
-			{
-				con.close();
-			} 
-			catch (SQLException e)
-			{
-				e.printStackTrace();
-			}
-		}
-		return esito;
-	}
 
 	
 public static List<Dottore> cercaDottore(String ricerca) {
@@ -280,8 +275,201 @@ public static Clinica recuperaClinica(int id) {
 	return C;
 }
 
+//recupera dal id dottore
+public static int recuperaIdClinica(int idDot) {
+	 ConnessioneDB con = new ConnessioneDB();
+	 int idClinica=0;
+	 try 
+	 {
+		con.connect();
+		String sql = "select idClinica from personale where idDottore = " + idDot + ";";
+		PreparedStatement pst = con.getCon().prepareStatement(sql);
+		ResultSet rs = pst.executeQuery();
+		if(rs.next()) 
+		{
+			idClinica = rs.getInt("idClinica");
+		}
+	 } 
+	 catch (SQLException e) 
+	 {
+		e.printStackTrace();
+	 }
+	 finally
+	 {
+		 try 
+		 {
+			con.close();
+		} 
+		 catch (SQLException e)
+		 {
+			e.printStackTrace();
+		}
+	 }
+	 return idClinica;
+}
+
+public static boolean modificaUtente(Paziente p) {
+	boolean esito = false;
+	ConnessioneDB con = new ConnessioneDB();
+	try {
+		con.connect();
+		String query = "Update paziente set nome = ? , cognome = ? , eta = ? , email = ? , regione = ? , citta = ?, cFisc=?  where idPaziente=?";
+	    PreparedStatement pst = con.getCon().prepareStatement(query);
+	    pst.setString(1, p.getNome());
+	    pst.setString(2,p.getCognome());
+	    pst.setInt(3, p.getEta());
+	    pst.setString(4, p.getEmail());
+	    pst.setString(5, p.getRegione());
+	    pst.setString(6, p.getCitta());
+	    pst.setString(7, p.getcFisc());
+	    pst.setInt(8, p.getIdPaziente());
+	    if(pst.executeUpdate()>0) {
+	    	esito=true;
+	    }
+	} catch (SQLException e) {
+		e.printStackTrace();
+	} finally {
+		try {
+			con.close();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} 
+	}
+	return esito;
+}
+
+
+public static boolean modificaMh(MedicalHistory mh) {
+	boolean esito = false;
+	ConnessioneDB con = new ConnessioneDB();
+	try {
+		con.connect();
+		String query = "Update medicalhistory set idPaziente=? ,peso=?,altezza=?,gsangue=?";
+		PreparedStatement stm = con.getCon().prepareStatement(query);
+		stm.setInt(1, mh.getIdPaziente());
+		stm.setDouble(2, mh.getPeso());
+		stm.setInt(3, mh.getAltezza());
+		stm.setString(4, mh.getGsangue());
+		if(stm.executeUpdate()>0) {
+			esito = true;
+		}
+	} catch (SQLException e) {
+		e.printStackTrace();
+	} finally {
+		try {
+			con.close();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+	}
+	return esito;
+}
+
+public static MedicalHistory recuperaMh(int id) {
+	MedicalHistory m = new MedicalHistory();
+	ConnessioneDB con = new ConnessioneDB();
+	try {
+		con.connect();
+		String sql = "Select * from medicalhistory where idPaziente like ?";
+		PreparedStatement stm = con.getCon().prepareStatement(sql);
+		stm.setInt(1, id);
+		ResultSet rs = stm.executeQuery();
+		if(rs.next()) {
+			String sangue = rs.getString("gsangue");
+			int altezza = rs.getInt("altezza");
+			double peso = rs.getDouble("peso");
+			
+			m.setIdPaziente(id);
+			m.setAltezza(altezza);
+			m.setPeso(peso);
+			m.setGsangue(sangue);
+		}
+		
+	} catch (SQLException e) {
+		e.printStackTrace();
+	} finally {
+		try {
+			con.close();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+	}
+	return m;
+}
+
+
+
+public static boolean inserisciMh(MedicalHistory m) {
+	boolean esito= false;
+	ConnessioneDB con = new ConnessioneDB();
+	try {
+		con.connect();
+		String sql =" INSERT INTO medicalhistory (idPaziente,peso,altezza,gsangue) values (?,?,?,?)";
+		PreparedStatement stm = con.getCon().prepareStatement(sql);
+		stm.setInt(1, m.getIdPaziente());
+		stm.setDouble(2,m.getPeso());
+		stm.setInt(3, m.getAltezza());
+		stm.setString(4, m.getGsangue());
+		
+	} catch (SQLException e) {
+		e.printStackTrace();
+	} finally {
+		try {
+			con.close();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+	}
+return esito;
 }
 	    
+
+public static boolean prenotaAppuntamento(Appuntamento app) {
+    ConnessioneDB con = new ConnessioneDB();
+	boolean esito = false;
+	try 
+	{
+		con.connect();
+		String sql = "INSERT INTO appuntamento (codClinica, codDottore, codPaziente, giorno, mese, anno, ora) VALUES (?,?,?,?,?,?,?)";
+		PreparedStatement pst = con.getCon().prepareStatement(sql);
+		pst.setInt(1,app.getCodClinica());
+		pst.setInt(2, app.getCodDottore());
+		pst.setInt(3, app.getCodPaziente());
+		pst.setInt(4, app.getGiorno());
+		pst.setInt(5, app.getMese());
+		pst.setInt(6, app.getAnno());
+		pst.setInt(7, app.getOra());
+		if(pst.executeUpdate()>0) 
+		{
+			esito=true;
+		}
+	} 
+	catch (SQLException e) 
+	{
+		e.printStackTrace();
+	}
+	finally
+	{
+		try 
+		{
+			con.close();
+		} 
+		catch (SQLException e)
+		{
+			e.printStackTrace();
+		}
+	}
+	return esito;
+}
+
+
+
+
+
+
+
+
+}
 
 	 
 	

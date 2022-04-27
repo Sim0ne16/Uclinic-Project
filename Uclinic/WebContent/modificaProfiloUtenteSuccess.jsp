@@ -1,7 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
-        
-<%@page import="model.*"%>
+    <%@page import="model.*"%>
 <%@page import="java.util.*"%>
 <%@page import="dao.*"%>  
 <!DOCTYPE html>
@@ -16,58 +15,56 @@
 
     
     <script src="https://kit.fontawesome.com/367813bf67.js" crossorigin="anonymous"></script>
-<title>Modifica Clinica</title>
+<title>Modifica Profilo</title>
 </head>
 
-<% int idClinica = Integer.parseInt(request.getParameter("id")); 
-Clinica c =  ClinicaDAO.visualizzaClinica(idClinica);
+<%
+		Paziente p = (Paziente) session.getAttribute("utenteP");
 %>
-
 
 
 <body>
 
-
 <div class="container">
-		<div class="card w-50 mx-auto my-5">
+		<div class="card  mx-auto my-5">
 			<div class="card-header text-center">Modifica i dati della Clinica</div>
 			<div class="card-body">
-				<form action="ModificaClinica" method="post">
-				<div class="form-group">	               
-						<input type="hidden"   value="<%=idClinica%>" name="id" class="form-control" >
-					</div>
+				<form action="modificaPaziente" method="post">
 					<div class="form-group">
 						<label>Nome</label> 
-						<input type="text" name="cNome" value="<%=c.getNome() %>" class="form-control" >
+						<input type="text" name="uNome" value="<%=p.getNome()%>" class="form-control" required>
 					</div>
 					<div class="form-group">
-						<label>Regione</label> 
-						<input type="text" name="cRegione"  value="<%=c.getRegione() %>" class="form-control" >
+						<label>Cognome</label> 
+						<input type="text" name="uCognome" value="<%=p.getCognome()%>" class="form-control" required >
 					</div>
 					<div class="form-group">
 						<label>Città </label> 
-						<input type="text" name="cCitta" value="<%=c.getCitta() %>" class="form-control" >
+						<input type="text" name="uCitta" value="<%=p.getCitta() %>" class="form-control" required >
 					</div>
-					<div class="form-group">
-						<label>Indirizzo</label> 
-						<input type="text" name="cIndirizzo"  value="<%=c.getIndirizzo() %>" class="form-control" >
+					
+					 <div class="form-group">
+						<label>Regione</label> 
+						<input type="text" name="uRegione" value="<%=p.getRegione() %>" class="form-control" required >
 					</div>
-					<div class="form-group">
-						<label>Email</label>  
-						<input type="email" name="cEmail" value="<%=c.getEmail() %>" class="form-control" >
+					
+					 <div class="form-group">
+						<label>Eta</label> 
+						<input type="text" name="uEta" value="<%=p.getEta() %>" class="form-control" required>
 					</div>
-					<!-- da cancellare !! controllare se sbomballa la query -->
+					
 					<div class="form-group">
-						<label>Password</label> 
-						<input type="text" name="cPassword" value="<%=c.getPassword() %>" class="form-control" >
+						<label>Email</label> 
+						<input type="email" name="uEmail" value="<%=p.getEmail() %>" class="form-control" required >
 					</div>
                     <div class="form-group">
-						<label>Tell Number</label> 
-						<input type="text" name="cRecapitoTel" value="<%=c.getRecapitoTel() %>" class="form-control" >
+						<label>Codice Fiscale</label> 
+						<input type="text" name="uCf" value="<%=p.getcFisc() %>" class="form-control" required >
 					</div>
 					<div class="text-center">
 						<button type="submit" class="btn btn-primary">Modifica</button>
-						<button id="staffReg" type="submit" class="btn btn-primary" style=color:white><a href="profiloClinica.jsp?id=<%=idClinica%>">Clinica</a></button>
+							<button id="staffReg" type="submit" class="btn btn-primary" style=color:white><a href="profiloUtente.jsp?id=<%=p.getIdPaziente()%>">Torna</a></button>
+					<h1>Profilo modificato con successo!</h1>
 					</div>
 				</form>
 			</div>

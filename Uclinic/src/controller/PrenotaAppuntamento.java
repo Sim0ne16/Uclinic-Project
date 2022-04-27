@@ -9,6 +9,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import dao.PazienteDAO;
 import model.Appuntamento;
+import model.Paziente;
 
 
 @WebServlet("/PrenotaAppuntamento")
@@ -27,10 +28,20 @@ public class PrenotaAppuntamento extends HttpServlet {
 
 	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		response.setContentType("text/html;charset=UTF-8");
-		Appuntamento app= null; //request.getParameter("appuntamento-N"); -> deve essere preso dal form html durante la scelta dell'appuntamento
-		PazienteDAO.prenotaAppuntamento(app, LoginPaziente.pazienteLog) ;
-		response.sendRedirect(""); //pagina o window alert con appuntamento prenotato (possibile email di prenotazione effettuata)
+response.setContentType("text/html;charset=UTF-8");
+		
+		int idDottore = Integer.parseInt(request.getParameter("idDottore"));
+		int idClinica = PazienteDAO.recuperaIdClinica(idDottore);
+		Paziente p =(Paziente) request.getSession().getAttribute("utenteP");
+		int idPaziente = p.getIdPaziente();
+		int giorno =Integer.parseInt(request.getParameter("giorno"));
+		int mese =Integer.parseInt(request.getParameter("mese"));
+		int anno =Integer.parseInt(request.getParameter("anno"));
+		int ora =Integer.parseInt(request.getParameter("ora"));
+		
+		Appuntamento app = new Appuntamento(idClinica, idDottore, idPaziente, giorno, mese, anno, ora);
+		PazienteDAO.prenotaAppuntamento(app);
+		//response.sendRedirect("profiloUtente.jsp");
 		
 	}
 

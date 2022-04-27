@@ -34,24 +34,41 @@ function validaCodiceFiscale(cf) {
 
 // Funzione medical history!
 
-//da modificare !
-function valida() {
-	var peso = document.getElementById("peso");
-	var altezza = document.getElementById("altezza");
+function validaMH() {
+	var peso = document.form.peso.value;
+	var altezza = document.form.altezza.value;
+	
+	
+	var formMh = document.getElementById("formMH")
+	var esito = true;
 
-  if ((peso <= 0) || (peso >= 561)) {
-        alert("Il valore inserito non è valido, riprova!");
+  if ((peso <= 0) || (peso >= 561 )) {
+        alert("Il valore inserito non e valido, riprova! (Utilizzare il punto per il peso Es:78,5 kg)");
         peso.value = "";
-        peso.focus();
-        return false;
+        
+        esito = false;
     }
 
-    if ((altezza <= 19 ) ||  (altezza >= 216))
-        alert("Il valore inserito non è valido, riprova!");
+    if ((altezza <= 40 ) ||  (altezza >= 216)){
+        alert("Il valore inserito non e valido, riprova!");
         altezza.value = "";
-        altezza.focus();
-         return false;
+       
+         esito = false;
+         
+        }
+        
+           if(esito == true){
+	formMh.action = "modificaMh.java"
+} 
+
+
+	else {
+		formin.action = "MedicalHistory.jsp"
+	}     
+         
     }
+
+ 
 
 
 
