@@ -77,10 +77,11 @@
 
 
 			</ul>
+			
 		</div>
 
 		<div class="right">
-	
+	 <a class="btn btn-dark" href="javascript:history.go(-1)" value="press me" title="Torna Alla Ricerca"><i  style="color: rgb(55, 238, 177)" class="fa-solid fa-magnifying-glass fa-2x"></i></a>
 		</div>
 </div>
 

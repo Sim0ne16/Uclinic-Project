@@ -11,7 +11,6 @@ public class Clinica {
 	private String citta;
 	private String indirizzo;
 	private List<Dottore> personale;
-	private List<Agenda> calendarioSett; // in forse?
 	private List<Paziente> pazienti;
 	private String email;
 	private String password;
@@ -43,7 +42,7 @@ public class Clinica {
 
 		personale = new ArrayList<Dottore>();
 		pazienti=new ArrayList<Paziente>();
-		this.calendarioSett = new ArrayList<Agenda>();
+	
 	}
 
 	public Clinica(String email, String password) {
@@ -55,7 +54,6 @@ public class Clinica {
 	public Clinica() {
 		super();
 		this.personale = new ArrayList<Dottore>();
-		this.calendarioSett = new ArrayList<Agenda>();
 		this.pazienti = new ArrayList<Paziente>();
 	}
 
@@ -107,13 +105,7 @@ public class Clinica {
 		this.personale = personale;
 	}
 
-	public List<Agenda> getCalendarioSett() {
-		return calendarioSett;
-	}
 
-	public void setCalendarioSett(List<Agenda> calendarioSett) {
-		this.calendarioSett = calendarioSett;
-	}
 
 	public String getEmail() {
 		return email;

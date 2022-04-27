@@ -34,6 +34,9 @@
 			<div class="card-header text-center">Modifica i dati del dottore</div>
 			<div class="card-body">
 				<form action="modificaDottore" method="post">
+				<div class="form-group">	               
+						<input type="hidden"   value="<%=idDoc%>" name="id" class="form-control" required >
+					</div>
 				
 					<div class="form-group">
 						<label>Nome</label> 

@@ -8,8 +8,15 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="ISO-8859-1">
-<title>Inserisci dati prenotazione</title>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://kit.fontawesome.com/367813bf67.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="css/form.css">
+    <script src="javascript/appuntamento.js"></script>
+
+      
+    <title>Appuntamento</title>
 </head>
 
 <%int idDottore = Integer.parseInt(request.getParameter("idDottore")); %>
@@ -22,9 +29,10 @@
 				
                    
 
-	<form action="PrenotaAppuntamento" method="post">
+	<form action="" method="post" name="formi" id="form">
 	 <div class="form-group"><input type="hidden"   value="<%=idDottore%>" name="idDottore"  class="form-control" ></div>
 		<label for="lang">Giorno</label> <select name="giorno" id="giorno">
+			<option value=""></option>
 			<option value="1">1</option>
 			<option value="2">2</option>
 			<option value="3">3</option>
@@ -57,7 +65,11 @@
 			<option value="30">30</option>
 			<option value="31">31</option>
 
-		</select> <label for="lang">Mese</label> <select name="mese" id="mese">
+		</select> 
+		
+		
+		<label for="lang">Mese</label> <select name="mese" id="mese">
+			<option value=""></option>
 			<option value="1">Gennaio</option>
 			<option value="2">Febbraio</option>
 			<option value="3">Marzo</option>
@@ -70,26 +82,32 @@
 			<option value="10">Ottobre</option>
 			<option value="11">Novembre</option>
 			<option value="12">Dicembre</option>
-
-
-		</select> <label for="lang">Anno</label> <select name="anno" id="anno">
+		</select>
+		
+		 <label for="lang">Anno</label> <select name="anno" id="anno">
+			<option value=""></option>
 			<option value="2022">2022</option>
 			<option value="2023">2023</option>
 			<option value="2024">2024</option>
 
-	
+		</select> 
 		
-		</select> <label for="lang">Ora</label> <select name="ora" id="ora">
+		<label for="lang">Ora</label> <select name="ora" id="ora">
+		    <option value=""></option>
 			<option value="9">09:00-10:00</option>
 			<option value="10">10:00-11:00</option>
 			<option value="11">11:00-12:00</option>
 			<option value="12">12:00-13:00</option>
 			<option value="13">13:00-14:00</option>
-			
-
 		</select>
 		
-		<button type="submit">conferma</button>
+		<div class="button">
+             <input type="submit" onclick="controllocalendario()" class="btn btn-primary" value="Conferma">
+                    
+       
+        
+        </div>
+		
 	</form>
 </div>
 </div>

@@ -28,6 +28,9 @@
                     <span class="details">Nome</span>
                     <input type="text" placeholder="Nome" name="regPnome" id="regPnome" >
                 </div>
+                
+               
+                
                 <div class="input-box">
                    <span class="details">Cognome</span>
                    <input type="text" placeholder="Inserire Cognome" name="regPcognome" id="regPcognome" >

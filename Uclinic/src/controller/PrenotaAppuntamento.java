@@ -40,8 +40,13 @@ response.setContentType("text/html;charset=UTF-8");
 		int ora =Integer.parseInt(request.getParameter("ora"));
 		
 		Appuntamento app = new Appuntamento(idClinica, idDottore, idPaziente, giorno, mese, anno, ora);
-		PazienteDAO.prenotaAppuntamento(app);
+		
+		if(PazienteDAO.validaAppuntamento(app)==true) {
+		   PazienteDAO.prenotaAppuntamento(app);
+		
 		//response.sendRedirect("profiloUtente.jsp");
+		} 
+
 		
 	}
 

@@ -98,6 +98,12 @@
 				<input type="submit" value="Invia" id="sub-cercaP">
 
 			</form>
+			<div class="gest-app">
+			<a href="gestisciAppuntamenti.jsp"><button type="submit">Gestisci appuntamento</button></a>
+			</div>
+			<div class="gest-app">
+			<a href="appuntamentiConfermati.jsp"><button type="submit">Appuntamenti confermati</button></a>
+			</div>
 		</div>
 </div>
 

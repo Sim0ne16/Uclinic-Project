@@ -30,7 +30,7 @@
 
 
 <div class="container">
-		<div class="card w-50 mx-auto my-5">
+		<div class="card  mx-auto my-5">
 			<div class="card-header text-center">Registrazione Dottore</div>
 			<div class="card-body">
 				<form action="" id="aggiungiDoc" name="formino" method="post">
@@ -64,12 +64,14 @@
 					</div>
 					<div class="text-center">
 						<button type="submit" onclick="controlloD()" class="btn btn-primary">Registrazione</button>
+					 
+     <button id="staffReg"  type="submit" class="btn btn-primary" style=color:white><a href="StaffClinica.jsp?id=<%=x%>"> Staff</a></button>
+					<h1 id="agg"> Dottore aggiunto con Successo!!</h1>
 					</div>
 				</form>
 			</div>
 		</div>
 	</div>
-       <h1 id="agg"> Dottore aggiunto con Successo!!</h1>
-     <button id="staffReg"  type="submit" class="btn btn-primary" style=color:white><a href="StaffClinica.jsp?id=<%=x%>"> Staff</a></button>
+      
 </body>
 </html>

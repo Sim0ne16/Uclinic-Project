@@ -86,8 +86,6 @@ Clinica C = (Clinica) session.getAttribute("utenteC");
     <% for(Dottore d : dottori) {  %>
   <div class="carte">
 
-
-	
 			<span class="card">
 		
 					<img class="card-img-top" src="https://cdn.pixabay.com/photo/2017/05/15/23/47/stethoscope-icon-2316460_960_720.png" alt="Card image cap">

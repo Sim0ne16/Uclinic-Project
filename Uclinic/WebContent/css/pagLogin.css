@@ -18,7 +18,6 @@
 
 }
 nav {
-    transform: translateY(-190px);
     background-color: #f6f5f7;
     width: 100%;
     overflow: hidden;
@@ -29,18 +28,19 @@ nav {
     border-bottom-width: 2px;
     border-radius: 10px;
     box-shadow: 0 14px 28px rgba(255, 255, 255, 0.25), 0 10px 10px rgba(0,0,0,0.22);
+    display: flex;
+    justify-content: start;
 
 }
 label.logo {
     color: rgb(55, 238, 177);
     font-size: 35px;
-    line-height: 6px;
     padding: 0 100px;
     font-weight: bold;
-    float: left;
-    transform: translateY(35px);
     text-shadow: 0 0 2px #3eccf0;
-    
+    display:flex;
+    justify-content:center;
+    align-self:center;
    
 }
 nav ul {
@@ -111,7 +111,7 @@ body {
     
     background-image:  linear-gradient(#ffffe0,#b0e0e6 );
     display: flex;
-    justify-content: center;
+    justify-content: space-between;
     align-items: center;
     flex-direction: column;
     font-family: 'Montserrat', sans-serif;

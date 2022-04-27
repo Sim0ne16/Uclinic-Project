@@ -78,7 +78,7 @@
             <li><i class="fa-solid fa-dna fa-2x"></i>  Costo Visita: <%=d.getCostoVisita() %> $</li>
             <li><i class="fa-solid fa-phone fa-2x"></i> Recapito : <%=d.getRecapitoTel() %></li>
             <li><i class="fa-solid fa-envelope fa-2x"></i>  Email : <%=d.getEmail() %> </li>
-            <li>     </li>
+         
         
           </ul>
 
@@ -92,9 +92,11 @@
                           
                                                                                                                                                                                         
                             <a class="btn btn-dark" href="StaffClinica.jsp?id=<%=idClinica%>" value="press me" title="Staff"><i  style="color: rgb(55, 238, 177)" class="fa-solid fa-staff-aesculapius fa-2x"></i></a>
+                            
+                            <a class="btn btn-dark" href="gestisciOrariDottore.jsp?id=<%=idDoc%>" value="press me" title="Gestisci Orari"><i  style="color: rgb(55, 238, 177)" class="fa-solid fa-calendar fa-2x"></i></a>
 						</div>
 
-        </div>
+        
 
 
 

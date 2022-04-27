@@ -93,7 +93,7 @@
 						<% int idDottore = d.getIdDottore(); %>
 
  						<div class="tooltip" >
-                            
+                            <a class="btn btn-dark" href="javascript:history.go(-1)" value="press me" title="Torna Alla Clinica"><i  style="color: #2eab97" class="fa-solid fa-staff-aesculapius fa-2x"></i></a>
                             <a class="btn btn-dark" href="visualizzaDottoreEst.jsp?idDottore=<%=idDottore%>" value="press me" title="Ispeziona"><i style="color:#2eab97" class="fa-solid fa-eye fa-2x"></i></a>
 						</div>
 					                  

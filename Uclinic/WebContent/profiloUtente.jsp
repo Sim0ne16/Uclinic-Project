@@ -125,6 +125,10 @@ Questo tasto ti permette di cercare sia le cliniche sia i dottori. </p>
                 <li> <p>Sangue : </p></li>
             </div>
         </div>
+        
+        <div class="gest-app">
+			<a href="visualizzaStatoAppuntamenti.jsp"><button type="submit">Visualizza Stato Appuntamenti</button></a>
+			</div>
 
     </div>
 

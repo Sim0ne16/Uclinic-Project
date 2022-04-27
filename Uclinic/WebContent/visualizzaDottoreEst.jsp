@@ -18,7 +18,10 @@
 </head>
 
   <%
-                Paziente p =(Paziente) session.getAttribute("utenteP");
+  
+	int idDoc = Integer.parseInt(request.getParameter("idDottore"));
+	Dottore d =  ClinicaDAO.visualizzaDottore(idDoc);
+    Paziente p =(Paziente) session.getAttribute("utenteP");
                 %>
 
 <body>
@@ -68,11 +71,7 @@
         <ul class="asd">  
              
         
-         <%
-        
-        		int idDoc = Integer.parseInt(request.getParameter("idDottore"));
-        		Dottore d =  ClinicaDAO.visualizzaDottore(idDoc);
-                %>
+         
         
             <i class="fa-solid fa-user fa-4x">Dr. <%=d.getNome() %> <%=d.getCognome() %></i>          
             <li><i class="fa-solid fa-mars-and-venus fa-2x"></i>Eta : <%=d.getEta() %></li>       
@@ -88,7 +87,9 @@
                    
                        <div class="tooltip" >
                                                                                                                                                                                            
-                            <a class="btn btn-dark" href="" value="press me" title="Clinica"><i  style="color: rgb(55, 238, 177)" class="fa-solid fa-staff-aesculapius fa-2x"></i></a>
+                            <a class="btn btn-dark" href="javascript:history.go(-1)" value="press me" title="Torna Alla Ricerca"><i  style="color: rgb(55, 238, 177)" class="fa-solid fa-magnifying-glass fa-2x"></i></a>
+						   
+						
 						</div>
 
         </div>

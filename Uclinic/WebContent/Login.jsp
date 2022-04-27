@@ -26,7 +26,7 @@
 
                 <ul>
                     <li><a class="active" href="AboutUs.html">Chi Siamo</a></li>                  
-                    <li><a class="active" href="#">Contatti</a></li>
+                    <li><a class="active" href="Contatti.html">Contatti</a></li>
                 </ul>
                 <i class="fa-thin fa-alien"></i>
     </nav>

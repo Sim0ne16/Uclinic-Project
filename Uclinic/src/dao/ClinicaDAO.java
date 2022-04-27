@@ -12,6 +12,7 @@ import connection.ConnessioneDB;
 import model.Appuntamento;
 import model.Clinica;
 import model.Dottore;
+import model.Orario;
 import model.Paziente;
 
 public class ClinicaDAO {
@@ -222,9 +223,74 @@ public class ClinicaDAO {
 	
 	
 	
+	public static  List<Orario> visulizzaOrario(int idDottore){
+			List<Orario> orari = new ArrayList<Orario>();
+			Orario o = null;
+			ConnessioneDB con = new ConnessioneDB();
+			try {
+				con.connect();
+				String sql = "Select * from orario where codDottore = ?";
+				PreparedStatement stm = con.getCon().prepareStatement(sql);
+				stm.setInt(1, idDottore);
+				ResultSet rs = stm.executeQuery();
+				while(rs.next()) {
+					int idOr = rs.getInt("idOrario");
+					int idDott = idDottore;
+					int giorno = rs.getInt("giorno");
+					int mese = rs.getInt("mese");
+					int anno = rs.getInt("anno");
+					int oraI = rs.getInt("oraI");
+					int oraF = rs.getInt("oraF");
+					
+					o = new Orario(idOr,idDott,anno,mese,giorno,oraI,oraF);
+				    orari.add(o);
+				}
+			} catch (SQLException e) {
+				e.printStackTrace();
+			} finally {
+				try {
+					con.close();
+				} catch (SQLException e) {
+					e.printStackTrace();
+				}
+			}
+			return orari;
+		}
 	
 	
+	public static boolean aggiungiOrario(Orario o) {
+		boolean esito = false;
+		ConnessioneDB con = new ConnessioneDB();
+		try {
+			con.connect();
+			String query ="Insert into orario (codDottore,giorno,mese,anno,oraI,oraF) values (?,?,?,?,?,?)";
+			PreparedStatement stm = con.getCon().prepareStatement(query);
+			stm.setInt(1, o.getIdDottore());
+			stm.setInt(2, o.getGiorno());
+			stm.setInt(3, o.getMese());
+			stm.setInt(4, o.getAnno());
+			stm.setInt(5, o.getOraI());
+			stm.setInt(6,o.getOraF());
+			stm.executeUpdate();
+			esito = true;
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				con.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+		return esito;
+	}
+		
 	
+	//public  static boolean eliminaOrario(int idOrario) {
+		
+	//}
+	
+		
 	public static List<Dottore> visualizzaDottori(int idClinica){
 		List<Dottore> staff = new ArrayList<Dottore>();
 		Dottore d = null;
@@ -526,8 +592,181 @@ public class ClinicaDAO {
 		return paz;
 	}
 	
+	public static boolean confermaApp(int idApp) {
+        ConnessioneDB con = new ConnessioneDB();
+        boolean esito = false;
+        try {
+            con.connect();
+            String sql = "update appuntamento set prenotazione = 1 where idAppuntamento = " + idApp +";";
+            PreparedStatement stm = con.getCon().prepareStatement(sql);
+            if (stm.executeUpdate()>0){
+                esito = true;
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }finally {
+            try {
+                con.close();
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+        }return esito;
+
+    }
+
 	
-	
+    public static boolean rifiutaApp(int idApp) {
+        ConnessioneDB con = new ConnessioneDB();
+        boolean esito = false;
+        try {
+            con.connect();
+            String sql = "update appuntamento set prenotazione = 2 where idAppuntamento = " + idApp +";";
+            PreparedStatement stm = con.getCon().prepareStatement(sql);
+            if (stm.executeUpdate()>0){
+                esito = true;
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }finally {
+            try {
+                con.close();
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+        }return esito;
+
+    }
+
+    
+    public static List<Appuntamento> visualizzaApp(Clinica c) {
+	ConnessioneDB con = new ConnessioneDB();
+	List<Appuntamento> listaA = new ArrayList<Appuntamento>();
+	Appuntamento a = null;
+	try 
+	{
+		con.connect();
+		String sql = "SELECT * FROM appuntamento WHERE codClinica = " + c.getIdClinica() + " and prenotazione = 0;";
+		PreparedStatement pst = con.getCon().prepareStatement(sql);
+		ResultSet rs = pst.executeQuery();
+		while(rs.next()) {
+			a = new Appuntamento();
+			a.setIdAppuntamento(rs.getInt("idAppuntamento"));
+			a.setCodClinica(rs.getInt("codClinica"));
+			a.setCodDottore(rs.getInt("codDottore"));
+			a.setCodPaziente(rs.getInt("codPaziente"));
+			a.setGiorno(rs.getInt("giorno"));
+			a.setMese(rs.getInt("mese"));
+			a.setAnno(rs.getInt("anno"));
+			a.setOra(rs.getInt("ora"));
+			a.setPrenotazione(rs.getInt("prenotazione"));
+			listaA.add(a);
+		}
+		
+	} 
+	catch (SQLException e) 
+	{
+		e.printStackTrace();
+	}
+	finally
+	{
+		try 
+		{
+			con.close();
+		} 
+		catch (SQLException e)
+        {
+			e.printStackTrace();
+		}
+	}
+	return listaA;
+    }
+
+
+    public static Dottore recuperaDottFromApp(Appuntamento a) {
+    	ConnessioneDB con = new ConnessioneDB();
+    	Dottore d = null;
+    	try 
+    	{
+			con.connect();
+			String sql = "SELECT * from dottore as d join appuntamento as a where a.codDottore = d.idDottore and a.idAppuntamento = " + a.getIdAppuntamento() + " ;";
+			PreparedStatement pst = con.getCon().prepareStatement(sql);
+			ResultSet rs = pst.executeQuery();
+			if(rs.next()) 
+			{
+				d = new Dottore();
+				d.setIdDottore(rs.getInt("idDottore"));
+				d.setNome(rs.getString("nome"));
+				d.setCognome(rs.getString("cognome"));
+				d.setEta(rs.getInt("eta"));
+				d.setEmail(rs.getString("email"));
+				d.setRecapitoTel(rs.getString("recapitoTel"));
+				d.setSpecializzazione(rs.getString("specializzazione"));
+				d.setCostoVisita(rs.getDouble("costoVisita"));
+			}
+		} 
+    	catch (SQLException e) 
+    	{
+			e.printStackTrace();
+		}
+    	finally
+    	{
+    		try 
+    		{
+				con.close();
+			} 
+    		catch (SQLException e)
+    		{
+				e.printStackTrace();
+			}
+    	}
+    	return d;
+    }
+    
+    
+    public static List<Appuntamento> visualizzaAppConfermati(Clinica c) {
+    	ConnessioneDB con = new ConnessioneDB();
+    	List<Appuntamento> listaA = new ArrayList<Appuntamento>();
+    	Appuntamento a = null;
+    	try 
+    	{
+    		con.connect();
+    		String sql = "SELECT * FROM appuntamento WHERE codClinica = " + c.getIdClinica() + " and prenotazione = 1;";
+    		PreparedStatement pst = con.getCon().prepareStatement(sql);
+    		ResultSet rs = pst.executeQuery();
+    		while(rs.next()) {
+    			a = new Appuntamento();
+    			a.setIdAppuntamento(rs.getInt("idAppuntamento"));
+    			a.setCodClinica(rs.getInt("codClinica"));
+    			a.setCodDottore(rs.getInt("codDottore"));
+    			a.setCodPaziente(rs.getInt("codPaziente"));
+    			a.setGiorno(rs.getInt("giorno"));
+    			a.setMese(rs.getInt("mese"));
+    			a.setAnno(rs.getInt("anno"));
+    			a.setOra(rs.getInt("ora"));
+    			a.setPrenotazione(rs.getInt("prenotazione"));
+    			listaA.add(a);
+    		}
+    		
+    	} 
+    	catch (SQLException e) 
+    	{
+    		e.printStackTrace();
+    	}
+    	finally
+    	{
+    		try 
+    		{
+    			con.close();
+    		} 
+    		catch (SQLException e)
+            {
+    			e.printStackTrace();
+    		}
+    	}
+    	return listaA;
+        }
+    
+
 
 
 

@@ -424,6 +424,37 @@ return esito;
 }
 	    
 
+
+public static boolean validaAppuntamento(Appuntamento app) {
+	boolean esito = true;
+	ConnessioneDB con = new ConnessioneDB ();
+	try {
+		con.connect();
+		String query = "Select * from appuntamento where  codDottore =? and giorno = ? and mese =? and anno =? and ora =?";
+		PreparedStatement stm = con.getCon().prepareStatement(query);
+		stm.setInt(1, app.getCodDottore());
+		stm.setInt(2, app.getGiorno());
+		stm.setInt(3, app.getMese());
+		stm.setInt(4, app.getAnno());
+		stm.setInt(5, app.getOra());
+		ResultSet rs = stm.executeQuery();
+		if(rs.next()) {
+			esito = false;
+		}
+	
+	} catch (SQLException e) {
+		e.printStackTrace();
+	} finally {
+		try {
+			con.close();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+	}
+	return esito;
+}
+
+
 public static boolean prenotaAppuntamento(Appuntamento app) {
     ConnessioneDB con = new ConnessioneDB();
 	boolean esito = false;
@@ -463,8 +494,48 @@ public static boolean prenotaAppuntamento(Appuntamento app) {
 }
 
 
-
-
+public static List<Appuntamento> visualizzaAppPaziente(Paziente p) {
+	ConnessioneDB con = new ConnessioneDB();
+	List<Appuntamento> listaA = new ArrayList<Appuntamento>();
+	Appuntamento a = null;
+	try 
+	{
+		con.connect();
+		String sql = "SELECT * FROM appuntamento WHERE codPaziente = " + p.getIdPaziente() + ";";
+		PreparedStatement pst = con.getCon().prepareStatement(sql);
+		ResultSet rs = pst.executeQuery();
+		while(rs.next()) {
+			a = new Appuntamento();
+			a.setIdAppuntamento(rs.getInt("idAppuntamento"));
+			a.setCodClinica(rs.getInt("codClinica"));
+			a.setCodDottore(rs.getInt("codDottore"));
+			a.setCodPaziente(rs.getInt("codPaziente"));
+			a.setGiorno(rs.getInt("giorno"));
+			a.setMese(rs.getInt("mese"));
+			a.setAnno(rs.getInt("anno"));
+			a.setOra(rs.getInt("ora"));
+			a.setPrenotazione(rs.getInt("prenotazione"));
+			listaA.add(a);
+		}
+		
+	} 
+	catch (SQLException e) 
+	{
+		e.printStackTrace();
+	}
+	finally
+	{
+		try 
+		{
+			con.close();
+		} 
+		catch (SQLException e)
+        {
+			e.printStackTrace();
+		}
+	}
+	return listaA;
+    }
 
 
 

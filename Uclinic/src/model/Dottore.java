@@ -1,6 +1,8 @@
 package model;
 
 import java.math.BigDecimal;
+import java.util.ArrayList;
+import java.util.List;
 
 public class Dottore {
 	
@@ -12,6 +14,8 @@ public class Dottore {
 	private String recapitoTel;
 	private String specializzazione;
 	private double costoVisita;
+	private List<Orario> Orari;
+	
 
 	
 	//id viene assegnato dal db
@@ -25,6 +29,9 @@ public class Dottore {
 		this.recapitoTel = recapitoTel;
 		this.specializzazione = specializzazione;
 		this.costoVisita = costoVisita;
+		//orari
+		this.Orari = new ArrayList<Orario> ();
+		
 	}
 	//id preso dal db
 	public Dottore(int id,String nome, String cognome, int eta, String email,String recapitoTel, String specializzazione,
@@ -38,6 +45,7 @@ public class Dottore {
 		this.recapitoTel = recapitoTel;
 		this.specializzazione = specializzazione;
 		this.costoVisita = costoVisita;
+		this.Orari = new ArrayList<Orario> ();
 	}
 	
 	// Per la visualizazzione staff
@@ -47,6 +55,7 @@ public class Dottore {
 		this.cognome=cognome;
 		this.specializzazione=specializazzione;
 		this.costoVisita = costoVisita;
+		this.Orari = new ArrayList<Orario> ();
 	}
 	
 	
@@ -102,6 +111,12 @@ public class Dottore {
 	}
 	public void setCostoVisita(double costoVisita) {
 		this.costoVisita = costoVisita;
+	}
+	public List<Orario> getOrari() {
+		return Orari;
+	}
+	public void setOrari(List<Orario> orari) {
+		Orari = orari;
 	}
 	
 	

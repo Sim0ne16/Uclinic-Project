@@ -10,6 +10,7 @@ public class Appuntamento {
 	private int mese;
 	private int anno;
 	private int ora;
+	private int prenotazione;
 	
 	
 	public Appuntamento(int codClinica, int codDottore, int codPaziente, int giorno, int mese, int anno, int ora) {
@@ -22,6 +23,20 @@ public class Appuntamento {
 		this.anno = anno;
 		this.ora = ora;
 	}
+	
+	public Appuntamento() {
+		super();
+	}
+	
+	
+	public int getPrenotazione() {
+		return prenotazione;
+	}
+	public void setPrenotazione(int prenotazione) {
+		this.prenotazione = prenotazione;
+	}
+	
+	
 	public int getIdAppuntamento() {
 		return idAppuntamento;
 	}
