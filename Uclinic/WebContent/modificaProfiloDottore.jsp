@@ -13,7 +13,7 @@
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
-    <link rel="stylesheet" href="css/formAggModDottore.css">
+    <link rel="stylesheet" href="css/formModifiche.css">
     
     <script src="https://kit.fontawesome.com/367813bf67.js" crossorigin="anonymous"></script>
 <title>Modifica Dottore</title>
@@ -29,8 +29,8 @@
 
 
 <div class="container">
-		<div class="card mx-auto my-5">
-			<div class="card-header text-center">Modifica i dati del dottore</div>
+		<div class="card ">
+			<div class="card-header text-center" style="font-size: 30px;" id="titoloScheda">Modifica i dati del dottore</div>
 			<div class="card-body">
 				<form action="modificaDottore" method="post">
 					<div class="form-group">	               
@@ -67,9 +67,10 @@
 					</div>
 					<div class="text-center">
 						<button type="submit"  class="btn btn-primary">Modifica</button>
-					         <button id="staffReg" type="submit" class="btn btn-primary"  style=color:white><a href="visualizzaDottore.jsp?id=<%=idDoc%>">Dottore</a></button>
 					</div>
 				</form>
+					<a href="visualizzaDottore.jsp?id=<%=idDoc%>"><button id="staffReg" type="submit" class="btn btn-primary">Dottore</button></a>
+				
 			</div>
 		</div>
 		 <section>    <div class="wave wave1"></div>

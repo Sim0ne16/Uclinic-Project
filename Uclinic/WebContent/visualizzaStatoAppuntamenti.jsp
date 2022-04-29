@@ -67,6 +67,7 @@ Collections.sort(listaA, new AppuntamentoComparatorAnno());
 			<div class="nome-carta">
 				<h3>Data</h3>
 				<h3>Ora</h3>
+				<h3>Clinica</h3>
 				<h3>Dottore</h3>
 				<h3>Stato prenotazione</h3>
 			</div>
@@ -77,7 +78,7 @@ Collections.sort(listaA, new AppuntamentoComparatorAnno());
 			
 			for (Appuntamento a : listaA) {
 				Dottore d = ClinicaDAO.recuperaDottFromApp(a);
-				
+				Clinica c = ClinicaDAO.recuperaClinicaFromApp(a);
 			%>
 			<div class="carte">
 
@@ -87,6 +88,7 @@ Collections.sort(listaA, new AppuntamentoComparatorAnno());
 
 					<h3 class="category"><%=a.getGiorno()%>/<%=a.getMese()%>/<%=a.getAnno()%></h3>
 					<h3 class="card-title"><%=a.getOra()%>:00-<%=a.getOra() + 1 %>:00</h3>
+					<a href="profiloClinicaEst.jsp?id=<%=c.getIdClinica() %>" class="nomeclinica">Clinica : <%=c.getNome() %></a>
 					<a href="visualizzaDottoreEst.jsp?idDottore=<%=d.getIdDottore() %>" class="nomedoc">Dr/Dr.ssa <%=d.getCognome()%> <%=d.getNome() %>
 					</a>
 

@@ -1,9 +1,14 @@
+
+
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
 <%@page import="dao.PazienteDAO"%>
 <%@page import="model.*"%>
 <%@page import="java.util.*"%>
-<%@page import="dao.*"%>
+<%@page import="dao.*"%>   
+
+
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -11,14 +16,17 @@
    <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="css/PagRicerca.css">
+    <link rel="stylesheet" href="css/formRicerche.css">
     <script src="https://kit.fontawesome.com/367813bf67.js" crossorigin="anonymous"></script>
       
     <title>Ricerca</title>
 </head>
+
 <%List<Dottore> listaD = PazienteDAO.cercaDottore(request.getParameter("ricerca"));%>
 <%List<Clinica> listaC = PazienteDAO.cercaClinica(request.getParameter("ricerca"));%>
-<% Paziente p =(Paziente) session.getAttribute("utenteP"); %>
+<% Paziente p =(Paziente) session.getAttribute("utenteP"); %>  
+
+
 <body>
  <div class="container">
         
@@ -61,12 +69,16 @@
 <!-- da aggiungere id  -->
 
 <div class="tuttecarte">
-
-
+<div class="ricercaC">
+    <h2 style="font-size: 30px;" class="titoloR">La ricerca effettuata ha dato questi risultati</h2>
+</div>
+<div class="listaCarte">
    <div class="titoloR">
+
 <h3>Dottori</h3>
 </div>
 <div class="carteDott">
+
    
   <% for(Dottore d : listaD) {  %>
 
@@ -91,8 +103,9 @@
 			
  %>
 				</div>  
-				<br>
+            </div>
 				
+				<div class="listaCarte">
 	
 		<div class="titoloR">
 		<h3>Cliniche</h3>	
@@ -125,15 +138,11 @@
 			
  %>
         </div>     
-	
+	</div>
        </div>    
  
  
-            <div class="wave wave1"></div>
-            <div class="wave wave2"></div>
-            <div class="wave wave3"></div>
-            <div class="wave wave4"></div>
-            <div class="wave wave5"></div>
+          
             
             </section> 
 

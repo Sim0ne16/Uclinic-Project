@@ -84,7 +84,7 @@
 
 <div class="right">
    <div class="prenotaApp">
-   <a href="formAppuntamento.jsp?<%=request.getQueryString() %>&anno=0&mese=0&giorno=0"> <button type="submit" id="btnPrenota">Prenota Appuntamento</button></a>
+   <a href="formAppuntamento.jsp?<%=request.getQueryString() %>&anno=0&mese=0&giorno=0&ora=0"> <button type="submit" id="btnPrenota">Prenota Appuntamento</button></a>
    </div>
    
    

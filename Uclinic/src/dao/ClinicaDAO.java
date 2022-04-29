@@ -809,6 +809,88 @@ public class ClinicaDAO {
     }
     
     
+    public static Clinica recuperaClinicaFromApp(Appuntamento a) {
+    	ConnessioneDB con = new ConnessioneDB();
+    	Clinica d = null;
+    	try 
+    	{
+			con.connect();
+			String sql = "SELECT * from clinica as d join appuntamento as a where a.codClinica = d.idClinica and a.idAppuntamento = " + a.getIdAppuntamento() + " ;";
+			PreparedStatement pst = con.getCon().prepareStatement(sql);
+			ResultSet rs = pst.executeQuery();
+			if(rs.next()) 
+			{
+				d = new Clinica();
+				d.setIdClinica(rs.getInt("idClinica"));
+				d.setNome(rs.getString("nome"));
+				d.setRegione(rs.getString("regione"));
+				d.setCitta(rs.getString("citta"));
+				d.setEmail(rs.getString("email"));
+				d.setRecapitoTel(rs.getString("recapitoTel"));
+				d.setIndirizzo(rs.getString("indirizzo"));
+			
+			}
+		} 
+    	catch (SQLException e) 
+    	{
+			e.printStackTrace();
+		}
+    	finally
+    	{
+    		try 
+    		{
+				con.close();
+			} 
+    		catch (SQLException e)
+    		{
+				e.printStackTrace();
+			}
+    	}
+    	return d;
+    }
+    
+    public static Paziente recuperaPazienteFromApp(Appuntamento a) {
+    	ConnessioneDB con = new ConnessioneDB();
+    	Paziente d = null;
+    	try 
+    	{
+			con.connect();
+			String sql = "SELECT * from paziente as d join appuntamento as a where a.codPaziente = d.idPaziente and a.idAppuntamento = " + a.getIdAppuntamento() + " ;";
+			PreparedStatement pst = con.getCon().prepareStatement(sql);
+			ResultSet rs = pst.executeQuery();
+			if(rs.next()) 
+			{
+				d = new Paziente();
+				d.setIdPaziente(rs.getInt("idPaziente"));
+				d.setNome(rs.getString("nome"));
+				d.setCognome(rs.getString("cognome"));
+				d.setRegione(rs.getString("regione"));
+				d.setEta(rs.getInt("eta"));
+				d.setcFisc(rs.getString("cFisc"));
+				d.setCitta(rs.getString("citta"));
+				d.setEmail(rs.getString("email"));
+
+			}
+		} 
+    	catch (SQLException e) 
+    	{
+			e.printStackTrace();
+		}
+    	finally
+    	{
+    		try 
+    		{
+				con.close();
+			} 
+    		catch (SQLException e)
+    		{
+				e.printStackTrace();
+			}
+    	}
+    	return d;
+    }
+    
+    
     public static List<Appuntamento> visualizzaAppConfermati(Clinica c) {
     	ConnessioneDB con = new ConnessioneDB();
     	List<Appuntamento> listaA = new ArrayList<Appuntamento>();

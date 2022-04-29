@@ -39,7 +39,7 @@ function validaMH() {
 	var altezza = document.form.altezza.value;
 	
 	
-	var formMh = document.getElementById("formMH")
+	var formM = document.getElementById("formMH")
 	var esito = true;
 
   if ((peso <= 0) || (peso >= 561 )) {
@@ -58,12 +58,12 @@ function validaMH() {
         }
         
            if(esito == true){
-	formMh.action = "modificaMh.java"
+	formM.action = "modificaMH"
 } 
 
 
 	else {
-		formin.action = "MedicalHistory.jsp"
+		formM.action = "MedicalHistory.jsp"
 	}     
          
     }

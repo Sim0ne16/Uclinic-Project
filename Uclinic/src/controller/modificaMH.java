@@ -30,28 +30,21 @@ public class modificaMH extends HttpServlet {
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
        
-		MedicalHistory mh = new MedicalHistory();
-		int id = Integer.parseInt(request.getParameter("id"));
-		String altezz = request.getParameter("altezza");
-		String pes = request.getParameter("peso");
-		int altezza = Integer.parseInt(altezz);
-		Double peso = Double.parseDouble(pes);
+	
+		int idPaz = Integer.parseInt(request.getParameter("id"));
+		double peso = Double.parseDouble(request.getParameter("peso"));
+		int altezza = Integer.parseInt(request.getParameter("altezza"));
 		String sangue = request.getParameter("sangue");
 		
-		mh.setIdPaziente(id);
-		mh.setAltezza(altezza);
-		mh.setGsangue(sangue);
-		mh.setPeso(peso);
+		MedicalHistory m = new MedicalHistory(idPaz,peso,altezza,sangue);
 		
-	if(	PazienteDAO.modificaMh(mh)==true ) {
-		PazienteDAO.modificaMh(mh);
-	} else {
-		PazienteDAO.inserisciMh(mh);
-	}
-		
-		
-		
-		
+		if(PazienteDAO.controllaMh(idPaz)==false) {
+			PazienteDAO.inserisciMh(m);
+			response.sendRedirect("profiloUtente.jsp?id="+idPaz);
+		}else {
+			PazienteDAO.modificaMh(m);
+			response.sendRedirect("profiloUtente.jsp?id="+idPaz);
+		}
 		
 		
 	}

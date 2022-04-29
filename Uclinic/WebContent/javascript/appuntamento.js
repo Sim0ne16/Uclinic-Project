@@ -137,7 +137,7 @@ function reloadPageAnno() {
 
 	window.sessionStorage.setItem("anno", anno);
 
-	window.location = "formAppuntamento.jsp?idDottore=" + id + "&anno=" + anno + "&mese=0" + "&giorno=0";
+	window.location = "formAppuntamento.jsp?idDottore=" + id + "&anno=" + anno + "&mese=0&giorno=0&ora=0";
 
     
 
@@ -151,7 +151,7 @@ function reloadPageMese() {
 	window.sessionStorage.setItem("mese", mese);
 
 
-	window.location = "formAppuntamento.jsp?idDottore=" + id + "&anno=" + anno + "&mese=" + mese + "&giorno=0";
+	window.location = "formAppuntamento.jsp?idDottore=" + id + "&anno=" + anno + "&mese=" + mese + "&giorno=0&ora=0";
 
 
 }
@@ -168,11 +168,32 @@ function reloadPageGiorno() {
 	window.sessionStorage.setItem("giorno", giorno);
 
 
-	window.location = "formAppuntamento.jsp?idDottore=" + id + "&anno=" + anno + "&mese=" + mese + "&giorno=" + giorno;
+	window.location = "formAppuntamento.jsp?idDottore=" + id + "&anno=" + anno + "&mese=" + mese + "&giorno=" + giorno+"&ora=0";
     
   
 
 }
+
+
+
+function reloadPageOra() {
+	var id = document.formi.idDottore.value;
+	var anno = window.sessionStorage.getItem("anno");
+	var mese = window.sessionStorage.getItem("mese");
+	var giorno = window.sessionStorage.getItem("giorno")
+	
+	var ora = document.formi.oraA.value;
+	
+	window.sessionStorage.setItem("ora", ora);
+
+
+	window.location = "formAppuntamento.jsp?idDottore="+ id + "&anno=" + anno + "&mese=" + mese + "&giorno=" + giorno+"&ora="+ora;
+    
+  
+
+}
+
+
 
 
 function controllocalendarioFormApp() {
@@ -192,26 +213,26 @@ function controllocalendarioFormApp() {
 	var ora = data.getHours();
 
 
-	if ((giornoF == "") || (giornoF == "undefined")) {
+	if ((giornoF == "") || (giornoF == "undefined") || (giornoF == 0)) {
 		alert("Data non valida!");
 		giornoF.focus();
 		esito = false;
 	}
 
-	if ((meseF == "") || (meseF == "undefined")) {
+	if ((meseF == "") || (meseF == "undefined")|| (meseF == 0)) {
 		alert("Data non valida!");
 		meseF.focus();
 		esito = false;
 	}
 
 
-	if ((annoF == "") || (annoF == "undefined")) {
+	if ((annoF == "") || (annoF == "undefined")|| (annoF == 0)) {
 		alert("Data non valida!");
 		annoF.focus();
 		esito = false;
 	}
 
-	if ((oraF == "") || (oraF == "undefined")) {
+	if ((oraF == "") || (oraF == "undefined")|| (oraF == 0)) {
 		alert("Data non valida!");
 		esito = false;
 	}
@@ -248,7 +269,8 @@ function controllocalendarioFormApp() {
 	if (esito == true) {
 		form.action = "PrenotaAppuntamento";
 	} else {
-		form.action = "formAppuntamento.jsp"
+		var id = document.formi.idDottore.value;
+		form.action = "formAppuntamento.jsp?idDottore="+id+"&anno=0&mese=0&giorno=0&ora=0";
 	}
 
 

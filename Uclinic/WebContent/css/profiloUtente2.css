@@ -8,6 +8,18 @@
 	text-decoration: none;
 }
 
+
+.mh1{
+	display:flex;
+}
+.mh2{
+	display:flex;
+}
+.mh3{
+	display:flex;
+}
+
+
 .container {
 	border-bottom-color: #3eccf0;
 	border-bottom-style: solid;

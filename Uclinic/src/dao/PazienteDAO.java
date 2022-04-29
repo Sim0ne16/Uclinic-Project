@@ -345,12 +345,12 @@ public static boolean modificaMh(MedicalHistory mh) {
 	ConnessioneDB con = new ConnessioneDB();
 	try {
 		con.connect();
-		String query = "Update medicalhistory set idPaziente=? ,peso=?,altezza=?,gsangue=?";
-		PreparedStatement stm = con.getCon().prepareStatement(query);
-		stm.setInt(1, mh.getIdPaziente());
-		stm.setDouble(2, mh.getPeso());
-		stm.setInt(3, mh.getAltezza());
-		stm.setString(4, mh.getGsangue());
+		String query = "Update medicalhistory set  peso=?,altezza=?,gsangue=? where idPaziente=?";
+		PreparedStatement stm = con.getCon().prepareStatement(query);	
+		stm.setDouble(1, mh.getPeso());
+		stm.setInt(2, mh.getAltezza());
+		stm.setString(3, mh.getGsangue());
+		stm.setInt(4, mh.getIdPaziente());
 		if(stm.executeUpdate()>0) {
 			esito = true;
 		}
@@ -398,6 +398,30 @@ public static MedicalHistory recuperaMh(int id) {
 	return m;
 }
 
+
+public static boolean controllaMh(int id) {
+	boolean esito = false;
+	ConnessioneDB con = new ConnessioneDB();
+	try {
+		con.connect();
+		String sql = "Select * from medicalhistory where idPaziente like ?";
+		PreparedStatement stm = con.getCon().prepareStatement(sql);
+		stm.setInt(1, id);
+		ResultSet rs = stm.executeQuery();
+		if(rs.next()) {
+			esito = true;
+		}	
+	} catch (SQLException e) {
+		e.printStackTrace();
+	} finally {
+		try {
+			con.close();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+	}
+	return esito;
+}
 
 
 public static boolean inserisciMh(MedicalHistory m) {
@@ -691,8 +715,7 @@ public static List<Appuntamento> visualizzaAppPaziente(Paziente p) {
    }
    
    
-   public static List<Appuntamento> validaAppuntamentoV2(Orario or) {
-		boolean esito = true;
+   public static List<Appuntamento> recuperaAppuntamentiDottore(Orario or) {
 		List<Appuntamento> appuntamenti = new ArrayList<Appuntamento>();
 		Appuntamento app = null;
 		ConnessioneDB con = new ConnessioneDB ();
@@ -708,8 +731,7 @@ public static List<Appuntamento> visualizzaAppPaziente(Paziente p) {
 			stm.setInt(6, or.getAnno());
 			ResultSet rs = stm.executeQuery();
 			while(rs.next()) {
-	
-			app= new Appuntamento(  rs.getInt("codClinica"),rs.getInt("codDottore"), rs.getInt("giorno"), rs.getInt("mese"), rs.getInt("anno"), rs.getInt("ora"),rs.getInt("prenotazione"));
+			app= new Appuntamento(  rs.getInt("codClinica"),rs.getInt("codDottore"),rs.getInt("codPaziente"), rs.getInt("giorno"), rs.getInt("mese"), rs.getInt("anno"), rs.getInt("ora"),rs.getInt("prenotazione"));
 			appuntamenti.add(app);
 			}
 		
@@ -722,7 +744,7 @@ public static List<Appuntamento> visualizzaAppPaziente(Paziente p) {
 				e.printStackTrace();
 			}
 		}
-		return esito;
+		return appuntamenti;
 	}
    
    

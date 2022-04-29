@@ -4,6 +4,7 @@
 <%@page import="model.*"%>
 <%@page import="java.util.*"%>
 <%@page import="dao.*"%>
+<%@page import="comparator.*" %>
 
 <!DOCTYPE html>
 <html>
@@ -31,27 +32,36 @@
 
 <div class="form-group">	               
 				
-                   
-
-	<form action="" method="post" name="formi" id="form">
-	 <div class="form-group"><input type="hidden"   value="<%=idDottore%>" id="idDottore" name="idDottore"  class="form-control" ></div>
-		
-			
-		<% 
+        
+        <% 
 		
 		int anno = Integer.parseInt(request.getParameter("anno")); 
 		int mese = Integer.parseInt(request.getParameter("mese"));
 		int giorno = Integer.parseInt(request.getParameter("giorno"));
+		int ora = Integer.parseInt(request.getParameter("ora"));
 		List<Integer> mesi = PazienteDAO.recuperaMesi(idDottore, anno);
+		Collections.sort(mesi, new ComparatorInt());
+		
 				
 
 		%>
+                   
+
+	<form action="" method="post" name="formi" id="form">
+	 <div class="form-group"><input type="hidden"   value="<%=idDottore%>" id="idDottore" name="idDottore"  class="form-control" ></div>
+	 <div class="form-group"><input type="hidden"   value="<%=anno%>" id="annoP" name="annoP"  class="form-control" ></div>
+	 <div class="form-group"><input type="hidden"   value="<%=mese%>" id="meseP" name="meseP"  class="form-control" ></div>
+	 <div class="form-group"><input type="hidden"   value="<%=giorno%>" id="giornoP" name="giornoP"  class="form-control" ></div>
+	 <div class="form-group"><input type="hidden"   value="<%=ora%>" id="oraP" name="oraP"  class="form-control" ></div>	
+			
+		
 	
 		
 		 <label for="lang">Anno</label> <select name="annoA" id="annoA"  onchange="reloadPageAnno()">
 			<option value="<%=anno%>"><%=anno%></option> 
 			<% 
 			List<Integer> anni = new ArrayList<Integer>();
+		    Collections.sort(anni, new ComparatorInt());
 			for(Orario o:orariD ){  
 			if(!anni.contains(o.getAnno())){
 				anni.add(o.getAnno());
@@ -87,7 +97,7 @@
 			<% 
 	
 		List<Integer> giorni = PazienteDAO.recuperaGiorni(idDottore,anno,mese);
-				
+		Collections.sort(giorni, new ComparatorInt());		
 
 		%>
 		
@@ -108,22 +118,36 @@
 		int oraF = PazienteDAO.recuperaOreF(idDottore,anno,mese,giorno);
 		
 	    int differenza = oraF-oraI;
-	    int[] orariI = new int[differenza];
+	    int[] orariI = new int[differenza];	    
 	    int[] orariF = new int[differenza];
 	    
 	    for(int x=0;x<differenza;x++){
 	    	orariI[x] = oraI+x;
 	    	orariF[x] = oraI+1+x;
 	    }
+	  
+	    List<Appuntamento> appuntamenti = new ArrayList<Appuntamento>();
+	  if(oraI!=0){
+      Orario orario = new Orario(idDottore,anno,mese,giorno,oraI,oraF);
+	  appuntamenti = PazienteDAO.recuperaAppuntamentiDottore(orario);  
+	    }
 		%>
 		
 		
-		<label for="lang">Ora</label> <select name="oraA" id="oraA">
-		    <option value=""></option>
-		 <%for (int x=0;x<differenza;x++){ %>
-			<option value="<%=orariI[x]%>"><%=orariI[x] %> - <%=orariF[x]%></option>
-	<%} %>
-		</select>
+		<label for="lang">Ora</label> <select name="oraA" id="oraA" onchange="reloadPageOra()">
+		    <option value="<%=ora%>"><%=ora%>.00 </option>
+		 <%for (int x=0;x<differenza;x++){  
+			 boolean esito = true;
+			 for(int y=0;y<appuntamenti.size();y++){
+			 if(appuntamenti.get(y).getOra()==orariI[x] && appuntamenti.get(y).getPrenotazione()!=2){ 
+			 esito = false;
+			 %>
+			
+	<%}} if (esito == true){ %>
+			<option value="<%=orariI[x]%>"><%=orariI[x] %>.00 - <%=orariF[x]%>.00</option> <% }}%>
+		 		</select>
+		
+		
 		
 		
 			<div class="button" name="bottone">

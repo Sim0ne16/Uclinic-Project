@@ -37,7 +37,7 @@
 		<div class="card w-50 mx-auto my-5">
 			<div class="card-header text-center">Modifica Medical History</div>
 			<div class="card-body">
-				<form action="validaMH()" method="post" id="formMH" name="form">
+				<form action=""  method="post" id="formMH" name="form">
 				    <div class="form-group">	               
 						<input type="hidden"   value="<%=p.getIdPaziente()%>" id="id" name="id" class="form-control" required >
 					</div>
@@ -69,8 +69,8 @@
 
 					</div>
 
-					<div class="text-center">
-						<button type="submit" onclick="validaMH()" class="btn btn-primary">Modifica</button>
+					<div class="button">
+						<input type="submit" onclick="validaMH()" class="btn btn-primary" value="Modifica">
 					</div>
 					<button id="staffReg" type="submit" class="btn btn-primary" style=color:white><a href="profiloUtente.jsp?id=<%=x%>">Torna</a></button>
 				</form>

@@ -24,6 +24,19 @@ public class Appuntamento {
 		this.ora = ora;
 	}
 	
+	
+	public Appuntamento(int codClinica, int codDottore, int codPaziente, int giorno, int mese, int anno, int ora,int prenotazione) {
+		super();
+		this.codClinica = codClinica;
+		this.codDottore = codDottore;
+		this.codPaziente = codPaziente;
+		this.giorno = giorno;
+		this.mese = mese;
+		this.anno = anno;
+		this.ora = ora;
+		this.prenotazione = prenotazione;
+	}
+	
 	public Appuntamento() {
 		super();
 	}

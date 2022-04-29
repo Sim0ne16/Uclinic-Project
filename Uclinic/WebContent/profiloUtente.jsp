@@ -43,7 +43,7 @@
                         <a href="#">Impostazioni</a>
                         <ul>
                             <li>
-                                <a href="#" class="ciao">Ciao</a>
+                                <a href="#" class="ciao"></a>
                                 
                             </li>
                         </ul>
@@ -122,10 +122,12 @@ Questo tasto ti permette di cercare sia le cliniche sia i dottori. </p>
 <div class="right"  >
 
 <div class="storiaMedica">
-<ul>
-<li><h4>Peso:</h4> </li>
-<li><h4>Altezza:</h4> </li>
-<li><h4>Gruppo sanguigno:</h4> </li>
+<ul >
+<% MedicalHistory mh = PazienteDAO.recuperaMh(p.getIdPaziente()); %>
+
+<li class="mh1"><h4>Peso:</h4> <%=mh.getPeso() %> </li>
+<li class="mh2"><h4>Altezza:</h4> <%=mh.getAltezza()%> </li>
+<li class="mh3"><h4>Gruppo sanguigno:</h4><%=mh.getGsangue()%> </li>
 </ul>
 </div>
 

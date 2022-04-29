@@ -11,7 +11,7 @@
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
-	<link rel="stylesheet" href="css/formAggModDottore.css">
+	<link rel="stylesheet" href="css/formModifiche.css">
 
     
     <script src="https://kit.fontawesome.com/367813bf67.js" crossorigin="anonymous"></script>
@@ -26,8 +26,8 @@
 <body>
 
 <div class="container">
-		<div class="card  mx-auto my-5">
-			<div class="card-header text-center">Modifica i dati della Clinica</div>
+		<div class="card">
+			<div class="card-header text-center" style="font-size: 30px;" id="titoloScheda">Modifica i dati della Clinica</div>
 			<div class="card-body">
 				<form action="modificaPaziente" method="post">
 					<div class="form-group">
@@ -39,7 +39,7 @@
 						<input type="text" name="uCognome" value="<%=p.getCognome()%>" class="form-control" required >
 					</div>
 					<div class="form-group">
-						<label>Citt‡ </label> 
+						<label>Citt√† </label> 
 						<input type="text" name="uCitta" value="<%=p.getCitta() %>" class="form-control" required >
 					</div>
 					
@@ -63,10 +63,11 @@
 					</div>
 					<div class="text-center">
 						<button type="submit" class="btn btn-primary">Modifica</button>
-							<button id="staffReg" type="submit" class="btn btn-primary" style=color:white><a href="profiloUtente.jsp?id=<%=p.getIdPaziente()%>">Torna</a></button>
-					<h1>Profilo modificato con successo!</h1>
+					<h3 id="agg">Profilo modificato con successo!</h3>
 					</div>
 				</form>
+										<a href="profiloUtente.jsp?id=<%=p.getIdPaziente()%>"><button id="staffReg" type="submit" class="btn btn-primary">Torna</button></a>
+				
 			</div>
 		</div>
 		<section>    <div class="wave wave1"></div>

@@ -3,7 +3,7 @@
      
 <%@page import="model.*"%>
 <%@page import="java.util.*"%>
-<%@page import="dao.*"%>
+<%@page import="dao.*"%>  
 <!DOCTYPE html>
 <html>
 <head>
@@ -12,17 +12,17 @@
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
-	<link rel="stylesheet" href="css/formAggModDottore.css">
+	<link rel="stylesheet" href="css/formModifiche.css">
 	
 	<script src="javascript/controlli.js"></script>
 <title>Aggiungi Dottore</title>
 </head>
 
 
-<%
+      <%
                 Clinica C =(Clinica) session.getAttribute("utenteC");
         		    int x = C.getIdClinica();
-                %>
+                %> 
 
 
 
@@ -31,8 +31,8 @@
 
 
 <div class="container">
-		<div class="card w-50 mx-auto my-5">
-			<div class="card-header text-center">Registrazione Dottore</div>
+		<div class="card">
+			<div class="card-header text-center"><h3 style="font-size: 30px;" id="titoloScheda">Aggiungi Dottore</h3></div>
 			<div class="card-body">
 				<form action="" id="aggiungiDoc" name="formino" method="post">
 					<div class="form-group">
@@ -67,10 +67,17 @@
 						<button type="submit" onclick="controlloD()" class="btn btn-primary">Registrazione</button>
 					</div>
 				</form>
+				
+				                        <a href="StaffClinica.jsp?id=<%=x%>"><button  type="submit" class="btn btn-primary">Ritorna allo Staff</button></a>
+				
 			</div>
+
+
+
+
 		</div>
 	</div>
 
-     <button id="staffReg"  type="submit" class="btn btn-primary" style=color:white><a href="StaffClinica.jsp?id=<%=x%>"> Staff</a></button>
+    
 </body>
 </html>

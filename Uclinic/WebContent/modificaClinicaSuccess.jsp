@@ -14,7 +14,7 @@
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
 	
-		<link rel="stylesheet" href="css/formAggModDottore.css">
+		<link rel="stylesheet" href="css/formModifiche.css">
     
     <script src="https://kit.fontawesome.com/367813bf67.js" crossorigin="anonymous"></script>
 <title>Modifica Clinica</title>
@@ -30,8 +30,8 @@
 
 
 <div class="container">
-		<div class="card w-50 mx-auto my-5">
-			<div class="card-header text-center">Modifica i dati della clinica <%=c.getNome() %></div>
+		<div class="card">
+			<div class="card-header text-center" style="font-size: 30px;" id="titoloScheda">Modifica i dati della clinica <%=c.getNome() %></div>
 			<div class="card-body">
 				<form action="modificaDottore" method="post">
 				
@@ -65,10 +65,11 @@
 					</div>
 					<div class="text-center">
 						<button type="submit"  class="btn btn-primary">Modifica</button>
-						 <h1>Clinica modificato con successo!</h1>
-     <button id="staffReg" type="submit" class="btn btn-primary" style=color:white><a href="profiloClinica.jsp?id=<%=idClinica%>">Clinica</a></button>
+						 <h3 id="agg">Modifica avvenuta, torna alla clinica!</h3>
 					</div>
 				</form>
+				 <a href="profiloClinica.jsp?id=<%=idClinica%>"><button id="staffReg" type="submit" class="btn btn-primary" >Clinica</button></a>
+				
 			</div>
 		</div>
 	</div>

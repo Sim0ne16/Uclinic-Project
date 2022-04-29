@@ -34,10 +34,13 @@ response.setContentType("text/html;charset=UTF-8");
 		int idClinica = PazienteDAO.recuperaIdClinica(idDottore);
 		Paziente p =(Paziente) request.getSession().getAttribute("utenteP");
 		int idPaziente = p.getIdPaziente();
-		int giorno =Integer.parseInt(request.getParameter("giorno"));
-		int mese =Integer.parseInt(request.getParameter("mese"));
-		int anno =Integer.parseInt(request.getParameter("anno"));
-		int ora =Integer.parseInt(request.getParameter("ora"));
+		int giorno =Integer.parseInt(request.getParameter("giornoP"));
+		int mese =Integer.parseInt(request.getParameter("meseP"));
+		int anno =Integer.parseInt(request.getParameter("annoP"));
+		int ora =Integer.parseInt(request.getParameter("oraP"));
+		
+
+		
 		
 		Appuntamento app = new Appuntamento(idClinica, idDottore, idPaziente, giorno, mese, anno, ora);
 		

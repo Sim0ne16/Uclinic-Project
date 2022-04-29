@@ -11,7 +11,7 @@
    <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="css/PazientiClinica.css">
+    <link rel="stylesheet" href="css/formRicerche.css">
     <script src="https://kit.fontawesome.com/367813bf67.js" crossorigin="anonymous"></script>
     <title>Ricerca</title>
 </head>
@@ -32,8 +32,11 @@
     </div>
  
  
-   <section id="wrapper">
+   <section id="wrapperBis">
 
+   <div class="titoloR">
+<h3>Pazienti</h3>	
+</div>
  
 			
      
@@ -41,12 +44,9 @@
  
 <!-- da aggiungere id  -->
 
-<div class="tuttecarte">
+<div class="tuttecarteBis">
 
 
-   <div class="titoloR">
-<h3>Pazienti</h3>	
-</div>
 <div class="carteDott">
    
   <% for(Paziente p : listaP) {  %>
@@ -73,18 +73,14 @@
 			
  %>
 				</div>  
-				<br>
+				
 				
 			
  
        </div>    
  
  
-            <div class="wave wave1"></div>
-            <div class="wave wave2"></div>
-            <div class="wave wave3"></div>
-            <div class="wave wave4"></div>
-            <div class="wave wave5"></div>
+           
             
             </section> 
 
