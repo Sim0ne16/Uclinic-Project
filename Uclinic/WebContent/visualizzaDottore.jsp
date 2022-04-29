@@ -14,7 +14,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="css/pagDottore.css">
     <script src="https://kit.fontawesome.com/367813bf67.js" crossorigin="anonymous"></script>
-    <title>Document</title>
+    <title>Profilo Dottore</title>
 </head>
 
 <%  Clinica c = (Clinica)request.getSession().getAttribute("utenteC"); %>
@@ -60,19 +60,29 @@
 
     <section id="wrapper">
 
-<div class="left">
+        <div class="dxandsx">
+
+        
+
+<div class="left" >
 
         <ul class="asd">  
              
         
          <%
+
               
                 int idClinica = c.getIdClinica();		 
         		int idDoc = Integer.parseInt(request.getParameter("id"));
         		Dottore d =  ClinicaDAO.visualizzaDottore(idDoc);
                 %>
+
+                <div class="nomeD">
+                    <i class="fa-solid fa-user fa-4x"></i> <h3 style="font-size: 30px" id="titoloD">Dr. <%=d.getNome() %> <%=d.getCognome() %></h3>
+
+                </div>
         
-            <i class="fa-solid fa-user fa-4x">Dr. <%=d.getNome() %> <%=d.getCognome() %></i>          
+                    
             <li><i class="fa-solid fa-mars-and-venus fa-2x"></i>Eta : <%=d.getEta() %></li>       
             <li><i class="fa-solid fa-id-card fa-2x"></i> Specializzazione : <%=d.getSpecializzazione() %> </li>
             <li><i class="fa-solid fa-dna fa-2x"></i>  Costo Visita: <%=d.getCostoVisita() %> $</li>
@@ -81,33 +91,37 @@
          
         
           </ul>
-
-
+</div>
+<div class="right">
                        <div class="tooltip" >
+                           <div class="btnDot">
                             
-                            <a class="btn btn-dark" href="modificaProfiloDottore.jsp?id=<%=idDoc%>" value="press me" title="Modifica"><i  style="color: rgb(55, 238, 177)" class="fa-solid fa-user-pen fa-2x"></i></a>
+                            <a class="btn btn-dark" href="modificaProfiloDottore.jsp?id=<%=idDoc%>" title="Modifica"><i  style="color: rgb(55, 238, 177)" class="fa-solid fa-user-pen fa-2x"></i>
                             
+                            </a><p id="pDot">Modifica il profilo del dottore.</p>
+                        </div>
+                        <div class="btnDot">
+                            <a class="btn btn-dark" href="EliminaDottore?id=<%=idDoc%>" title="Elimina" type="reset"  onClick="return confirm('Sicuro di voler cancellare il dottore?')" ><i  style="color: rgb(55, 238, 177)" class="fa-solid fa-user-xmark fa-2x"></i> </a>
+                           <p id="pDot">Elimina dottore dalla clinica.</p>
+                        </div>
                           
-                            <a class="btn btn-dark" href="EliminaDottore?id=<%=idDoc%>" value="press me" title="Elimina" input type="reset"  onClick="return confirm('Sicuro di voler cancellare il dottore?')" ><i  style="color: rgb(55, 238, 177)" class="fa-solid fa-user-xmark fa-2x"></i> </a>
-                          
-                                                                                                                                                                                        
-                            <a class="btn btn-dark" href="StaffClinica.jsp?id=<%=idClinica%>" value="press me" title="Staff"><i  style="color: rgb(55, 238, 177)" class="fa-solid fa-staff-aesculapius fa-2x"></i></a>
-                            
-                            <a class="btn btn-dark" href="gestisciOrariDottore.jsp?id=<%=idDoc%>" value="press me" title="Gestisci Orari"><i  style="color: rgb(55, 238, 177)" class="fa-solid fa-calendar fa-2x"></i></a>
+                            <div class="btnDot">                                                                                                                                                         
+                            <a class="btn btn-dark" href="StaffClinica.jsp?id=<%=idClinica%>" title="Staff"><i  style="color: rgb(55, 238, 177)" class="fa-solid fa-staff-aesculapius fa-2x"></i></a>
+                        <p id="pDot">Visualizza lo staff della clinica.  </p>
+                        </div>
+                            <div class="btnDot">
+                            <a class="btn btn-dark" href="gestisciOrariDottore.jsp?id=<%=idDoc%>" title="Gestisci Orari"><i  style="color: rgb(55, 238, 177)" class="fa-solid fa-calendar fa-2x"></i></a>
+                        <p id="pDot">Gestisci gli orari del dottore.</p>
+                        </div>
 						</div>
 
         
+                    </div>
 
 
 
 
-<div class="right">
-   <div class="calendario">
-   
-   
-   
-   
-   </div>
+
 </div>
 
 
@@ -122,25 +136,6 @@
     </section> 
 
 
-
-
-
-    <script>
-        document.querySelectorAll('.accordion_button').forEach(button => {
-            button.addEventListener('click', () => {
-               // const accordionContent= button.nextElementSibling;
-    
-                button.classList.toggle('accordion_button--active');
-    
-              //  if (button.classList.contains('accordion_button--active')) {
-               //     accordionContent.style.maxHeight = accordionContent.scrollHeight + 'px';
-    //
-              //  }else{
-               //    accordionContent.style.maxHeight = 0; 
-              //  }
-            });
-        });
-    </script>
 
 </body>
 </html>

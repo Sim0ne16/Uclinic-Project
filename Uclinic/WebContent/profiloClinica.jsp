@@ -15,7 +15,7 @@
 <link rel="stylesheet" href="css/profiloClinica.css">
 <script src="https://kit.fontawesome.com/367813bf67.js"
 	crossorigin="anonymous"></script>
-<title>Clinica Home</title>
+<title>Profilo Clinica</title>
 </head>
 <body>
 <%
@@ -66,12 +66,16 @@
 		<div class="left">
 
 			<ul class="asd">
+				<div class="nomeC">
+					<i class="fa-solid fa-house-chimney-medical fa-4x"></i><h3 style="font-size:30px" id="titoloC"><%=C.getNome() %></h3>
+
+				</div>
 
 
 
 
 
-				<i class="fa-solid fa-house-chimney-medical fa-4x"><%=C.getNome()%></i>
+				
 				<li><i class="fa-solid fa-clipboard-user fa-2x"></i> <a
 					href="StaffClinica.jsp?id=<%=x%>"> Staff</a></li>
 				<li><i class="fa-solid fa-city fa-2x"></i> Regione: <%=C.getRegione()%></li>
@@ -88,6 +92,12 @@
 		</div>
 
 		<div class="right">
+
+			<div class="cercaP">
+
+
+
+
 		<div class="dati-search">
 		<p>Se hai bisogno di trovare un paziente inserisci il suo nome, cognome o codice fiscale!</p>
 		</div>
@@ -98,13 +108,21 @@
 				<input type="submit" value="Invia" id="sub-cercaP">
 
 			</form>
-			<div class="gest-app">
-			<a href="gestisciAppuntamenti.jsp"><button type="submit">Gestisci appuntamento</button></a>
-			</div>
-			<div class="gest-app">
-			<a href="appuntamentiConfermati.jsp"><button type="submit">Appuntamenti confermati</button></a>
-			</div>
 		</div>
+			
+	<div class="gestioneApp">
+
+		
+			<div class="gest-app">
+			<a href="gestisciAppuntamenti.jsp"><button type="submit" class="btnApp">Gestisci appuntamento</button></a>
+			</div>
+			
+			<div class="gest-app">
+			<a href="appuntamentiConfermati.jsp"><button type="submit" class="btnApp">Appuntamenti confermati</button></a>
+			</div>
+			
+		</div>
+	</div>	
 </div>
 
 
@@ -121,9 +139,6 @@
 
 
 
-	<script>
-
-    </script>
 
 </body>
 </html>

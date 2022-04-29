@@ -88,16 +88,25 @@
 
 
     <section id="wrapper">
-
+    <div class="testa">
+    <h1 style="font-size: 40px">Benvenuto in UClinic <%=p.getNome() %>, il punto di incontro tra cliniche private e utenti!</h1>
+    <div class="inforesearch">
+<p id="infoR">Per prenotare un appuntamento con una delle nostre cliniche partner, usa il tasto cerca qui sopra. 
+Questo tasto ti permette di cercare sia le cliniche sia i dottori. </p>
+</div>
+    </div>
+    
+    
+<div class="dxandsx">
 <div class="left">
 
         <ul class="asd">  
              
         
-        
-            <i class="fa-solid fa-user fa-4x"> <%= p.getNome() %>  <%= p.getCognome() %></i> 
-
-            <li><i class="fa-solid fa-mars-and-venus fa-2x"></i> Eta: <%= p.getEta() %></li></i> 
+        <div class="nomeP">
+            <i class="fa-solid fa-user fa-4x"></i> <h3 style="font-size: 30px" id="titoloP"><%=p.getNome() %>  <%= p.getCognome() %></h3>
+</div>
+            <li><i class="fa-solid fa-mars-and-venus fa-2x"></i> Eta: <%= p.getEta() %></li> 
             <li><i class="fa-solid fa-city fa-2x"></i> Citta : <%= p.getCitta() %></li>
             <li> <i class="fa-solid fa-location-crosshairs fa-2x"></i> Regione: <%= p.getRegione() %></li>
             <li> <i class="fa-solid fa-id-card fa-2x"></i>  Codice Fiscale : <%= p.getcFisc() %></li>
@@ -112,52 +121,34 @@
 
 <div class="right"  >
 
-<div class="info-research">
-<p>Per prenotare un appuntamento con una delle nostre cliniche partner, usa il tasto cerca qui sopra.<br>
-Questo tasto ti permette di cercare sia le cliniche sia i dottori. </p>
+<div class="storiaMedica">
+<ul>
+<li><h4>Peso:</h4> </li>
+<li><h4>Altezza:</h4> </li>
+<li><h4>Gruppo sanguigno:</h4> </li>
+</ul>
 </div>
 
-          <div class="accordion" >
-            <button type="button" class="accordion_button">Medical History</button>
-            <div class="accordion__content">
-               <li><p>Peso :</p></li>
-                <li> <p>Altezza :  </p></li>
-                <li> <p>Sangue : </p></li>
-            </div>
-        </div>
         
-        <div class="gest-app">
-			<a href="visualizzaStatoAppuntamenti.jsp"><button type="submit">Visualizza Stato Appuntamenti</button></a>
+        
+        <div class="statoApp">
+        <p>Se hai bisogno di visualizzare lo stato dei tuoi appuntamenti clicca qui!</p>
+			<a href="visualizzaStatoAppuntamenti.jsp" class="btnApp" ><button type="submit" class="gestApp" >Visualizza Stato Appuntamenti</button></a>
 			</div>
 
     </div>
 
-
+</div>
 
         <div class="wave wave1"></div>
         <div class="wave wave2"></div>
         <div class="wave wave3"></div>
         <div class="wave wave4"></div>
         <div class="wave wave5"></div>
-
+ 
 
     </section> 
 
-
-
-
-
-    <script>
-        document.querySelectorAll('.accordion_button').forEach(button => {
-            button.addEventListener('click', () => {
-              
-    
-                button.classList.toggle('accordion_button--active');
-    
-         
-            });
-        });
-    </script>
 
 </body>
 </html>

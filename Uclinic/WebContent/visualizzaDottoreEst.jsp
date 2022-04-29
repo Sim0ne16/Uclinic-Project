@@ -20,8 +20,8 @@
   <%
   
 	int idDoc = Integer.parseInt(request.getParameter("idDottore"));
-	Dottore d =  ClinicaDAO.visualizzaDottore(idDoc);
-    Paziente p =(Paziente) session.getAttribute("utenteP");
+	Dottore d = ClinicaDAO.visualizzaDottore(idDoc);
+    Paziente p = (Paziente) session.getAttribute("utenteP");
                 %>
 
 <body>
@@ -41,22 +41,7 @@
 
 
         </ul>
-        <input type="checkbox"  id="bc2">
-        <label for="bc2" class="search-icon">
-            <i class="fa fa-search"></i>
-            <i class="fa fa-close"></i>
-        </label>
-
-        <div class="search-box">
-
-            <form>
-
-                <input type="search" placeholder="Search..." class="search">
-                <input type="submit" value="Ok" class="sub">
-
-            </form>
-
-        </div>
+        
     </div>
 
 
@@ -65,6 +50,8 @@
 
 
     <section id="wrapper">
+    
+    <div class="dxandsx">
 
 <div class="left">
 
@@ -73,24 +60,22 @@
         
          
         
-            <i class="fa-solid fa-user fa-4x">Dr. <%=d.getNome() %> <%=d.getCognome() %></i>          
+             <div class="nomeD">
+                    <i class="fa-solid fa-user fa-4x"></i> <h3 style="font-size: 30px" id="titoloD">Dr. <%=d.getNome() %> <%=d.getCognome() %></h3>
+                </div>   
+                  
             <li><i class="fa-solid fa-mars-and-venus fa-2x"></i>Eta : <%=d.getEta() %></li>       
             <li><i class="fa-solid fa-id-card fa-2x"></i> Specializzazione : <%=d.getSpecializzazione() %> </li>
             <li><i class="fa-solid fa-dna fa-2x"></i>  Costo Visita: <%=d.getCostoVisita() %> $</li>
             <li><i class="fa-solid fa-phone fa-2x"></i> Recapito : <%=d.getRecapitoTel() %></li>
             <li><i class="fa-solid fa-envelope fa-2x"></i>  Email : <%=d.getEmail() %> </li>
-            <li>     </li>
+            
         
           </ul>
 
 
                    
-                       <div class="tooltip" >
-                                                                                                                                                                                           
-                            <a class="btn btn-dark" href="javascript:history.go(-1)" value="press me" title="Torna Alla Ricerca"><i  style="color: rgb(55, 238, 177)" class="fa-solid fa-magnifying-glass fa-2x"></i></a>
-						   
-						
-						</div>
+                       
 
         </div>
 
@@ -99,11 +84,20 @@
 
 <div class="right">
    <div class="prenotaApp">
-   <a href="formAppuntamento.jsp?<%=request.getQueryString() %>"> <button type="submit">Prenota Appuntamento</button></a>
+   <a href="formAppuntamento.jsp?<%=request.getQueryString() %>&anno=0&mese=0&giorno=0"> <button type="submit" id="btnPrenota">Prenota Appuntamento</button></a>
    </div>
+   
+   
+   <div class="tooltipEst" >
+                                                                                                                                                                                           
+                            <a class="btn1 btn-dark" href="javascript:history.go(-1)" title="Torna Alla Ricerca">
+                            <i  style="color: rgb(55, 238, 177)" class="fa-solid fa-arrow-rotate-left fa-4x"></i></a>
+						   
+						
+						</div>
 </div>
 
-
+</div>
 
         <div class="wave wave1"></div>
         <div class="wave wave2"></div>
@@ -118,16 +112,7 @@
 
 
 
-    <script>
-        document.querySelectorAll('.accordion_button').forEach(button => {
-            button.addEventListener('click', () => {
-            
-    
-                button.classList.toggle('accordion_button--active');
-   
-            });
-        });
-    </script>
+ 
 
 </body>
 </html>

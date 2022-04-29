@@ -19,7 +19,7 @@
 <% 
 int idDoc = Integer.parseInt(request.getParameter("id"));
 Dottore d =  ClinicaDAO.visualizzaDottore(idDoc); 
-List<Orario> orario = ClinicaDAO.visulizzaOrario(idDoc);
+List<Orario> orario = ClinicaDAO.visulizzaOrari(idDoc);
 
 %>
 
@@ -29,6 +29,9 @@ List<Orario> orario = ClinicaDAO.visulizzaOrario(idDoc);
 
 
  <a href="aggiungiOrarioDottore.jsp?idDottore=<%=idDoc%>" class="btn btn-primary">Aggiungi Orario</a>
+ 
+
+ 
 
 
 <% for(Orario o : orario) {%>
@@ -40,8 +43,8 @@ List<Orario> orario = ClinicaDAO.visulizzaOrario(idDoc);
   <div class="card-body">
     <h5 class="card-title">Data: <%=o.getGiorno()%>/<%=o.getMese()%>/<%=o.getAnno() %></h5>
     <p class="card-text">Orario: <%=o.getOraI()%> - <%=o.getOraF() %>  </p>
-    <a href="#" class="btn btn-primary">Modifica</a>
-     <a href="#" class="btn btn-primary">Elimina</a>
+    <a href="visualizzaOrarioDottore.jsp?idOrario=<%=o.getIdOrario() %>" class="btn btn-primary">Visualizza</a>
+    
   </div>
 </div>
 

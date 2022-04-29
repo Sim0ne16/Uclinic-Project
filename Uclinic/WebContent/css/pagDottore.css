@@ -1,6 +1,4 @@
 /* NAV BAR */
-
-
 *{
     margin: 0;
     padding: 0;
@@ -14,11 +12,38 @@
 
 .tooltip{
 	display:flex;
-	flex-direction:row;
-	justify-content:space-between;
-	width:30%;
-	margin-left:30px;
+	flex-direction:column;
+	justify-content:space-around;
+    height: 100%;
+	width: 50%;
+
 }
+
+.btnDot{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 30px;
+    
+    background-color: white;
+    border-style: solid;
+    border-width: 1px;
+    border-color: #3eccf0;
+    border-radius: 35px;
+    box-shadow: 0 5px 5px rgba(255, 255, 255, 0.25), 0 5px 5px rgba(0,0,0,0.22);
+    height: 15%;
+  
+}
+
+.btn:active{
+    transform: scale(0.95);
+}
+
+.btn{
+    background-color: transparent;
+
+}
+
 
 
 
@@ -110,66 +135,42 @@ border-radius: 10px;
     display: none;
 
 }
-.search-icon i{
-position: absolute;
-float: left;
-right: 10%;
-width: 50px;
-height: 50px;
-line-height: 50px;
-color: brown;
-font-size: 16px;
-text-align: center;
-cursor: pointer;
-white-space: nowrap;
+.search-icon i {
+    position: absolute;
+    float: left;
+    right: 10%;
+    width: 50px;
+    height: 50px;
+    line-height: 50px;
+    color: #3eccf0;
+    font-size: 16px;
+    text-align: center;
+    cursor: pointer;
+    white-space: nowrap;
 }
 
-.search-icon i.fa-close{
-
+.search-icon i.fa-close {
     visibility: hidden;
 }
 
-.search-box{
-position: absolute;
-float: left;
-background: linear-gradient(135deg, #babebe 52%, #00ffff 100% );
-right: 10%;
-width: 300px;
-padding: 10px;
-border-radius: 4px;
-box-shadow: 0 2px 4px 0 rgba( 0,0,0, .05);
-transition: all 0.17s ease;
-top: -60px;
-}
-
-
-.search-box::before{
-    content:'';
+.search-box {
     position: absolute;
-    top: 0;
-    right: 15px;
-    width: 0;
-    height: 0;
-    border: 10px solid transparent;
-    border-bottom-color: brown;
-    margin: -20px 0 0;
-}
-
-form{
-    width: 100%;
-    height: 38px;
-    right: 0;
-    background-color: #9b9b9b08;
-    display: flex;
-    overflow: hidden;
-    padding: 2px;
-    border: 1px solid #9b9b9b33;
-    border-radius: 4px ;
-
+    float: left;
+    border-style: solid;
+    border-color: #3eccf0;
+    border-width: 1px;
+    border-radius: 20px;
+    right: 10%;
+    width: 300px;
+    box-shadow: 0 2px 4px 0 rgba(0, 0, 0, .03);
+    transition: all 0.17s ease;
+    top: -60px;
+    background-color: white;
 
 }
 
-.search{
+.search {
+    border-radius: 20px;
     width: 95%;
     background-color: rgb(255, 255, 255);
     color: black;
@@ -179,35 +180,58 @@ form{
     font-weight: 400;
     border: 0;
     outline: none;
-
 }
 
-.sub{
+
+.search-box::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 15px;
+    width: 0;
+    height: 0;
+    border-bottom-color: rgb(55, 238, 177);
+    border: 10px solid transparent;
+    margin: -20px 0 0;
+}
+
+form {
+    width: 100%;
+    height: 38px;
+    right: 0;
+    background-color: white;
+    display: flex;
+    overflow: hidden;
+    padding: 2px;
+    border-radius: 20px;
+    border: 0px solid #9b9b9b33;
+}
+
+
+.sub {
     font-size: 14px;
     padding: 0 13px;
     border: 0;
-    background-color: #ff0000 ;
+    background-color: rgb(55, 238, 177);
     color: rgb(255, 255, 255);
-    border-radius: 4px;
+    border-radius: 20px;
     cursor: pointer;
 }
 
-
-.sub:hover{
-    background-color: red;
+.sub:hover {
+    background-color: rgb(55, 238, 177);
 }
 
-#bc2:checked ~ .search-box{
+#bc2:checked ~ .search-box {
     top: 50px;
-
 }
 
-#bc2:checked ~ .search-icon i.fa-search{
+#bc2:checked ~ .search-icon i.fa-search {
     display: none;
 }
 
-#bc2:checked ~ .search-icon i.fa-close{
-visibility: visible;
+#bc2:checked ~ .search-icon i.fa-close {
+    visibility: visible;
 }
 
 
@@ -294,9 +318,6 @@ visibility: visible;
 }
 
 
-
-
-
 .container >ul>li>ul>li.parent>a::after{
    content: '\f107' ; 
    font-family: FontAwesome;
@@ -310,29 +331,26 @@ visibility: visible;
 
 }
 
-section{
-    background: linear-gradient(#ffffe0,#b0e0e6 );  
-    background-position: center;
-    background-size: cover;
-    height: 90vh;
-}
-
-
 
 
 /* END OF NAV BAR     */ 
 
 
 
+#wrapper{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    background-image: url(../images/dottori-sfondo.png);
+    height: 94.6vh;
 
+}
 
-/*section{
-    position:relative;
-    width: 100%;
-    height: 100vh;
-    background: #4282d6;
-    overflow: hidden;
-}*/
+section{
+background-position: center;
+background-size: cover;
+}
 
 
 section .wave{
@@ -378,42 +396,50 @@ section .wave.wave2{
         bottom: 20px;
 }
 
-/*.fa-user{
-    padding-top: 111px;
-    padding-left: 5%;
-    
-}*/
+
+.dxandsx{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    transform: translateY(-100px);
+    height:500px;
+    width: 90%;
+}
+
+
+
+
 .left{
-    
-    
-    padding-left: 70px;
-    margin-top: 100px;
-    
-     float:left;
-      width: 50%;
+    display: flex;
+    justify-content: space-around;
+    align-items:center;
+    width:45%;
+    background-color: white;
+    border-style: solid;
+    border-width: 1px;
+    border-color: #3eccf0;
+    border-radius: 20px;
+    box-shadow: 0 5px 5px rgba(255, 255, 255, 0.25), 0 5px 5px rgba(0,0,0,0.22);
+
 }
 
 
 .right{
-   
-    padding-right: 50px;
     display: flex;
-    justify-content: center;
-    margin-top: 100px;
-     
-     float:right;
-     width: 50%;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items:center;
+    width: 45%;
+
 }
 
-h1{
-    padding-left: 200px;
-    margin-bottom: 120px;
-}
-
-.asd li {
-    padding-top: 15px;
-    padding-left: 150px;
-    margin-top: 30px;
+.asd{
+    display:flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height:100%;
+    width: 90%;
+    padding: 5px 10px 5px 10px;
 }
 
 
@@ -444,62 +470,62 @@ h1{
       
 }
 
+.btn1{
+    background-color: white;
+    border-width: 1px;
+    border-color: #3eccf0;
+    border-style:solid;
+    box-shadow: 0 5px 5px rgba(255, 255, 255, 0.25), 0 5px 5px
+    rgba(0, 0, 0, 0.22);
+    border-radius: 100px;
+    padding: 15 15 15 15;
 
+}
 
+.tooltipEst{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 50%;
+    width:100%;
+   
+}
 
-/* ACCORDEON  */
+.prenotaApp{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 50%;
+    width:100%;
+}
 
+#btnPrenota {
+    background-color: white;
+    border-width: 1px;
+    border-color: #3eccf0;
+    border-style:solid;
+    box-shadow: 0 5px 5px rgba(255, 255, 255, 0.25), 0 5px 5px
+    rgba(0, 0, 0, 0.22);
+    border-radius: 20px;
+    height: 20%;
+    width: 150%;
 
+}
 
+#btnPrenota:active{
+transform: scale(0.95);
+}
 
-
-.accordion_button{
-    
-    display: block;
-
-    margin-left: 50%;
-    width: 100%;
-    padding: 15px;
-    margin-left: 0;
-    border:none;
-    outline: none;
-    cursor: pointer;
-    text-align: center;
-    background: black;
+#btnPrenota:hover{
     color: white;
-    transition: background 0.2s;
-
+    border-color: transparent;
+    background-color: #3eccf0;
 }
 
-.accordion_button::after{
-    content: '\25be';
-    float: right;
-    transform: scale(1.5);
-    
-}
 
-.accordion_button--active + .accordion__content{ display: inline-block}
-.accordion_button--active{background: grey;}
-.accordion_button--active::after{content: '\25b4'}
-
-.accordion__content{/*
-    overflow: hidden;
-    max-height:0;
-    transition: max-height 0.2s;
-
-    padding-inline-end: 0 15px;
-    font-family: sans-serif;
-    background: rgb(255, 255, 255);*/
-
-    padding: 0 15px;
-    font-family: sans-serif;
-    background: #eeeeee;
-
-    
-
-    display: none;
-    overflow: auto;
-
-    
+.nomeD{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
 }
 

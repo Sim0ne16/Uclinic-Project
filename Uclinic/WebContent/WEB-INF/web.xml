@@ -29,4 +29,14 @@
     <servlet-name>modificaMedicalHistory</servlet-name>
     <url-pattern>/modificaMedicalHistory</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>modificaOrario</display-name>
+    <servlet-name>modificaOrario</servlet-name>
+    <servlet-class>controller.AggiungiDottore</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>modificaOrario</servlet-name>
+    <url-pattern>/modificaOrario</url-pattern>
+  </servlet-mapping>
 </web-app>

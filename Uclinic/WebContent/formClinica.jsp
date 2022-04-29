@@ -13,10 +13,13 @@
 	crossorigin="anonymous"></script>
 <link rel="stylesheet" href="css/form.css">
 <script src="javascript/controlli.js"></script>
-<title>Document</title>
+<title>Registrazione Clinica</title>
 </head>
 <body>
-<body>
+<div class="testa">
+<h2>Inserisci i dati della Clinica</h2>
+</div>
+
 	<div class="container">
 
 		<div class="title">Registrazione Clinica</div>
@@ -59,11 +62,16 @@
 						placeholder="Inserire Recapito" name="regCrecapito"
 						id="regCrecapito">
 				</div>
+				
+				
 
 			</div>
+			
+			<!--  BOTTONI -->
+			
 			<div class="button">
 				<input type="submit" onclick="registrazioneC()"
-					class="btn btn-primary" value="Registrazione">
+					class="bb1" value="Registrazione">
 					
 			<button class="bb1" type="button">Ritorna</button>
 			</div>
@@ -71,7 +79,24 @@
 
 
 		</form>
-	</div>
+	
 
+
+<!-- NUVOLE -->
+
+     <section>
+
+
+        <div class="wave wave1"></div>
+        <div class="wave wave2"></div>
+        <div class="wave wave3"></div>
+        <div class="wave wave4"></div>
+        <div class="wave wave5"></div>
+
+
+       </section>
+       </div>
+       
+    
 </body>
 </html>

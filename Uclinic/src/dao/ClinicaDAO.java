@@ -223,7 +223,7 @@ public class ClinicaDAO {
 	
 	
 	
-	public static  List<Orario> visulizzaOrario(int idDottore){
+	public static  List<Orario> visulizzaOrari(int idDottore){
 			List<Orario> orari = new ArrayList<Orario>();
 			Orario o = null;
 			ConnessioneDB con = new ConnessioneDB();
@@ -258,6 +258,45 @@ public class ClinicaDAO {
 		}
 	
 	
+	public static Orario visualizzaOrario(int idOrario) {
+		ConnessioneDB con = new ConnessioneDB();
+		Orario o = new Orario();
+		try {
+			con.connect();
+			String query = "Select * from orario where idOrario = ?";
+			PreparedStatement stm = con.getCon().prepareStatement(query);
+			stm.setInt(1, idOrario);
+			ResultSet rs = stm.executeQuery();
+			if(rs.next()) {
+			int idDoc =	rs.getInt("codDottore");
+			int giorno = rs.getInt("giorno");
+			int mese = rs.getInt("mese");
+			int anno = rs.getInt("anno");
+			int orai = rs.getInt("oraI");
+			int oraf = rs.getInt("oraF");
+			
+				
+			o.setIdOrario(idOrario);
+			o.setIdDottore(idDoc);
+			o.setGiorno(giorno);
+			o.setMese(mese);
+			o.setAnno(anno);
+			o.setOraI(orai);
+			o.setOraF(oraf);
+				
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				con.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+		return o;
+	}
+	
 	public static boolean aggiungiOrario(Orario o) {
 		boolean esito = false;
 		ConnessioneDB con = new ConnessioneDB();
@@ -286,9 +325,56 @@ public class ClinicaDAO {
 	}
 		
 	
-	//public  static boolean eliminaOrario(int idOrario) {
-		
-	//}
+	public  static boolean modificaOrario(Orario o) {
+		ConnessioneDB con = new ConnessioneDB();
+		boolean esito = false;
+		try {
+			con.connect();
+			String sql = "Update orario set anno = ? , mese = ? , giorno = ? , oraI = ? , oraF = ?  where idOrario = ?";
+			PreparedStatement stm = con.getCon().prepareStatement(sql);
+			stm.setInt(1, o.getAnno());
+			stm.setInt(2, o.getMese());
+			stm.setInt(3, o.getGiorno());
+			stm.setInt(4, o.getOraI());
+			stm.setInt(5, o.getOraF());
+			stm.setInt(6, o.getIdOrario());
+			if(stm.executeUpdate()>0) {
+				esito = true;
+			}	
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				con.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+		return esito;
+	}
+	
+	public  static boolean eliminaOrario(int idOrario) {
+	ConnessioneDB con = new ConnessioneDB();
+	boolean esito = false;
+	try {
+		con.connect();
+		String sql = "Delete from orario where idOrario = ?";
+		PreparedStatement stm = con.getCon().prepareStatement(sql);
+		stm.setInt(1, idOrario);
+		if(stm.executeUpdate()>0) {
+			esito = true;
+		}
+	} catch (SQLException e) {
+		e.printStackTrace();
+	} finally {
+		try {
+			con.close();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+	}
+	return esito;
+		}
 	
 		
 	public static List<Dottore> visualizzaDottori(int idClinica){

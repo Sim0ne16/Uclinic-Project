@@ -14,7 +14,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="css/profiloUtente2.css">
     <script src="https://kit.fontawesome.com/367813bf67.js" crossorigin="anonymous"></script>
-    <title>Document</title>
+    <title>Profilo Utente</title>
 </head>
 <body>
 
@@ -66,7 +66,7 @@
 
 
     <section id="wrapper">
-
+<div class="dxandsx">
 <div class="left">
 
         <ul class="asd">  
@@ -78,9 +78,11 @@
                 %>
         
         
-            <i class="fa-solid fa-user fa-4x"> <%= p.getNome() %>  <%= p.getCognome() %></i> 
+             <div class="nomeP">
+            <i class="fa-solid fa-user fa-4x"></i> <h3 style="font-size: 30px" id="titoloP"><%=p.getNome() %>  <%= p.getCognome() %></h3>
+</div>
 
-            <li><i class="fa-solid fa-mars-and-venus fa-2x"></i> Eta: <%= p.getEta() %></li></i> 
+            <li><i class="fa-solid fa-mars-and-venus fa-2x"></i> Eta: <%= p.getEta() %></li>
             <li><i class="fa-solid fa-city fa-2x"></i> Citta : <%= p.getCitta() %></li>
             <li> <i class="fa-solid fa-location-crosshairs fa-2x"></i> Regione: <%= p.getRegione() %></li>
             <li> <i class="fa-solid fa-id-card fa-2x"></i>  Codice Fiscale : <%= p.getcFisc() %></li>
@@ -95,19 +97,15 @@
 
 <div class="right"  >
 
-          <div class="accordion" >
-            <button type="button" class="accordion_button">Medical History</button>
-            <div class="accordion__content">
-               <li><p>Peso :</p></li>
-                <li> <p>Altezza :  </p></li>
-                <li> <p>Sangue : </p></li>
-            </div>
-        </div>
-
-    </div>
-
-
-
+          <div class="storiaMedica">
+<ul>
+<li><h4>Peso:</h4> </li>
+<li><h4>Altezza:</h4> </li>
+<li><h4>Gruppo sanguigno:</h4> </li>
+</ul>
+</div>
+</div>
+</div>
         <div class="wave wave1"></div>
         <div class="wave wave2"></div>
         <div class="wave wave3"></div>
@@ -121,22 +119,7 @@
 
 
 
-    <script>
-        document.querySelectorAll('.accordion_button').forEach(button => {
-            button.addEventListener('click', () => {
-               // const accordionContent= button.nextElementSibling;
     
-                button.classList.toggle('accordion_button--active');
-    
-              //  if (button.classList.contains('accordion_button--active')) {
-               //     accordionContent.style.maxHeight = accordionContent.scrollHeight + 'px';
-    //
-              //  }else{
-               //    accordionContent.style.maxHeight = 0; 
-              //  }
-            });
-        });
-    </script>
 
 </body>
 </html>

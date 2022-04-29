@@ -1,8 +1,8 @@
 :root{
     --left-bg-color: rgba(196, 243, 243, 0.2);
     --right-bg-color: rgb(55, 238, 177, 0.2);
-    --left-btn-hover-color:rgb(255, 209, 254);
-    --right-btn-hover-color:rgb(255, 209, 254);
+    --left-btn-hover-color:rgb(55, 238, 177);
+    --right-btn-hover-color:rgb(55, 238, 177);
     --hover-widht:75%;
     --other-widht:25%;
     --speed: 1000ms;
@@ -41,8 +41,8 @@ h1{
 }
 
 .btn{
-    border-radius: 35px;
-    background-color: wheat;
+    border-radius: 30px;
+    background-color: #ffffff;
     position: absolute;
     display: flex;
     align-items: center;
@@ -51,24 +51,33 @@ h1{
     top: 40%;
     transform: translateX(-50%);
     text-decoration: none;
-    color: rgb(108, 117, 153);
-    border: rgb(255, 209, 254) solid 0.2rem;
+    color: #3eccf0;
+    border: 1px solid  #3eccf0;
+    box-shadow:  0 5px 5px 0 rgb(0,0,0, 0.5);
     font-size: 1rem;
     font-weight: bold;
     text-transform: uppercase ;
     width: 15rem;
     padding: 1.5rem;
+    transition: transform 80ms ease-in;
     
 }
+
+
+
+
+
 
 .split.left .btn:hover{
     background-color: var( --left-btn-hover-color);
     border-color: var( --left-btn-hover-color);
+    color: white;
 }
 
 .split.right .btn:hover{
     background-color: var( --right-btn-hover-color);
     border-color: var( --right-btn-hover-color);
+    color: white;
 }
 
 
@@ -149,9 +158,6 @@ h1{
     font-size: 2rem;
     top: 30%;
 }
-.btn{
-    padding: 1.2rem;
-    width: 12rem;
-}
+
 
 }

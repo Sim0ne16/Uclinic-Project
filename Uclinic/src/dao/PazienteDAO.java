@@ -12,6 +12,7 @@ import model.Appuntamento;
 import model.Clinica;
 import model.Dottore;
 import model.MedicalHistory;
+import model.Orario;
 import model.Paziente;
 
 public class PazienteDAO {
@@ -540,7 +541,194 @@ public static List<Appuntamento> visualizzaAppPaziente(Paziente p) {
 
 
 
-}
+   public static List<Orario> orarioDoc (int idDottore){
+	   List<Orario> orario = new ArrayList<Orario>();
+	   Orario o = null;
+	   ConnessioneDB con = new ConnessioneDB();
+	   try {
+		con.connect();
+		String sql = "Select * from orario where codDottore = ? ";
+		PreparedStatement stm = con.getCon().prepareStatement(sql);
+		stm.setInt(1, idDottore);
+	    ResultSet res = stm.executeQuery();
+	    while (res.next()) {
+	    	o = new Orario();
+         	o.setIdOrario(res.getInt("idOrario"));
+	    	o.setIdDottore(idDottore);
+	    	o.setGiorno(res.getInt("giorno"));
+	    	o.setMese(res.getInt("mese"));
+	    	o.setAnno(res.getInt("anno"));
+	    	o.setOraI(res.getInt("oraI"));
+	     	o.setOraF(res.getInt("oraF"));    	
+	     	orario.add(o);
+	    }
+	} catch (SQLException e) {
+		e.printStackTrace();
+	} finally {
+		try {
+			con.close();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+	}
+	   return orario;
+   }
+
+
+ 
+   public static List<Integer> recuperaMesi (int idDottore,int anno){
+	   List<Integer> mesi = new ArrayList<Integer>();
+	   int x = 0;
+	   ConnessioneDB con = new ConnessioneDB();
+	   try {
+		con.connect();
+		String sql = "Select distinct mese from orario where codDottore = ? and anno = ?";
+		PreparedStatement stm = con.getCon().prepareStatement(sql);
+		stm.setInt(1, idDottore);
+		stm.setInt(2, anno);
+	    ResultSet res = stm.executeQuery();
+	    while (res.next()) {
+	    	 x = res.getInt("mese");
+	    	 mesi.add(x);
+	    }
+	} catch (SQLException e) {
+		e.printStackTrace();
+	} finally {
+		try {
+			con.close();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+	}
+	   return mesi;
+   }
+
+   
+   public static List<Integer> recuperaGiorni (int idDottore,int anno,int mese){
+	   List<Integer> giorni = new ArrayList<Integer>();
+	   int x = 0;
+	   ConnessioneDB con = new ConnessioneDB();
+	   try {
+		con.connect();
+		String sql = "Select distinct giorno from orario where codDottore = ? and anno = ? and mese = ?";
+		PreparedStatement stm = con.getCon().prepareStatement(sql);
+		stm.setInt(1, idDottore);
+		stm.setInt(2, anno);
+		stm.setInt(3, mese);
+	    ResultSet res = stm.executeQuery();
+	    while (res.next()) {
+	    	 x = res.getInt("giorno");
+	    	 giorni.add(x);
+	    }
+	} catch (SQLException e) {
+		e.printStackTrace();
+	} finally {
+		try {
+			con.close();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+	}
+	   return giorni;
+   }
+   
+   
+   
+   
+   public static int recuperaOreI(int idDottore,int anno,int mese,int giorno){
+	   int x = 0;
+	   ConnessioneDB con = new ConnessioneDB();
+	   try {
+		con.connect();
+		String sql = "Select oraI from orario where codDottore = ? and anno = ? and mese = ? and giorno=?";
+		PreparedStatement stm = con.getCon().prepareStatement(sql);
+		stm.setInt(1, idDottore);
+		stm.setInt(2, anno);
+		stm.setInt(3, mese);
+		stm.setInt(4, giorno);
+	    ResultSet res = stm.executeQuery();
+	    while (res.next()) {
+	    	 x = res.getInt("oraI");
+	    }
+	} catch (SQLException e) {
+		e.printStackTrace();
+	} finally {
+		try {
+			con.close();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+	}
+	   return x;
+   }
+   
+   
+   public static int recuperaOreF(int idDottore,int anno,int mese,int giorno){
+	   int x = 0;
+	   ConnessioneDB con = new ConnessioneDB();
+	   try {
+		con.connect();
+		String sql = "Select oraF from orario where codDottore = ? and anno = ? and mese = ? and giorno=?";
+		PreparedStatement stm = con.getCon().prepareStatement(sql);
+		stm.setInt(1, idDottore);
+		stm.setInt(2, anno);
+		stm.setInt(3, mese);
+		stm.setInt(4, giorno);
+	    ResultSet res = stm.executeQuery();
+	    while (res.next()) {
+	    	 x = res.getInt("oraF");
+	    }
+	} catch (SQLException e) {
+		e.printStackTrace();
+	} finally {
+		try {
+			con.close();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+	}
+	   return x;
+   }
+   
+   
+   public static List<Appuntamento> validaAppuntamentoV2(Orario or) {
+		boolean esito = true;
+		List<Appuntamento> appuntamenti = new ArrayList<Appuntamento>();
+		Appuntamento app = null;
+		ConnessioneDB con = new ConnessioneDB ();
+		try {
+			con.connect();
+			String query = "Select * from appuntamento where ora between ? and ? and  codDottore =? and giorno = ? and mese =? and anno =?";
+			PreparedStatement stm = con.getCon().prepareStatement(query);
+			stm.setInt(1, or.getOraI());
+			stm.setInt(2, or.getOraF());
+			stm.setInt(3, or.getIdDottore());
+			stm.setInt(4, or.getGiorno());
+			stm.setInt(5, or.getMese());
+			stm.setInt(6, or.getAnno());
+			ResultSet rs = stm.executeQuery();
+			while(rs.next()) {
+	
+			app= new Appuntamento(  rs.getInt("codClinica"),rs.getInt("codDottore"), rs.getInt("giorno"), rs.getInt("mese"), rs.getInt("anno"), rs.getInt("ora"),rs.getInt("prenotazione"));
+			appuntamenti.add(app);
+			}
+		
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				con.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+		return esito;
+	}
+   
+   
+   }
+
+
 
 	 
 	

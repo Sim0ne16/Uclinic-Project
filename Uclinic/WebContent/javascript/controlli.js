@@ -227,7 +227,9 @@ function registrazioneC() {
 		password1.value = "";
 		esito = false;
 	}
+	
 	//Effettua il controllo sul campo CONFERMA PASSWORD
+	
 	if ((password2 == "") || (password2 == "undefined")) {
 		alert("Devi confermare la password");
 		password2.focus();

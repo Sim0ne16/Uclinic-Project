@@ -62,9 +62,11 @@
 
 
 
+              <div class="nomeC">
+					<i class="fa-solid fa-house-chimney-medical fa-4x"></i><h3 style="font-size:30px" id="titoloC"><%=C.getNome() %></h3>
+				</div>
 
-
-				<i class="fa-solid fa-house-chimney-medical fa-4x"><%=C.getNome()%></i>
+				
 				<li><i class="fa-solid fa-clipboard-user fa-2x"></i> <a
 					href="StaffClinicaEst.jsp?id=<%=x%>"> Staff</a></li>
 				<li><i class="fa-solid fa-city fa-2x"></i> Regione: <%=C.getRegione()%></li>
@@ -81,7 +83,7 @@
 		</div>
 
 		<div class="right">
-	 <a class="btn btn-dark" href="javascript:history.go(-1)" value="press me" title="Torna Alla Ricerca"><i  style="color: rgb(55, 238, 177)" class="fa-solid fa-magnifying-glass fa-2x"></i></a>
+	 <a class="btn btn-dark" href="javascript:history.go(-1)" title="Torna Alla Ricerca"><i  style="color: rgb(55, 238, 177)" class="fa-solid fa-arrow-rotate-left fa-4x"></i></a>
 		</div>
 </div>
 
