@@ -13,10 +13,9 @@
 <meta name="viewport" content="width=device-width,initial-scale=1">
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
-	<link rel="stylesheet" href="css/form.css">  
+	<link rel="stylesheet" href="css/formModifiche.css">  
 	<script src="javascript/controlli.js"></script>
     <script src="https://kit.fontawesome.com/367813bf67.js" crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="css/form">
 <title>Modifica Medical History</title>
 </head>
 
@@ -72,7 +71,9 @@
 					<div class="button">
 						<input type="submit" onclick="validaMH()" class="btn btn-primary" value="Modifica">
 					</div>
+						<div id="btntorna">
 					<button id="staffReg" type="submit" class="btn btn-primary" style=color:white><a href="profiloUtente.jsp?id=<%=x%>">Torna</a></button>
+				 </div>
 				</form>
 			</div>
 		</div>

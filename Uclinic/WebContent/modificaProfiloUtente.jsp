@@ -67,8 +67,9 @@
 						</div>
 					
 				</form>
+					<div id="btntorna">
 				<a href="profiloUtente.jsp?<%=request.getQueryString() %>"><button id="staffReg" type="submit" class="btn btn-primary">Torna</button></a>
-				
+				</div>
 				
 			</div>
 		</div>

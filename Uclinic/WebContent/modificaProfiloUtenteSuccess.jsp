@@ -66,8 +66,9 @@
 					<h3 id="agg">Profilo modificato con successo!</h3>
 					</div>
 				</form>
-										<a href="profiloUtente.jsp?id=<%=p.getIdPaziente()%>"><button id="staffReg" type="submit" class="btn btn-primary">Torna</button></a>
-				
+					<div id="btntorna">
+				<a href="profiloUtente.jsp?id=<%=p.getIdPaziente()%>"><button id="staffReg" type="submit" class="btn btn-primary">Torna</button></a>
+				</div>
 			</div>
 		</div>
 		<section>    <div class="wave wave1"></div>

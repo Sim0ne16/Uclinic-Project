@@ -13,6 +13,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://kit.fontawesome.com/367813bf67.js" crossorigin="anonymous"></script>
         <link rel="stylesheet" href="css/formModifiche.css">
+         <link rel="stylesheet" href="css/aggiungiOrarioDottore.css">
     <script src="javascript/controlli.js"></script>
 </head>
 <body>
@@ -39,7 +40,7 @@
   
      <div id="sett1">
 
-    <div >
+    <div  >
       <input type="checkbox" id="1" name="1" value="1">
       <label for="1">1</label>
     </div>

@@ -68,8 +68,9 @@
 						 <h3 id="agg">Modifica avvenuta, torna alla clinica!</h3>
 					</div>
 				</form>
+					<div id="btntorna">
 				 <a href="profiloClinica.jsp?id=<%=idClinica%>"><button id="staffReg" type="submit" class="btn btn-primary" >Clinica</button></a>
-				
+				</div>
 			</div>
 		</div>
 	</div>

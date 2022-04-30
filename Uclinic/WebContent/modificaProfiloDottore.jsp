@@ -69,8 +69,9 @@
 						<button type="submit"  class="btn btn-primary">Modifica</button>
 					</div>
 				</form>
+					<div id="btntorna">
 					<a href="visualizzaDottore.jsp?id=<%=idDoc%>"><button id="staffReg" type="submit" class="btn btn-primary">Dottore</button></a>
-				
+				</div>
 			</div>
 		</div>
 		 <section>    <div class="wave wave1"></div>

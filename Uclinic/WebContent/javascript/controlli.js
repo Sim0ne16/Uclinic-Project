@@ -395,8 +395,18 @@ function validaAggiungiOrario(){
 	
 	var esito = true;
 	
-	if ( giorno == "" || giorno === undefined  ) {
-		alert("Devi scegliere i giorni!");
+	if ((document.getElementById("1").checked == false) && (document.getElementById("2").checked = false) && (document.getElementById("3").checked = false) && 
+	(document.getElementById("4").checked = false) &&  (document.getElementById("5").checked = false) &&  (document.getElementById("6").checked = false) && 
+	(document.getElementById("7").checked = false) &&   (document.getElementById("8").checked = false)&&  (document.getElementById("9").checked = false)&& 
+	(document.getElementById("10").checked = false) && (document.getElementById("11").checked = false)&&  (document.getElementById("12").checked = false)&& 
+	(document.getElementById("13").checked = false) && (document.getElementById("14").checked = false)&&  (document.getElementById("15").checked = false)&& 
+    (document.getElementById("16").checked = false) && (document.getElementById("17").checked = false)&&  (document.getElementById("18").checked = false)&& 
+	(document.getElementById("19").checked = false) && (document.getElementById("20").checked = false)&&  (document.getElementById("21").checked = false)&& 
+	(document.getElementById("22").checked = false) && (document.getElementById("23").checked = false)&&  (document.getElementById("24").checked = false)&& 
+	(document.getElementById("25").checked = false) && (document.getElementById("26").checked = false)&&  (document.getElementById("27").checked = false)&& 
+	(document.getElementById("28").checked = false) && (document.getElementById("29").checked = false)&&  (document.getElementById("30").checked = false)&& 
+	(document.getElementById("31").checked = false))  {
+		alert("Devi scegliere almeno 1 giorno!");
 		giorno.value = "";
 		giorno.focus();
 		esito = false;

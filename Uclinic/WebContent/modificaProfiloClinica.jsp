@@ -69,8 +69,9 @@ Clinica c =  ClinicaDAO.visualizzaClinica(idClinica);
 						<button type="submit" class="btn btn-primary">Modifica</button>
 					</div>
 				</form>
+				<div id="btntorna">
 				<a href="profiloClinica.jsp?id=<%=idClinica%>"><button id="staffReg" type="submit" class="btn btn-primary" >Clinica</button></a>
-				
+				</div>
 			</div>
 		</div>
 		<section>    <div class="wave wave1"></div>

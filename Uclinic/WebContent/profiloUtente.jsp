@@ -39,15 +39,7 @@
                 <ul>
                     <li><a href="modificaProfiloUtente.jsp?id=<%=p.getIdPaziente()%>">Modifica Profilo</a></li>
                     <li><a href="MedicalHistory.jsp">Modifica Medical History</a></li>
-                    <li class="parent">
-                        <a href="#">Impostazioni</a>
-                        <ul>
-                            <li>
-                                <a href="#" class="ciao"></a>
-                                
-                            </li>
-                        </ul>
-                    </li>
+                  
                     
                   
                 </ul>

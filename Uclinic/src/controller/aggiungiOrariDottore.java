@@ -58,10 +58,11 @@ public class aggiungiOrariDottore extends HttpServlet {
 		int idDottore = Integer.parseInt(request.getParameter("idDottore")) ;
 		Orario o = new Orario(idDottore,anno,mese,giorno,orai,oraf);
 		ClinicaDAO.aggiungiOrario(o);
-		
+
 		}
 		
-		//redirect
+		int id = Integer.parseInt(request.getParameter("idDottore"));
+		response.sendRedirect( "gestisciOrariDottore.jsp?idDottore="+id);
 		
 	}
 
