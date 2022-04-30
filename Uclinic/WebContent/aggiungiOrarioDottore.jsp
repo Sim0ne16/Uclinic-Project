@@ -12,9 +12,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://kit.fontawesome.com/367813bf67.js" crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="css/form.css">
-        <link rel="stylesheet" href="css/aggiungiOrarioDottore.css">
-    <script src="javascript/appuntamento.js"></script>
+        <link rel="stylesheet" href="css/formModifiche.css">
+    <script src="javascript/controlli.js"></script>
 </head>
 <body>
   <% int idDoc = Integer.parseInt(request.getParameter("idDottore"));
@@ -26,15 +25,15 @@
         <div class="container">
    
         <div class="title">Aggiungi Orari </div>
-        <form action="aggiungiOrariDottore" name="formgiorni" id="formgiorni" method="post">
-          <div class="user-details">
+        <form action="" name="formgiorni" id="formgiorni" method="post">
+          <div class="user-details" id="user-details">
           
           <div class="form-group">	               
 						<input type="hidden"   value="<%=idDoc%>" name="idDottore" class="form-control" required >
 					</div>
           
           
-          <fieldset>
+          <fieldset id="giorni">
     <legend>Giorno</legend>
 
   
@@ -243,7 +242,7 @@
           
             
       
-		
+		<div class="other">
            
 		<label for="lang">Mese</label> <select name="mese" id="mese" onchange="giorniM()">
 			<option value=""></option>
@@ -332,16 +331,17 @@
 			<option value="24">24</option>
 
 		</select> 
-    
+    </div>
               </div>  
-            <div class="button">
-             <input type="submit" onclick="" class="btn btn-primary" value="Aggiungi" >
+          <div class="button">
+             <input type="submit" onclick="validaAggiungiOrario()" class="bb1" value="Aggiungi" >
         </div>
         
         
         </form>
        </div>
-             
-        <button class="bb1" type="button">Ritorna</button>
+             <div id=btnritorna>
+       <a class="btn1 btn-dark" href="gestisciOrariDottore.jsp?id=<%=idDoc%>"> <button class="bb1" type="button">Ritorna</button></a>
+       </div>
 </body>
 </html>

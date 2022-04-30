@@ -1,4 +1,26 @@
 @charset "ISO-8859-1";
 
+#user-details{
+	    justify-content: flex-start;
+	    
+}
 
+#btnritorna{
+	padding-top:3%;
+}
+
+
+.other{
+	display:flex;
+	flex-direction:column;
+	padding-left:10%;
+}
+
+#giorni{
+   display:flex;
+}
+
+#mese #anno #oraI #oraF{
+	height:50%;
+}
 

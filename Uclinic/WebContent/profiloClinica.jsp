@@ -114,7 +114,7 @@
 
 		
 			<div class="gest-app">
-			<a href="gestisciAppuntamenti.jsp"><button type="submit" class="btnApp">Gestisci appuntamento</button></a>
+			<a href="gestisciAppuntamenti.jsp?id=<%=C.getIdClinica()%>"><button type="submit" class="btnApp">Gestisci appuntamento</button></a>
 			</div>
 			
 			<div class="gest-app">

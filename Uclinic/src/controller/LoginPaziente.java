@@ -11,9 +11,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import connection.ConnessioneDB;
-import dao.ClinicaDAO;
 import dao.PazienteDAO;
-import model.Clinica;
 import model.Paziente;
 
 @WebServlet("/LoginPaziente")
@@ -36,7 +34,6 @@ public class LoginPaziente extends HttpServlet {
 			String password = request.getParameter("login-passwordP");
 			Paziente paziente = PazienteDAO.loginPaziente(email, password);
 			if (paziente != null) {  // controllare logga sempre
-				pazienteLog = (Paziente) request.getSession().getAttribute("utenteP");
 				request.getSession().setAttribute("utenteP", paziente);
 				response.sendRedirect("profiloUtente.jsp?id=" + paziente.getIdPaziente() );
 			} else {

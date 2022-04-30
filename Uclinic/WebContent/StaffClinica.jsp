@@ -24,7 +24,7 @@
  int id = Integer.parseInt(request.getParameter("id"));
 List<Dottore> dottori = ClinicaDAO.visualizzaDottori(id);
 
-Clinica C = (Clinica) session.getAttribute("utenteC");
+Clinica C = (Clinica)request.getSession().getAttribute("utenteC");;
 
 %>
 
@@ -40,7 +40,9 @@ Clinica C = (Clinica) session.getAttribute("utenteC");
         <ul class="nav">
             
             
-            <li><a href="profiloClinica.jsp?id="<%=C.getIdClinica() %>>Home</a></li>
+               
+            <li><a href="profiloClinica.jsp?id=<%=C.getIdClinica()%>">Home</a></li>
+        
             
            
 

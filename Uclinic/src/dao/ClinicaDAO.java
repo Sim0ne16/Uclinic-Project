@@ -1,7 +1,7 @@
 package dao;
 
 
-import java.sql.Connection;
+
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -324,6 +324,34 @@ public class ClinicaDAO {
 		return esito;
 	}
 		
+	
+	public static boolean checkOrario(Orario o) {
+		ConnessioneDB con = new ConnessioneDB();
+		boolean esito = true;
+		try {
+			con.connect();
+			String sql = "Select * from orario where codDottore = ? and  giorno = ? and mese =?  and anno =? ";
+			PreparedStatement stm = con.getCon().prepareStatement(sql);
+			stm.setInt(1, o.getIdDottore());
+			stm.setInt(2, o.getGiorno());
+			stm.setInt(3, o.getMese());
+			stm.setInt(4, o.getAnno());
+			ResultSet rs = stm.executeQuery();
+			if(rs.next()) {
+				esito = false;
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				con.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+		return esito;
+	}
+	
 	
 	public  static boolean modificaOrario(Orario o) {
 		ConnessioneDB con = new ConnessioneDB();

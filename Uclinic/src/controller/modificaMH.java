@@ -38,6 +38,8 @@ public class modificaMH extends HttpServlet {
 		
 		MedicalHistory m = new MedicalHistory(idPaz,peso,altezza,sangue);
 		
+
+		
 		if(PazienteDAO.controllaMh(idPaz)==false) {
 			PazienteDAO.inserisciMh(m);
 			response.sendRedirect("profiloUtente.jsp?id="+idPaz);

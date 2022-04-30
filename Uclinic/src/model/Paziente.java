@@ -34,7 +34,6 @@ public class Paziente {
 		this.eta = eta;
 		this.cFisc = cFisc;
 		this.email = email;
-		this.password = password;
 		this.citta = citta;
 		this.regione = regione;
 	}

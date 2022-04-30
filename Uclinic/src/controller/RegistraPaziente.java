@@ -10,7 +10,6 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import connection.ConnessioneDB;
 import dao.PazienteDAO;
 import model.Paziente;
 
@@ -41,8 +40,9 @@ public class RegistraPaziente extends HttpServlet {
 			if(PazienteDAO.checkEmail(paziente.getEmail())==false) {
 				try {
 					PazienteDAO.registraPaziente(paziente);
-					request.getSession().setAttribute("utenteP", paziente);
 					int x  =PazienteDAO.recuperaIdPaziente(paziente);
+					paziente.setIdPaziente(x);
+					request.getSession().setAttribute("utenteP", paziente);		
 					response.sendRedirect("profiloUtente.jsp?id="+x);
 				} catch (ClassNotFoundException e) {			
 					e.printStackTrace();

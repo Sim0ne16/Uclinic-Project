@@ -16,7 +16,7 @@ function controllocalendario() {
 	var giorno = data.getDate();
 	var mese = data.getMonth() + 1;
 	var anno = data.getFullYear();
-	var ora = data.getHours();
+	
 
 
 	if ((giornoF == "") || (giornoF == "undefined")) {

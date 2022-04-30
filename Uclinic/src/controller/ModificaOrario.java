@@ -24,8 +24,7 @@ public class ModificaOrario extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
 
-		int idOrario = Integer.parseInt(request.getParameter("idOrario"));
-		
+		int idOrario = Integer.parseInt(request.getParameter("idOrario"));	
 		int idDottore = Integer.parseInt(request.getParameter("codDottore"));
 		int giorno = Integer.parseInt(request.getParameter("giorno"));
 		int mese = Integer.parseInt(request.getParameter("mese"));
@@ -34,11 +33,13 @@ public class ModificaOrario extends HttpServlet {
 		int oraF = Integer.parseInt(request.getParameter("oraF"));
 		
 		Orario o = new Orario(idOrario,idDottore,anno,mese,giorno,oraI,oraF);
-		ClinicaDAO.modificaOrario(o);
+		if(ClinicaDAO.checkOrario(o)==true) {
+		ClinicaDAO.modificaOrario(o);	
 		 response.sendRedirect("gestisciOrariDottore.jsp?id="+idDottore);
-		
+		} 
+		}
 		
 		
 	}
 
-}
+

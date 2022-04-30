@@ -14,7 +14,7 @@
 <meta charset="UTF-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<link rel="stylesheet" href="css/gestisciAppuntamenti.css">
+<link rel="stylesheet" href="css/formGestisciAppuntamenti.css">
 <script src="https://kit.fontawesome.com/367813bf67.js"
 	crossorigin="anonymous"></script>
 <title>Staff</title>
@@ -50,8 +50,9 @@ Collections.sort(listaA, new AppuntamentoComparatorAnno());
 		<label class="logo"> <a>Uclinic</a></label>
 		<ul class="nav">
 
-
-			<li><a href="profiloClinica.jsp?id=" <%=C.getIdClinica()%>>Home</a></li>
+   
+            <li><a href="profiloClinica.jsp?id=<%=C.getIdClinica()%>">Home</a></li>
+        
 
 
 
@@ -69,17 +70,9 @@ Collections.sort(listaA, new AppuntamentoComparatorAnno());
 
 		<!-- da aggiungere id  -->
 
-		<div class="tuttecarte">
+		<div class="tabellaApp">
 
-			<div class="nome-carta">
-				<h3>Data</h3>
-				<h3>Ora</h3>
-				<h3>Paziente</h3>
-				<h3>Dottore</h3>
-				<h3>Stato prenotazione</h3>
-			</div>
-
-
+			
 			<%
 			
 			
@@ -88,27 +81,41 @@ Collections.sort(listaA, new AppuntamentoComparatorAnno());
 				Paziente p = ClinicaDAO.recuperaPazienteFromApp(a);
 				
 			%>
-			<div class="carte">
+		
 
 
 
-				<div class="card">
-
+				<div class="App">
+	<div class="Colonna">
+						<h3>Data</h3>
+						<hr>
 					<h3 class="category"><%=a.getGiorno()%>/<%=a.getMese()%>/<%=a.getAnno()%></h3>
-					<h3 class="card-title"><%=a.getOra()%>:00-<%=a.getOra() + 1 %>:00</h3>
-					<a href="profiloUtenteEst.jsp?id=<%=p.getIdPaziente() %>" class="paz">Sign/Sign.ra <%=p.getCognome()%> <%=p.getNome() %>
+				</div>
+				<div class="Colonna">
+					<h3>Ora</h3>
+					<hr>
+					<h3 class="card-title"><%=a.getOra()%>:00-<%=a.getOra() + 1 %>:00</h3></div>
+					<div class="Colonna">
+						<h3>Paziente</h3>
+						<hr>
+					<a href="profiloUtenteEst.jsp?id=<%=p.getIdPaziente() %>" class="paz">Sign/Sign.ra <%=p.getCognome()%> <%=p.getNome() %></a></div>
+		             <div class="Colonna">
+						 <h3>Dottore</h3>
+						 <hr>
 					<a href="visualizzaDottore.jsp?id=<%=d.getIdDottore() %>" class="nomedoc">Dr/Dr.ssa <%=d.getCognome()%> <%=d.getNome() %>
-					</a>
+					</a></div>
 
-					<div class="tooltip">
+					<div class="Colonna">
+                        <h3>Stato prenotazione</h3>
+						<hr>
+						<h3 style="color:rgb(55,238,177);">Confermato</h3>
 
-						<h3>Confermato</h3>
 
 					</div>
 
 				</div>
 
-			</div>
+			
 
 
 			<%
@@ -118,11 +125,6 @@ Collections.sort(listaA, new AppuntamentoComparatorAnno());
 		</div>
 
 
-		<div class="wave wave1"></div>
-		<div class="wave wave2"></div>
-		<div class="wave wave3"></div>
-		<div class="wave wave4"></div>
-		<div class="wave wave5"></div>
 
 	</section>
 

@@ -2,7 +2,6 @@ package comparator;
 
 import java.util.Comparator;
 
-import model.Appuntamento;
 
 public class ComparatorInt implements Comparator<Integer> {
 	public int compare(Integer a1,Integer a2) {

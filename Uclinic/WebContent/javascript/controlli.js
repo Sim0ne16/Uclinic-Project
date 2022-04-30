@@ -43,7 +43,7 @@ function validaMH() {
 	var esito = true;
 
   if ((peso <= 0) || (peso >= 561 )) {
-        alert("Il valore inserito non e valido, riprova! (Utilizzare il punto per il peso Es:78,5 kg)");
+        alert("Il valore inserito non e valido, riprova! (Utilizzare il punto per il peso )");
         peso.value = "";
         
         esito = false;
@@ -247,7 +247,7 @@ function registrazioneC() {
 
 
 if ((isNaN(recapito)) || (recapito == "") || (recapito == "undefined")) {
-		alert("Devi inserire l'eta', deve essere numerico!");
+		alert("Devi inserire il recapito, deve essere numerico!");
 		recapito.value = "";
 		recapito.focus();
 		esito = false;
@@ -326,8 +326,8 @@ function controlloD() {
 
 	}
 
-	if ((recapito == "") || (recapito == "undefined")) {
-		alert("Devi inserire il recapito!");
+	if ((isNaN(recapito)) ||(recapito == "") || (recapito == "undefined")) {
+		alert("Devi inserire il recapito! deve essere numerico");
 		recapito.value = "";
 		recapito.focus();
 		esito = false;
@@ -353,7 +353,7 @@ function controlloD() {
 
 
 	if ((isNaN(costo)) || (costo == "") || (costo == "undefined")) {
-		alert("Devi inserire l'eta', deve essere numerico!");
+		alert("Devi inserire il costo, deve essere numerico!");
 		costo.value = "";
 		costo.focus();
 		esito = false;
@@ -373,6 +373,82 @@ function controlloD() {
 }
 
 
+
+function validaAggiungiOrario(){
+	
+	var giorno = document.formgiorni.giorni.value;
+	var mese = document.formgiorni.mese.value;
+	var anno = document.formgiorni.anno.value;
+	var oraI = document.formgiorni.oraI.value;
+	var oraF = document.formgiorni.oraF.value;
+	
+	var idDoc = window.sessionStorage.getItem("idDoc");
+	var formin = document.getElementById("formgiorni");
+	
+	
+	var data = new Date();
+
+	var giornoO = data.getDate();
+	var meseO = data.getMonth() + 1;
+	var annoO = data.getFullYear();
+	
+	
+	var esito = true;
+	
+	if ( giorno == "" || giorno === undefined  ) {
+		alert("Devi scegliere i giorni!");
+		giorno.value = "";
+		giorno.focus();
+		esito = false;
+
+	}
+	
+	if(giorno<giornoO && mese == meseO){
+		alert("Non puoi tornare indietro nel passato!");
+		giorno.value = "";
+		giorno.focus();
+		esito = false;
+	}
+	
+	if ((mese == "") || (mese == "undefined")) {
+		alert("Devi scegliere il mese!");
+		mese.value = "";
+		mese.focus();
+		esito = false;
+
+	}
+	
+	if(mese<meseO && anno == annoO){
+	 alert("Non puoi tornare indietro nel passato!");
+		mese.value = "";
+		mese.focus();
+		esito = false;
+	}
+	
+	
+	if ((anno == "") || (anno == "undefined")) {
+		alert("Devi scegliere l'anno!");
+		anno.value = "";
+		anno.focus();
+		esito = false;
+
+	}
+	
+	
+	
+	
+	
+	if(oraF<oraI || oraF == oraI){
+		alert("Orario non valido");
+		esito = false;
+	}
+	
+	
+	if(esito==true){
+		formin.action="aggiungiOrariDottore"
+	} 
+	
+}
 
 
 

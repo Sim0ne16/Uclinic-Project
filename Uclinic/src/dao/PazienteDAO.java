@@ -1,6 +1,6 @@
 package dao;
 
-import java.sql.Connection;
+
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -429,13 +429,15 @@ public static boolean inserisciMh(MedicalHistory m) {
 	ConnessioneDB con = new ConnessioneDB();
 	try {
 		con.connect();
-		String sql =" INSERT INTO medicalhistory (idPaziente,peso,altezza,gsangue) values (?,?,?,?)";
-		PreparedStatement stm = con.getCon().prepareStatement(sql);
+		String sql =" INSERT INTO medicalhistory (idPaziente,peso,altezza,gsangue) values (?,?,?,?);";
+		PreparedStatement stm = con.getCon().prepareStatement(sql);	
 		stm.setInt(1, m.getIdPaziente());
 		stm.setDouble(2,m.getPeso());
 		stm.setInt(3, m.getAltezza());
 		stm.setString(4, m.getGsangue());
-		
+		if(stm.executeUpdate()>0) {
+       esito=true;	
+		}
 	} catch (SQLException e) {
 		e.printStackTrace();
 	} finally {

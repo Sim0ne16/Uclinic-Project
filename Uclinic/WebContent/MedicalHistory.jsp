@@ -52,7 +52,7 @@
 					<div class="form-group1">
 					
 
-                        <form>
+                   
                             <label for="lang">Blood Type</label>
                             <select name="sangue" id="sangue" value="<%=m.getGsangue()%>">
                               <option value="A+">A RhD positive (A+)</option>
@@ -65,7 +65,7 @@
                               <option value="AB-">AB RhD negative (AB-)</option>
                             </select>
                             
-                      </form>
+                    
 
 					</div>
 

@@ -14,7 +14,7 @@
 <meta charset="UTF-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<link rel="stylesheet" href="css/gestisciAppuntamenti.css">
+<link rel="stylesheet" href="css/formGestisciAppuntamenti.css">
 <script src="https://kit.fontawesome.com/367813bf67.js"
 	crossorigin="anonymous"></script>
 <title>Staff</title>
@@ -62,15 +62,8 @@ Collections.sort(listaA, new AppuntamentoComparatorAnno());
 
 		<!-- da aggiungere id  -->
 
-		<div class="tuttecarte">
+		<div class="tabellaApp">
 
-			<div class="nome-carta">
-				<h3>Data</h3>
-				<h3>Ora</h3>
-				<h3>Clinica</h3>
-				<h3>Dottore</h3>
-				<h3>Stato prenotazione</h3>
-			</div>
 
 
 			<%
@@ -78,30 +71,33 @@ Collections.sort(listaA, new AppuntamentoComparatorAnno());
 			
 			for (Appuntamento a : listaA) {
 				Dottore d = ClinicaDAO.recuperaDottFromApp(a);
-				Clinica c = ClinicaDAO.recuperaClinicaFromApp(a);
+				
 			%>
-			<div class="carte">
+			<div class="App">
 
 
 
-				<div class="card">
+				<div class="Colonna">
+                     <h3>Data</h3><hr>
+					<h3 class="category"><%=a.getGiorno()%>/<%=a.getMese()%>/<%=a.getAnno()%></h3></div>
+					<div class="Colonna"><h3>Ora </h3><hr>
 
-					<h3 class="category"><%=a.getGiorno()%>/<%=a.getMese()%>/<%=a.getAnno()%></h3>
-					<h3 class="card-title"><%=a.getOra()%>:00-<%=a.getOra() + 1 %>:00</h3>
-					<a href="profiloClinicaEst.jsp?id=<%=c.getIdClinica() %>" class="nomeclinica">Clinica : <%=c.getNome() %></a>
+					<h3 class="card-title"><%=a.getOra()%>:00-<%=a.getOra() + 1 %>:00</h3></div>
+                       <div class="Colonna"><h3>Dottore</h3><hr>
 					<a href="visualizzaDottoreEst.jsp?idDottore=<%=d.getIdDottore() %>" class="nomedoc">Dr/Dr.ssa <%=d.getCognome()%> <%=d.getNome() %>
-					</a>
-
+					</a></div>
+                     <div class="Colonna"><h3>Stato</h3><hr>
 					<div class="tooltip">
 
-						<h3><% if(a.getPrenotazione() == 0) { %>In attesa...<% } %>
-						<% if(a.getPrenotazione()== 1 ) { %> Confermata <% } %>
-						<% if(a.getPrenotazione() == 2) { %> Rifiutata <% } %>
+						<h3 style="color: cornflowerblue;"><% if(a.getPrenotazione() == 0) { %>In attesa...<% } %></h3>
+						<h3 style="color: rgb(55,238,177);"><% if(a.getPrenotazione()== 1 ) { %> Confermata <% } %></h3>
+						
+					<h3 style="color: orange;"><% if(a.getPrenotazione() == 2) { %> Rifiutata <% } %>
 						</h3>
 
 					</div>
-
 				</div>
+				
 
 			</div>
 
@@ -113,11 +109,6 @@ Collections.sort(listaA, new AppuntamentoComparatorAnno());
 		</div>
 
 
-		<div class="wave wave1"></div>
-		<div class="wave wave2"></div>
-		<div class="wave wave3"></div>
-		<div class="wave wave4"></div>
-		<div class="wave wave5"></div>
 
 	</section>
 

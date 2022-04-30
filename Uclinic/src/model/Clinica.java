@@ -10,8 +10,8 @@ public class Clinica {
 	private String regione;
 	private String citta;
 	private String indirizzo;
-	private List<Dottore> personale;
-	private List<Paziente> pazienti;
+	private List<Dottore> personale; // non usata
+	private List<Paziente> pazienti; //non usata
 	private String email;
 	private String password;
 	private String recapitoTel;
@@ -40,8 +40,8 @@ public class Clinica {
 		this.password = password;
 		this.recapitoTel = recapitoTel;
 
-		personale = new ArrayList<Dottore>();
-		pazienti=new ArrayList<Paziente>();
+		personale = new ArrayList<Dottore>(); 
+		pazienti=new ArrayList<Paziente>();  
 	
 	}
 

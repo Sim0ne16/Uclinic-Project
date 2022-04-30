@@ -67,7 +67,7 @@
         </div>
     </div>
 </div>
-<div>
+<div id="registrazione">
    <a href="reg.html" style="text-decoration:none;"><button class="submit_class2" id="btnR" type="submit" form="registrer_form">Registrazione</button></a>
 </div>
 <script src="javascript/Script1.js"></script>
