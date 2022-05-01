@@ -50,8 +50,9 @@ function controllocalendario() {
 	}
 
 
-	if (giornoF == (giorno + 3) || giornoF == (giorno + 2) || giornoF == (giorno + 1) || giornoF == giorno) {
-		alert("Data non valida!");
+	if ((giornoF == (giorno + 3) && meseF == mese  )|| (giornoF == (giorno + 2)&& meseF == mese ) 
+	||( giornoF == (giorno + 1) &&  meseF == mese) ||( giornoF == giorno)&& meseF == mese)	 {
+		alert("Puoi prenotare a distanza minima di 3 giorni da oggi!");
 		esito = false;
 	}
 
@@ -401,10 +402,10 @@ function validaAggiungiOrario(){
 	
 	
 	if(esito==true){
-		var richiesta = window.confirm("L'Orario verrà aggiunto se non ci sono duplicati! ");
+		var richiesta = window.confirm("L'Orario verra aggiunto ! ");
 		formin.action="aggiungiOrariDottore"
 		return richiesta;
-	} 
+	}
 	
 }
 

@@ -1,28 +1,27 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+  <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
         
  <%@page import="model.*"%>
 <%@page import="java.util.*"%>
-<%@page import="dao.*"%>
-    
+<%@page import="dao.*"%>  
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="ISO-8859-1">
 <title>Orario Dottore</title>
   <link rel="stylesheet" href="css/mdb.min.css">
-    <link rel="stylesheet" href="css/formModifiche.css">
+    <link rel="stylesheet" href="css/orarioDottore.css">
     <script src="https://kit.fontawesome.com/367813bf67.js" crossorigin="anonymous"></script>
 </head>
-<% 
+
+ <% 
       int idorario = Integer.parseInt(request.getParameter("idOrario"));
       Orario o =  ClinicaDAO.visualizzaOrario(idorario);
-%>
-
+%>  
 
 <body>
  
-  <div class="card-body">
+  <div class="cardBody">
                    
     <h5 class="card-title">Data: <%=o.getGiorno()%>/<%=o.getMese()%>/<%=o.getAnno() %></h5>
     <p class="card-text">Orario: <%=o.getOraI()%> - <%=o.getOraF() %>  </p>
@@ -32,8 +31,10 @@
      <a class="btn btn-dark" href="eliminaOrarioDottore?IdOrario=<%=o.getIdOrario() %>" value="press me" title="Elimina" input type="reset"  onClick="return confirm('Sicuro di voler cancellare questo orario?')" ><i  class="fa-solid fa-trash fa-2x"></i> </a>
      
   </div>
+  
 
-<form action="ModificaOrario" method="post">
+
+<form action="ModificaOrario" method="post" class="formD">
 					<div class="form-group">	               
 						<input type="hidden"   value="<%=o.getIdOrario()%>" name="idOrario" class="form-control" required >
 					</div>
@@ -41,6 +42,7 @@
 						<input type="hidden"   value="<%=o.getIdDottore()%>" name="codDottore" class="form-control" required >
 					</div>
 
+       <div id="giornoX">
 		<label for="lang" >Giorno</label> <select  name="giorno" id="giorno" >	
 			<option value="<%= o.getGiorno() %>"><%= o.getGiorno() %></option>
 			<option value=""></option>
@@ -77,8 +79,9 @@
 			<option value="31">31</option>
 
 		</select> 
+		</div>
 		
-                        
+            <div id="meseX">          
 		<label for="lang">Mese</label> <select name="mese" id="mese">
 			<option value="<%= o.getMese() %>"><%= o.getMese() %></option>
 			<option value=""></option>
@@ -95,7 +98,9 @@
 			<option value="11">Novembre</option>
 			<option value="12">Dicembre</option>
 		</select>
+		</div>  
 		
+		<div id="annoX">
 		 <label for="lang">Anno</label> <select name="anno" id="anno">
 			<option value="<%= o.getAnno() %>"><%= o.getAnno() %></option>
 			<option value=""></option>
@@ -104,7 +109,9 @@
 			<option value="2024">2024</option>
 
 		</select>      
+		</div>
 		
+		<div id="daX">
 		 <label for="lang">Da</label> <select name="oraI" id="oraI">
 			<option value="<%= o.getOraI() %>"><%= o.getOraI() %></option>
 			<option value=""></option>
@@ -134,9 +141,9 @@
 
 		</select> 
 				
+		</div>		
 				
-				
-				
+			<div id="aX">
 	 <label for="lang">A</label> <select name="oraF" id="oraF">
 			<option value="<%= o.getOraF() %>"><%= o.getOraF() %></option>
 			<option value=""></option>
@@ -166,12 +173,16 @@
 			<option value="24">24</option>
 
 		</select> 
+		</div>	
                 <div class="text-center">
-						<button type="submit"  class="btn btn-primary">Modifica</button>
+						<button type="submit"  class="btn btn-primary" >Modifica</button>
                 </div>
 					
 				</form>
 				  
+            <div id="btntorna">
+				 <a href="gestisciOrariDottore.jsp?id=<%=o.getIdDottore()%>"><button  type="submit" class="btn btn-primary">Ritorna </button></a>
+				</div>
 
 
 </body>

@@ -47,22 +47,7 @@ Clinica C = (Clinica)request.getSession().getAttribute("utenteC");;
            
 
         </ul>
-        <input type="checkbox"  id="bc2">
-        <label for="bc2" class="search-icon">
-            <i class="fa fa-search"></i>
-            <i class="fa fa-close"></i>
-        </label>
-
-        <div class="search-box">
-
-            <form class="QI">
-
-                <input type="search" placeholder="Search..." class="search">
-                <input type="submit" value="Ok" class="sub">
-
-            </form>
-
-        </div>
+    
     </div>
  
  

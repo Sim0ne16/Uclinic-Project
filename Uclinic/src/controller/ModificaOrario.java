@@ -34,9 +34,9 @@ public class ModificaOrario extends HttpServlet {
 		
 		Orario o = new Orario(idOrario,idDottore,anno,mese,giorno,oraI,oraF);
 		if(ClinicaDAO.checkOrario(o)==true) {
-		ClinicaDAO.modificaOrario(o);	
-		 response.sendRedirect("gestisciOrariDottore.jsp?id="+idDottore);
+		ClinicaDAO.modificaOrario(o);			
 		} 
+		 response.sendRedirect("gestisciOrariDottore.jsp?id="+idDottore);
 		}
 		
 		
