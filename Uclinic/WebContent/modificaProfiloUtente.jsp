@@ -26,7 +26,7 @@
 <div class="container">
 		<div class="card " >
 			<div class="card-header text-center" style="font-size: 30px;" id="titoloScheda">Modifica i dati dell'utente</div>
-			<div class="card-body">
+			<div class="cardbody">
 				<form action="modificaPaziente" method="post">
               		<div class="form-group">	               
 						<input type="hidden"   value="<%=p.getIdPaziente()%>" name="id" class="form-control" required >
@@ -73,11 +73,7 @@
 				
 			</div>
 		</div>
-		<section>    <div class="wave wave1"></div>
-            <div class="wave wave2"></div>
-            <div class="wave wave3"></div>
-            <div class="wave wave4"></div>
-            <div class="wave wave5"></div></section>
+		
 	</div>
 
      

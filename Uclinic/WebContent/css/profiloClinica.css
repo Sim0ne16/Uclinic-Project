@@ -8,7 +8,13 @@
 	text-decoration: none;
 }
 
+body{
+	 height: 94.7vh;
+    background-image: url(../images/lenti.png);
+}
+
 .container {
+	background-color: white;
 	border-bottom-color: #3eccf0;
 	border-bottom-style: solid;
 	border-bottom-width: 2px;
@@ -230,13 +236,12 @@ section .wave.wave4 {
 }
 
 #wrapper{
-	display:flex;
-	flex-direction:column;
-	justify-content: space-around;
-	align-items: center;
-    background: linear-gradient(#ffffe0, #b0e0e6);
-    height: 94.7vh;
-    background-image: url(../images/lenti.png);
+	display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+   height:700px;
+   
 }
 
 .left {
@@ -266,13 +271,12 @@ section .wave.wave4 {
 
 
 .dxandsx {
-	display: flex;
+	 display: flex;
     flex-direction: row;
     justify-content: space-between;
-    transform: translateY(-100px);
+   
     height:500px;
     width: 90%;
-	
 	
 }
 
@@ -328,6 +332,30 @@ section .wave.wave4 {
     width: 45%;
 }
 
+.tooltipEst{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 50%;
+    width:100%;
+   
+}
+
+.btn1{
+    background-color: white;
+    border-width: 1px;
+    border-color: #3eccf0;
+    border-style:solid;
+    box-shadow: 0 5px 5px rgba(255, 255, 255, 0.25), 0 5px 5px
+    rgba(0, 0, 0, 0.22);
+    border-radius: 100px;
+    padding: 10px 10px 10px 10px;
+}
+
+.btn1:active{
+	transform: scale(0.95);
+	
+} 
 .gest-app{
     display: flex;
     flex-direction: row;

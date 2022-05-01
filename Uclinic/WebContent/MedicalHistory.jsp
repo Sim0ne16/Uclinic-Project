@@ -33,9 +33,12 @@
 
 
 <div class="container">
-		<div class="card w-50 mx-auto my-5">
-			<div class="card-header text-center">Modifica Medical History</div>
-			<div class="card-body">
+		<div class="formGroup2">
+		
+			<div class="card-header" id="titoloScheda" style="font-size: 40px">Modifica Medical History</div>
+			
+			<div class="card-body1">
+			
 				<form action=""  method="post" id="formMH" name="form">
 				    <div class="form-group">	               
 						<input type="hidden"   value="<%=p.getIdPaziente()%>" id="id" name="id" class="form-control" required >
@@ -48,6 +51,7 @@
 						<label>Altezza(cm)</label> 
 						<input type="text" id="altezza"  value="<%=m.getAltezza() %>" name="altezza" class="form-control" >
 					</div>
+					
 					<div class="form-group1">
 					
 
@@ -68,20 +72,19 @@
 
 					</div>
 
-					<div class="button">
+					<div class="button" id="paddingtop">
 						<input type="submit" onclick="validaMH()" class="btn btn-primary" value="Modifica">
 					</div>
-						<div id="btntorna">
-					<button id="staffReg" type="submit" class="btn btn-primary" style=color:white><a href="profiloUtente.jsp?id=<%=x%>">Torna</a></button>
-				 </div>
+						
+					
+				
 				</form>
+				<div id="btntorna">
+				<a href="profiloUtente.jsp?id=<%=x%>"><button id="staffReg" type="submit" class="btn btn-primary">Torna</button></a>
+				 </div>
 			</div>
 		</div>
-		<section id="nuvole">	<div class="wave wave1"></div>
-			<div class="wave wave2"></div>
-			<div class="wave wave3"></div>
-			<div class="wave wave4"></div>
-			<div class="wave wave5"></div></section>
+		
 	</div>
 
      

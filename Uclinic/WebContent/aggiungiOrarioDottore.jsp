@@ -14,15 +14,15 @@
     <script src="https://kit.fontawesome.com/367813bf67.js" crossorigin="anonymous"></script>
         <link rel="stylesheet" href="css/formModifiche.css">
          <link rel="stylesheet" href="css/aggiungiOrarioDottore.css">
-    <script src="javascript/controlli.js"></script>
+    <script src="javascript/appuntamento.js"></script>
 </head>
 <body>
   <% int idDoc = Integer.parseInt(request.getParameter("idDottore"));
            Dottore d =  ClinicaDAO.visualizzaDottore(idDoc); %>
  
-       
-       
-       
+       <div id="calendario">
+      <iframe src="https://calendar.google.com/calendar/embed?height=600&wkst=1&bgcolor=%23ffffff&ctz=Europe%2FRome&showTitle=1&showTz=0&showCalendars=0&showPrint=0&showDate=1&showNav=1&showTabs=1&src=ZGplNnRrNGlqc2wyaW5wdXZvbmtka2VhMWNAZ3JvdXAuY2FsZW5kYXIuZ29vZ2xlLmNvbQ&src=aXQuaXRhbGlhbiNob2xpZGF5QGdyb3VwLnYuY2FsZW5kYXIuZ29vZ2xlLmNvbQ&color=%23F09300&color=%230B8043" style="border:solid 1px #777" width="700" height="500" frameborder="0" scrolling="no"></iframe>
+       </div>
         <div class="container">
    
         <div class="title">Aggiungi Orari </div>
@@ -334,15 +334,20 @@
 		</select> 
     </div>
               </div>  
-          <div class="button">
-             <input type="submit" onclick="validaAggiungiOrario()" class="bb1" value="Aggiungi" >
+        
+      <div id="btntorna">
+             <input type="submit" onclick="validaAggiungiOrario()" class="btn btn-primary" value="Aggiungi" >
         </div>
         
-        
+     
+     
         </form>
+           <div id="btntorna">
+				 <a href="gestisciOrariDottore.jsp?id=<%=idDoc%>"><button  type="submit" class="btn btn-primary">Ritorna </button></a>
+				</div>
+        
+        
        </div>
-             <div id=btnritorna>
-       <a class="btn1 btn-dark" href="gestisciOrariDottore.jsp?id=<%=idDoc%>"> <button class="bb1" type="button">Ritorna</button></a>
-       </div>
+
 </body>
 </html>

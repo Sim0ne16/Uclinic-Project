@@ -83,9 +83,9 @@
                 </div>
         
                     
-            <li><i class="fa-solid fa-mars-and-venus fa-2x"></i>Eta : <%=d.getEta() %></li>       
+            <li><i class="fa-solid fa-image-portrait fa-2x"></i> Eta : <%=d.getEta() %></li>       
             <li><i class="fa-solid fa-id-card fa-2x"></i> Specializzazione : <%=d.getSpecializzazione() %> </li>
-            <li><i class="fa-solid fa-dna fa-2x"></i>  Costo Visita: <%=d.getCostoVisita() %> $</li>
+            <li><i class="fa-solid fa-money-bill fa-2x"></i>  Costo Visita: <%=d.getCostoVisita() %> euro</li>
             <li><i class="fa-solid fa-phone fa-2x"></i> Recapito : <%=d.getRecapitoTel() %></li>
             <li><i class="fa-solid fa-envelope fa-2x"></i>  Email : <%=d.getEmail() %> </li>
          

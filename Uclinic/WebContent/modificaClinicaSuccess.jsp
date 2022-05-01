@@ -32,7 +32,7 @@
 <div class="container">
 		<div class="card">
 			<div class="card-header text-center" style="font-size: 30px;" id="titoloScheda">Modifica i dati della clinica <%=c.getNome() %></div>
-			<div class="card-body">
+			<div class="cardbody">
 				<form action="modificaDottore" method="post">
 				
 					<div class="form-group">

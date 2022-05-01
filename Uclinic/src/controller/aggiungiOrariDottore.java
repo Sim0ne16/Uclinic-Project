@@ -43,10 +43,7 @@ public class aggiungiOrariDottore extends HttpServlet {
 		int giorno = Integer.parseInt(request.getParameter(valoreG));
 		giorni.add(giorno);
 		}
-		}
-		
-		
-		
+		}		
 		
 		for(int x=0;x<giorni.size();x++) {
 		
@@ -57,12 +54,15 @@ public class aggiungiOrariDottore extends HttpServlet {
 		int oraf = Integer.parseInt(request.getParameter("oraF")) ;
 		int idDottore = Integer.parseInt(request.getParameter("idDottore")) ;
 		Orario o = new Orario(idDottore,anno,mese,giorno,orai,oraf);
+		if(ClinicaDAO.checkOrario(o)==true) {
 		ClinicaDAO.aggiungiOrario(o);
 
 		}
+		}
 		
+
 		int id = Integer.parseInt(request.getParameter("idDottore"));
-		response.sendRedirect( "gestisciOrariDottore.jsp?idDottore="+id);
+		response.sendRedirect( "gestisciOrariDottore.jsp?id="+id);
 		
 	}
 

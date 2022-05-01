@@ -9,8 +9,21 @@
      
     
 }
+
+
+#wrapper{
+	margin-top: 5%;
+	display: grid;
+    grid-template-columns: repeat(4,1fr);
+    overflow-x: hidden;
+    overflow-y: auto;
+    grid-column-gap: 10px;
+    grid-row-gap: 10px;
+}
+
 body{
     display: flex;
+    flex-direction:column;
     height: 100vh;
     justify-content: center;
     align-items: center;
@@ -18,8 +31,24 @@ body{
 
 }
 
+.tooltip{
+	padding-top: 10%;
+}
+
+
 .card{
-    border-color: transparent;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 100%;
+    border-style: solid;
+    border-width: 1px;
+    border-color: rgb(55, 238, 177);
+    border-radius: 20px;
+    box-shadow: 0 5px 5px rgb(255 255 255 / 25%), 0 5px 5px rgb(0 0 0 / 22%);
+    background-color: white;
+    padding: 5px 10px 5px 10px;
+    margin-top: 10%;
 }
 
 .card-header{
@@ -27,34 +56,9 @@ body{
     background-color: transparent;
 }
 
-.card-body{
-	width: 80%;
-	height: 70%;
-	display: flex;
-	align-items: stretch;
-    justify-content: center;
-}
-
-.card-body1{
-	flex-direction:column;
-	width: 80%;
-	height: 70%;
-	display: flex;
-	align-items: stretch;
-    justify-content: center;
-}
-
-
 #titoloScheda{
     color: rgb(55, 242, 177);
     text-shadow: 2px 0 0 cornflowerblue;
-}
-
-#formMH{
-	display: flex;
-	flex-direction: column;
-	justify-content:space-around;
-	align-items: center;
 }
 
 .btn{
@@ -68,6 +72,20 @@ body{
     letter-spacing: 1px;
     text-transform: uppercase;
 }
+
+#aggiungi{
+	display: flex;
+    justify-content: center;
+    margin-top: 2%;
+}
+
+
+
+#oraridoc{
+	display:flex;
+	justify-content:center;
+}
+
 
 .btn:active {
     transform: scale(0.95);
@@ -83,15 +101,15 @@ body{
 	width:100%;
 	display: flex;
     justify-content: center;
-    padding: 5px 0px 5px 0px;
+    padding-top: 10px;
+    margin-bottom: 3%;
 }
 
-#paddingtop{
-	padding-top:10px;
-}
+
 
 
 .container{
+    justify-content:center;
     max-width: 700px;
     width: 100%;
     background:white ;
@@ -107,6 +125,7 @@ body{
 .container .title{
     font-size: 25px;
     font-weight: 500;
+    position:relative;
     
 }
 
@@ -163,69 +182,47 @@ form .user-details .input-box{
 }
 
 
-#conferma{
+#scritte{
 	display: flex;
-	justify-content: center;
-	align-items: center;
-	height: 50px;
-	transform: translateY(15px);
+    flex-direction: column;
+    align-items: center;
 }
 
 
 
-.formGroup{
-display: flex;
-justify-content: center;
-align-items: center;
-height: 300px;
+
+
+
+form .button{
+    height: 45px;
+    margin: 45px 0;
+    border-radius: 10px;
+    border-style:ridge;
+    border-width: 2px;
+    border-color:#3eccf0;
+
 }
 
-.formGroup2{
-display: flex;
-flex-direction: column;
-justify-content: space-around;
-align-items: center;
-height: 300px;
+form .button input{
+    height: 100%;
+    width: 100%;
+    outline: none;
+    color: #fff;
+    border: none;
+    font-size: 18px;
+    font-weight: 500;
+    letter-spacing: 1px;
+    background:  rgb(55, 242, 177);
+    border-radius: 10px;
+
 }
 
-.menu{
-	border-width: 1px;
-	border-radius: 10px;
-	border-color: rgb(55, 238, 177);
-	border-style:solid;
+form .button input:hover{
+    background:  #78d7e4 ;
 }
-
-.menu:active{
-	background-color: rgb(55, 238, 177);
-    color: rgb(255, 255, 255);
-    border-color: white;
-}
-
-.menu:focus{
-	background-color: rgb(55, 238, 177);
-    color: rgb(255, 255, 255);
-    border-color: white;
-}
-
-#form{
-	gap: 20px;
-}
-
-
 
 
 .form-control{
     border-radius: 20px;
 }
-
-
-
-#cardina{
-	flex-direction: column;
-}
-
-
-
-
-
 

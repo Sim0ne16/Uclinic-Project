@@ -8,6 +8,10 @@
 	text-decoration: none;
 }
 
+body{
+	  height: 93.6vh;
+    background-image: url(../images/beat.png);
+}
 
 .mh1{
 	display:flex;
@@ -20,7 +24,9 @@
 }
 
 
+
 .container {
+	background-color: white;
 	border-bottom-color: #3eccf0;
 	border-bottom-style: solid;
 	border-bottom-width: 2px;
@@ -340,13 +346,12 @@ section .wave.wave4 {
 }
 
 #wrapper{
-	display:flex;
-	flex-direction:column;
-	justify-content: space-around;
-	align-items: center;
-    background: linear-gradient(#ffffe0, #b0e0e6);
-    height: 93.6vh;
-    background-image: url(../images/beat.png);
+display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+   height:700px;
+
 }
 
 .testa{
@@ -380,12 +385,12 @@ h1{
 
 
 .dxandsx{
-	display: flex;
-	flex-direction: row;
-	justify-content: space-between;
-	transform: translateY(-100px);
-	height:500px;
-	width: 90%;
+	 display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+   
+    height:500px;
+    width: 90%;
 }
 
 .left {
@@ -492,8 +497,9 @@ h1{
     height: 20%;
     text-align: left;
     display: flex;
-    align-items: center;
-    padding: 0 10px 0 10px
+    
+    flex-direction: column;
+    padding: 5px 10px 5px 10px
     
 }
 

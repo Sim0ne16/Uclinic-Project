@@ -15,6 +15,9 @@
     <script src="https://kit.fontawesome.com/367813bf67.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="css/formModifiche.css">
     <script src="javascript/appuntamento.js"></script>
+ 
+
+
 
       
     <title>Appuntamento</title>
@@ -30,7 +33,7 @@
 
 <div class="container">
 
-<div class="form-group">	               
+<div class="formGroup">	               
 				
         
         <% 
@@ -57,7 +60,7 @@
 		
 	
 		
-		 <label for="lang">Anno</label> <select name="annoA" id="annoA"  onchange="reloadPageAnno()">
+		 <label for="lang">Anno</label> <select name="annoA" id="annoA"  onchange="reloadPageAnno()" class="menu">
 			<option value="<%=anno%>"><%=anno%></option> 
 			<% 
 			List<Integer> anni = new ArrayList<Integer>();
@@ -85,7 +88,7 @@
 		
 		
 			
-	<label for="lang">Mese</label> <select name="meseA" id="meseA" onchange="reloadPageMese()">
+	<label for="lang">Mese</label> <select name="meseA" id="meseA" onchange="reloadPageMese()" class="menu">
 		<option value="<%=mese%>"><%=mese%></option> 
 	  <% for(int x=0;x<mesi.size();x++){ %>
 		<option value="<%=mesi.get(x)%>"> <%=mesi.get(x)%></option>
@@ -102,7 +105,7 @@
 		%>
 		
 		
-		<label for="lang">Giorno</label> <select name="giornoA" id="giornoA" onchange="reloadPageGiorno()">
+		<label for="lang">Giorno</label> <select name="giornoA" id="giornoA" onchange="reloadPageGiorno()" class="menu">
 			<option value="<%=giorno %>"><%=giorno %></option>
 			
 			<% for(int x=0;x<giorni.size();x++){ %>
@@ -134,7 +137,7 @@
 		%>
 		
 		
-		<label for="lang">Ora</label> <select name="oraA" id="oraA" onchange="reloadPageOra()">
+		<label for="lang">Ora</label> <select name="oraA" id="oraA" onchange="reloadPageOra()" class="menu">
 		    <option value="<%=ora%>"><%=ora%>.00 </option>
 		 <%for (int x=0;x<differenza;x++){  
 			 boolean esito = true;
@@ -150,13 +153,15 @@
 		
 		
 		
-			<div class="button" name="bottone">
+			<div id="conferma">
              <input type="submit" onclick="controllocalendarioFormApp()" class="btn btn-primary" value="Conferma">
         </div>
-	
+        
 		
 	</form>
-		
+		 <div id="conferma">
+				<a href="visualizzaDottoreEst.jsp?idDottore=<%=idDottore%>"><button type="submit" class="btn btn-primary" >Torna al dottore</button></a>
+				</div>
 	
 </div>
 </div>

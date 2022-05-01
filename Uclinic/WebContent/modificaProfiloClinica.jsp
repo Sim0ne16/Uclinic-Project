@@ -31,7 +31,7 @@ Clinica c =  ClinicaDAO.visualizzaClinica(idClinica);
 <div class="container">
 		<div class="card ">
 			<div class="card-header text-center" style="font-size: 30px;" id="titoloScheda">Modifica i dati della Clinica</div>
-			<div class="card-body">
+			<div class="cardbody">
 				<form action="ModificaClinica" method="post">
 				<div class="form-group">	               
 						<input type="hidden"   value="<%=idClinica%>" name="id" class="form-control" >

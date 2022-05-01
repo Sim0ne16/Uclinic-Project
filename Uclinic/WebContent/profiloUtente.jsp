@@ -98,7 +98,7 @@ Questo tasto ti permette di cercare sia le cliniche sia i dottori. </p>
         <div class="nomeP">
             <i class="fa-solid fa-user fa-4x"></i> <h3 style="font-size: 30px" id="titoloP"><%=p.getNome() %>  <%= p.getCognome() %></h3>
 </div>
-            <li><i class="fa-solid fa-mars-and-venus fa-2x"></i> Eta: <%= p.getEta() %></li> 
+            <li><i class="fa-solid fa-image-portrait fa-2x"></i> Eta: <%= p.getEta() %></li> 
             <li><i class="fa-solid fa-city fa-2x"></i> Citta : <%= p.getCitta() %></li>
             <li> <i class="fa-solid fa-location-crosshairs fa-2x"></i> Regione: <%= p.getRegione() %></li>
             <li> <i class="fa-solid fa-id-card fa-2x"></i>  Codice Fiscale : <%= p.getcFisc() %></li>
@@ -114,6 +114,7 @@ Questo tasto ti permette di cercare sia le cliniche sia i dottori. </p>
 <div class="right"  >
 
 <div class="storiaMedica">
+<h2 >Medical History</h2>
 <ul >
 <% MedicalHistory mh = PazienteDAO.recuperaMh(p.getIdPaziente()); %>
 

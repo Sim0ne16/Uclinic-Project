@@ -64,9 +64,9 @@
                     <i class="fa-solid fa-user fa-4x"></i> <h3 style="font-size: 30px" id="titoloD">Dr. <%=d.getNome() %> <%=d.getCognome() %></h3>
                 </div>   
                   
-            <li><i class="fa-solid fa-mars-and-venus fa-2x"></i>Eta : <%=d.getEta() %></li>       
+            <li><i class="fa-solid fa-image-portrait fa-2x"></i> Eta : <%=d.getEta() %></li>       
             <li><i class="fa-solid fa-id-card fa-2x"></i> Specializzazione : <%=d.getSpecializzazione() %> </li>
-            <li><i class="fa-solid fa-dna fa-2x"></i>  Costo Visita: <%=d.getCostoVisita() %> $</li>
+            <li><i class="fa-solid fa-money-bill fa-2x"></i>  Costo Visita: <%=d.getCostoVisita() %> euro</li>
             <li><i class="fa-solid fa-phone fa-2x"></i> Recapito : <%=d.getRecapitoTel() %></li>
             <li><i class="fa-solid fa-envelope fa-2x"></i>  Email : <%=d.getEmail() %> </li>
             
@@ -90,7 +90,7 @@
    
    <div class="tooltipEst" >
                                                                                                                                                                                            
-                            <a class="btn1 btn-dark" href="javascript:history.go(-1)" title="Torna Alla Ricerca">
+                            <a class="btn1 btn-dark" href="javascript:history.go(-1)" title="Torna Indietro">
                             <i  style="color: rgb(55, 238, 177)" class="fa-solid fa-arrow-rotate-left fa-4x"></i></a>
 						   
 						

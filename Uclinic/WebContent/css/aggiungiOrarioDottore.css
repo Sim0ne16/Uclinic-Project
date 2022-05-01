@@ -1,13 +1,32 @@
 @charset "ISO-8859-1";
 
+
+body{
+	display:flex;
+	flex-direction: column;
+}
+
 #user-details{
-	    justify-content: flex-start;
+	display: flex;
+    justify-content: center;
+    align-items: center;
 	    
 }
 
-#btnritorna{
-	padding-top:3%;
+#calendario{
+	margin-bottom:5%;
 }
+
+.cointainer{
+	
+	width:70%;
+}
+
+.title{
+	display: flex;
+    justify-content: center;
+}
+
 
 
 .other{

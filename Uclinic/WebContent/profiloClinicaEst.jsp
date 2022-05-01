@@ -83,8 +83,12 @@
 		</div>
 
 		<div class="right">
-	 <a class="btn btn-dark" href="javascript:history.go(-1)" title="Torna Alla Ricerca"><i  style="color: rgb(55, 238, 177)" class="fa-solid fa-arrow-rotate-left fa-4x"></i></a>
-		</div>
+		 <div class="tooltipEst" >
+		 
+ <a class="btn1 btn-dark" href="javascript:history.go(-1)" title="Torna Alla Ricerca">
+                            <i  style="color: rgb(55, 238, 177)" class="fa-solid fa-arrow-rotate-left fa-4x"></i></a>		</div>
+
+</div>
 </div>
 
 

@@ -1,3 +1,8 @@
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+    pageEncoding="ISO-8859-1"%>
+     <%@page import="model.*"%>
+<%@page import="java.util.*"%>
+<%@page import="dao.*"%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -27,8 +32,9 @@
                 <input type="tel" name="phone" placeholder="Il tuo numero di telefono"/>
                 <textarea name="text" id="" rows="8" placeholder="Il tuo messaggio"></textarea>
                 <button class="btn-send">Contattaci!</button>
-                <button  class="bb1" type="button1">Ritorna</button>
+              
             </form>
+             <a href="Login.jsp"><button  class="bb1"  type="button1">Ritorna</button></a>
         </div>
     </div>
     <section>
@@ -40,5 +46,3 @@
     </section>
 </body>
 </html>
-
-

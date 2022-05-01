@@ -47,7 +47,7 @@ response.setContentType("text/html;charset=UTF-8");
 		if(PazienteDAO.validaAppuntamento(app)==true) {
 		   PazienteDAO.prenotaAppuntamento(app);
 		
-		//response.sendRedirect("profiloUtente.jsp");
+		response.sendRedirect("visualizzaDottoreEst.jsp?idDottore="+idDottore);
 		} 
 
 		

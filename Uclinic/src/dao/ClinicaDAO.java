@@ -12,11 +12,44 @@ import connection.ConnessioneDB;
 import model.Appuntamento;
 import model.Clinica;
 import model.Dottore;
+import model.MedicalHistory;
 import model.Orario;
 import model.Paziente;
 
 public class ClinicaDAO {
 
+	public static MedicalHistory recuperaMH(int idPaziente) {
+		ConnessioneDB con = new ConnessioneDB();
+		MedicalHistory mh = new MedicalHistory();
+		try {
+			con.connect();
+			String sql = "Select * from medicalhistory where idPaziente  = ?";
+			PreparedStatement stm = con.getCon().prepareStatement(sql);
+			stm.setInt(1, idPaziente);
+			ResultSet rs = stm.executeQuery();
+			if(rs.next()) {
+		double peso = rs.getDouble("peso");	
+          int altezza =	rs.getInt("altezza");
+			String sangue = rs.getString("gsangue");
+			
+			mh.setAltezza(altezza);
+			mh.setGsangue(sangue);
+			mh.setIdPaziente(idPaziente);
+			mh.setPeso(peso);
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				con.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+		return mh;
+	}
+	
+	
 	 public static boolean checkEmail(String email ) {
     	 boolean esito = false;
     	 ConnessioneDB con = new ConnessioneDB();

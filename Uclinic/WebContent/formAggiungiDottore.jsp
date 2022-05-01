@@ -14,6 +14,7 @@
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
 	<link rel="stylesheet" href="css/formModifiche.css">
 	
+	
 	<script src="javascript/controlli.js"></script>
 <title>Aggiungi Dottore</title>
 </head>
@@ -33,7 +34,7 @@
 <div class="container">
 		<div class="card">
 			<div class="card-header text-center"><h3 style="font-size: 30px;" id="titoloScheda">Aggiungi Dottore</h3></div>
-			<div class="card-body">
+			<div class="card-body" id="cardina">
 				<form action="" id="aggiungiDoc" name="formino" method="post">
 					<div class="form-group">
 						<label>Nome</label> 
@@ -67,9 +68,9 @@
 						<button type="submit" onclick="controlloD()" class="btn btn-primary">Registrazione</button>
 					</div>
 				</form>
-				
-				                        <a href="StaffClinica.jsp?id=<%=x%>"><button  type="submit" class="btn btn-primary">Ritorna allo Staff</button></a>
-				
+				<div id="btntorna">
+				 <a href="StaffClinica.jsp?id=<%=x%>"><button  type="submit" class="btn btn-primary">Ritorna allo Staff</button></a>
+				</div>
 			</div>
 
 
