@@ -45,7 +45,7 @@ Clinica c =  ClinicaDAO.visualizzaClinica(idClinica);
 						<input type="text" name="cRegione"  value="<%=c.getRegione() %>" class="form-control" >
 					</div>
 					<div class="form-group">
-						<label>Citt√† </label> 
+						<label>Citta† </label> 
 						<input type="text" name="cCitta" value="<%=c.getCitta() %>" class="form-control" >
 					</div>
 					<div class="form-group">
@@ -62,7 +62,7 @@ Clinica c =  ClinicaDAO.visualizzaClinica(idClinica);
 						<input type="text" name="cPassword" value="<%=c.getPassword() %>" class="form-control" >
 					</div>
                     <div class="form-group">
-						<label>Tell Number</label> 
+						<label>Recapito</label> 
 						<input type="text" name="cRecapitoTel" value="<%=c.getRecapitoTel() %>" class="form-control" >
 					</div>
 					<div class="text-center">

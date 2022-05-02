@@ -17,6 +17,11 @@ body{
 	margin-bottom:5%;
 }
 
+.card-body{
+	flex-direction: column;
+}
+
+
 .cointainer{
 	
 	width:70%;
@@ -37,6 +42,7 @@ body{
 
 #giorni{
    display:flex;
+   gap: 1px;
 }
 
 #mese #anno #oraI #oraF{

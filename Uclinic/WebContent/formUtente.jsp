@@ -80,14 +80,17 @@
 				<input type="submit" onclick="registrazioneP()" class="bb1"
 					value="Registrazione">
 
-				<button class="bb1" type="button">Ritorna</button>
+				
 
 			</div>
 
 
 		</form>
-	
-
+		<br>
+		<div class="button">
+	<a href="Login.jsp"><button class="bb1" type="button">Torna alla home</button></a>
+	</div>
+</div>
 <!-- NUVOLE -->
 <section>
 
@@ -101,7 +104,7 @@
 
        </section>
       
-</div>
+
 
 
 </body>

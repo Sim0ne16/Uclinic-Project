@@ -39,7 +39,7 @@
 						<input type="text" name="uCognome" value="<%=p.getCognome()%>" class="form-control" required >
 					</div>
 					<div class="form-group">
-						<label>Citt√† </label> 
+						<label>Citta'† </label> 
 						<input type="text" name="uCitta" value="<%=p.getCitta() %>" class="form-control" required >
 					</div>
 					

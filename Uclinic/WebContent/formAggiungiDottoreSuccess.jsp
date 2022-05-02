@@ -32,7 +32,7 @@
 <div class="container">
 		<div class="card ">
 			<div class="card-header text-center" style="font-size: 30px;" id="titoloScheda">Aggiungi Dottore</div>
-			<div class="card-body">
+			<div class="card-body2">
 				<form action="" id="aggiungiDoc" name="formino" method="post">
 					<div class="form-group">
 						<label>Nome</label> 
@@ -68,9 +68,9 @@
 					<h3 id="agg"> Dottore aggiunto. Se non hai altri dottori da aggiungere ritorna allo staff.</h3>
 					</div>
 				</form>
-				
+				<div id="ritorna">
 			<a href="StaffClinica.jsp?id=<%=x%>"> <button  type="submit" class="btn btn-primary">Ritorna allo Staff</button></a>
-				
+				</div>
 			</div>
 		</div>
 	</div>

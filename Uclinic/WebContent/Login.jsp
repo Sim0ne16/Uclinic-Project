@@ -47,7 +47,6 @@
             
             <input class="sub_reg" type="email" placeholder="Email"  name="login-emailP" />
             <input class="sub_reg" type="password" placeholder="Password" name="login-passwordP" /> 
-            <a href="#">Dimenticata la tua password?</a>
             <button class="submit_class" type="submit"  >Login</button> <!--form="logP"-->
         </form>
         

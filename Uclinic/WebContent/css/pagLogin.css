@@ -13,16 +13,24 @@
     box-sizing: border-box;
     text-rendering: optimizeSpeed;
     font-family:  'Poppins', sans-serif;
-    
-    
 
 }
+
+body {
+    
+    background-color: linear-gradient(#ffffe0, #b0e0e6);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-direction: column;
+    height: 100vh;
+  
+    
+}
+
 nav {
     background-color: #f6f5f7;
     width: 100%;
-    overflow: hidden;
-    margin-top: 0;
-    margin-bottom: -33px;
     border-bottom-color: #3eccf0;
     border-bottom-style: solid;
     border-bottom-width: 2px;
@@ -100,7 +108,7 @@ nav ul li a {
 
 
 #registrazione{
-	padding-bottom:10%;
+	transform:translateY(-150px);
 }
 
 
@@ -108,19 +116,7 @@ nav ul li a {
 
 
 
-body {
-    
-    
-    background-image:  linear-gradient(#ffffe0,#b0e0e6 );
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    flex-direction: column;
-    font-family: 'Montserrat', sans-serif;
-    height: 100vh;
-    margin: -20px 0 50px;
-    
-}
+
 
 h1 {
     font-weight: bold;
@@ -242,8 +238,7 @@ input {
     width: 768px;
     max-width: 100%;
     min-height: 480px;
-    /*margin-top: 350px;*/
-    
+    transform:translateY(-50px);
 }
 
 .form-container {

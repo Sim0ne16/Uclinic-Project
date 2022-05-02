@@ -33,6 +33,14 @@
 
 <div class="container">
 
+	
+		<div id="allegafile">
+		<label for="file">Allega qui il tuo referto di tipo MyMedica     </label>
+            <input type="file" name="file">
+		</div>
+		
+
+
 <div class="formGroup">	               
 				
         
@@ -149,9 +157,7 @@
 	<%}} if (esito == true){ %>
 			<option value="<%=orariI[x]%>"><%=orariI[x] %>.00 - <%=orariF[x]%>.00</option> <% }}%>
 		 		</select>
-		
-		
-		
+	
 		
 			<div id="conferma">
              <input type="submit" onclick="controllocalendarioFormApp()" class="btn btn-primary" value="Conferma">
@@ -162,6 +168,8 @@
 		 <div id="conferma">
 				<a href="visualizzaDottoreEst.jsp?idDottore=<%=idDottore%>"><button type="submit" class="btn btn-primary" >Torna al dottore</button></a>
 				</div>
+				
+				
 	
 </div>
 </div>
